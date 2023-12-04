@@ -1,8 +1,8 @@
 ---
-site_name: Clean Architecture Training
-site_url: https://matthiaseschhold.github.io/hexacleanws/
-repo_url: https://github.com/MatthiasEschhold/hexacleanws
-repo_name: MatthiasEschhold/hexacleanws
+site_name: Flexible Softwarearchitektur Training
+site_url: https://github.com/MatthiasEschhold/flexible-softwarearchitektur-training
+repo_url: https://github.com/MatthiasEschhold/flexible-softwarearchitektur-training.git
+repo_name: MatthiasEschhold/flexible-softwarearchitektur-training
 edit_uri: edit/develop/documentation/docs/
 
 extra_css:
