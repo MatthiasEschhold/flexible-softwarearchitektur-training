@@ -8,18 +8,20 @@
         <version>3.2.0</version>
         <relativePath/>
     </parent>
-    <groupId>de.arkem.hexaclean.arc.demo</groupId>
-    <artifactId>hexaclean-ws-demo</artifactId>
+    <groupId>de.arkem.clean.arc.demo</groupId>
+    <artifactId>clean-architecture-training</artifactId>
     <version>1.0.0</version>
-    <name>hexaclean-ws-demo</name>
+    <name>clean-architecture-training</name>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>20</java.version>
         <archunit-junit5.version>1.2.0</archunit-junit5.version>
         <junit5.version>5.10.1</junit5.version>
         <junit-platform-suite.version>1.10.1</junit-platform-suite.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <domainprimitives-java.version>0.1.0</domainprimitives-java.version>
+        <maven-surefire-plugin.version>3.2.2</maven-surefire-plugin.version>
+        <jgiven-junit.version>1.3.1</jgiven-junit.version>
     </properties>
     <dependencies>
         <dependency>
@@ -67,6 +69,12 @@
             <artifactId>domainprimitives-java</artifactId>
             <version>${domainprimitives-java.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.tngtech.jgiven</groupId>
+            <artifactId>jgiven-junit5</artifactId>
+            <version>${jgiven-junit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -93,6 +101,29 @@
                         <compilerArg>-Amapstruct.suppressGeneratorTimestamp=true</compilerArg>
                         <compilerArg>-Amapstruct.suppressGeneratorVersionInfoComment=true</compilerArg>
                     </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.tngtech.jgiven</groupId>
+                <artifactId>jgiven-maven-plugin</artifactId>
+                <version>${jgiven-junit.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <format>html</format>
                 </configuration>
             </plugin>
         </plugins>

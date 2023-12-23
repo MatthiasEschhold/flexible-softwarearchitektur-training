@@ -5,21 +5,17 @@
 <details>
   <summary>Coding Task 1</summary>
 
-<b>Erstellung des Domänenmodell für Vehicle</b>
+<b>Domänenmodell Vehicle</b>
 <br/>
 <ol>
    <li>Implementiere das dargestellte Domänenmodell <i>Vehicle</i></li>
-   <li><i>Vehicle</i> ist die Root Entity des Domänenmodell. Implementiere die andere Domänenobjekte als <i>Value Object</i>.</li>
-   <li>Erstelle das Package <i>vehicle</i>> und innerhalb <i>vehicle</i> die Package-Struktur <i>domain.service</i></li>
-   <li>Berücksichtige dabei folgende Validierungsregeln der Domänenobjekte</li>
+   <li><i>Vehicle</i> ist die Root Entity des Domänenmodell</i>.</li>
+    <li>Implementiere die untergeordneten Domänenobjekte als <i>Value Object</i></li>
+   <li>Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab</li>
+   <li>Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekte</li>
 </ol>
 
 ![Vehicle Domain Model](../img/vehicle-domain-model.png)
-
-</details>
-
-<details>
-   <summary>Value Object Validation Rules</summary>
 
    <table>
        <tr>
@@ -28,23 +24,23 @@
        </tr>
        <tr>
            <td>Vehicle</td>
-           <td>Alle Eigenschaften muss vorhanden und valide sein.</td>
+           <td>Alle Eigenschaften müssen vorhanden und für sich valide sein.</td>
        </tr>
        <tr>
            <td>VIN</td>
-           <td>siehe Vin Regex Pattern</td>
+           <td>Ein valider Wert muss dem Vin-Regex-Pattern folgen.</td>
        </tr>
        <tr>
            <td>LicensePlate</td>
-           <td>siehe LicensePlate Regex Pattern</td>
+           <td>Ein valider Wert muss dem LicensePlate-Regex-Pattern folgen.</td>
        </tr>
        <tr>
            <td>Mileage</td>
-           <td>no negative value (mileage >= 0)</td>
+           <td>Der Kilometerstand muss größer 0 sein.</td>
        </tr>
        <tr>
            <td>EquipmentCode</td>
-           <td>siehe EuqipmentCode Pattern</td>
+           <td>Ein valider Wert muss dem EquipmentCode-Regex-Pattern folgen.</td>
        </tr>
        <tr>
            <td>Alle anderen Domänenobjekte</td>
@@ -54,7 +50,7 @@
 </details>
 
    <details>
-     <summary>VIN Regex Pattern</summary>
+     <summary>Vin-Regex-Pattern</summary>
    
    ```java
    
@@ -68,7 +64,7 @@
    </details>
 
    <details>
-     <summary>LicensePlate Regex Pattern</summary>
+     <summary>LicensePlate-Regex-Pattern</summary>
    
    ```java
     "[A-ZÖÜÄ0-9]{1,5}[-]{0,1}[A-ZÖÜÄ0-9]{0,10}[-]{0,1}[A-ZÖÜÄ0-9]{0,4}""[A-ZÖÜÄ0-9]{1,5}[-]{0,1}[A-ZÖÜÄ0-9]{0,10}[-]{0,1}[A-ZÖÜÄ0-9]{0,4}"  
@@ -76,7 +72,7 @@
    </details>
 
    <details>
-     <summary>EquipmentCode Pattern</summary>
+     <summary>EquipmentCode-Regex-Pattern</summary>
 
    ```java
    
@@ -90,22 +86,21 @@
    </details>
 
 <details>
-  <summary>Verify Task 1.1</summary>
-   <b>RUN</b> DomainRing_Task_1_1
+  <summary>Tests Coding Task 1</summary>
+   <b>RUN</b> DomainEntityTest
    <br/>
-   <b>RUN</b> ArchitectureTest_Task_1_1
+   <b>RUN</b> CleanArchitectureFitnessFunction
 </details>
 
 ## Domain Service und Use Cases
 
 <details>
    <summary>Coding Task 2</summary>
-   <b>Erstelle den DomainService für die Root Entity  <i>Vehicle</i></b>
+   <b>Erstelle die ein- und ausgehenden Use Cases sowie den Use-Case-Connector (Stereotype Service)</b>
    <br/>
    <ol>
-      <li>Erstelle das Package <i>domain.service</i> im Package <i>vehicle</i></li>
-      <li>Erstelle die Klasse <i>VehicleService</i> im vorgesehenen Package</li>
-      <li>Erstelle die Packages <i>usecase.in</i> und <i>usecase.out</i> im Package <i>vehicle</i></li>
+      <li>Erstelle das Package <i>domain.service</i> als Subpackage von <i>vehicle</i> und erstelle die Klasse <i>VehicleService</i> </li>
+      <li>Erstelle die Packages <i>usecase.in</i> und <i>usecase.out</i> als Subpackages von <i>vehicle</i></li>
       <li>Erstelle den eingehenden Use Case <i>VehicleCommand</i> im dafür vorgesehenen Package mit der Schnittstelle <i>createVehicle</i></li>
       <li>Erstelle die ausgehenden Use Cases <i>VehicleRepository</i> und <i>FetchVehicleMasterData</i> im dafür vorgesehenen Package mit den dafür vorgesehenen Schnittstellen</li>
       <li>Implementiere den Anwendungsfall <i>createVehicle</i> im <i>VehicleService</i></li>
@@ -137,10 +132,9 @@
    ```
    </details>
 
-
 <details>
-  <summary>Verify Task 1.2</summary>
-   <b>RUN</b> DomainRing_Task_1_2
+  <summary>Tests Coding Task 2</summary>
+   <b>RUN</b> UseCaseConnectorTest
    <br/>
-   <b>RUN</b> ArchitectureTest_Task_1_2
+   <b>RUN</b> CleanArchitectureFitnessFunction
 </details>

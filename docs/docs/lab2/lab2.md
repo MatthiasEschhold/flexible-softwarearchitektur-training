@@ -8,14 +8,12 @@
 <b>Erstelle einen Input Adapter für den eingehenden Use Case</b>
 <br/>
 <ol>
-<li>Erstelle das Package <i>adapter.in</i> im Package <i>vehicle</i></li>
-<li>Erstelle den Controller <i>VehicleController</i> und lege die Klasse im vorhergesehenen Package ab</li>
-<li>Implementiere eine Methode zur Anlage eines Fahrzeugs und nutze hier den Use Case <i>VehicleCommand</i></li>
-<li>Hierfür muss die DTO <i>VehicleResource</i> (siehe Vorlage) und ein Mapper (<i>VehicleWebMapper</i>) eingeführt werden</li>.
+<li>Erstelle das Package <i>adapter.in</i> als Subpackage von <i>vehicle</i> und erstelle den Interface Adapter <i>VehicleController</i></li>
+<li>Implementiere die technische HTTP Schnittstelle zur Anlage eines Fahrzeugs und nutze hierfür den Use Case <i>VehicleCommand</i></li>
+<li>Erstelle das DTO <i>VehicleResource</i> (siehe Vorlage) und ein Mapper (<i>VehicleWebMapper</i>) für das DTO</li>.
 <li>Ignoriere Details des Frameworks und des REST Architekturstils bei der Implementierung</li>
 
 </ol>
-
 
 <details>
       <summary>VehicleResource</summary>
@@ -53,7 +51,7 @@ public class VehicleResource {
 }
 
    ```
-   </details>
+</details>
 
 </details>
 
@@ -65,10 +63,9 @@ public class VehicleResource {
 <b>Erstelle die Output Adapter für die ausgehenden Use Cases</b>
 <br/>
 <ol>
-<li>Erstelle das Package <i>adapter.out</i> im Package <i>vehicle</i></li>
-<li>Erstelle das Datenbank Repository <i>VehicleDbRepository</i> und lege die Klasse im vorhergesehenen Package ab</li>
+<li>Erstelle das Package <i>adapter.out</i> als Subpackage von <i>vehicle</i></li> und erstelle das Datenbank Repository <i>VehicleDbRepository</i></li>
 <li>Implementiere den Use Case <i>VehicleRepository</i></li>
-<li>Führe die DTO <i>VehicleDbEntity</i> (siehe Vorlage) und ein Mapper (<i>VehicleDbMapper</i>) eingeführt werden</li>.
+<li>Führe das DTO <i>VehicleDbEntity</i> (siehe Vorlage) sowie den Mapper <i>VehicleDbMapper</i> ein</li>.
 <li>Ignoriere Details des Frameworks bei der Implementierung</li>
 
 </ol>
