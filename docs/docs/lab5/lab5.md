@@ -1,140 +1,170 @@
-# Slicing Use Cases with the Interface Segregation Principle
+# Abhängigkeiten zwischen Domänenmodulen
 
-_Robert C. Martin_ points out in his book _Clean Architecture_ that
+## Neue Domänenmodule
 
-<blockquote cite="https://example.com/optional-reference">
-depending on something that carries baggage that
-you don't need can cause you trouble that you didn't expect!
-</blockquote> 
+Investigate the introduced domain modules _GarageOrder_ and _PartsCatalogue_. Both domain modules
+depends on the _Vehicle_ domain module.
 
-The _Interface Segregation Principle_ provides an answer to this problem. It states that broad 
-interfaces should be split into specific ones so that clients only know the methods they need.
+In context of the garage order only the _license plate_ and, the _mileage_ of a vehicle are relevant.
 
-Applying the _Interface Segregation Principle_
+For the parts catalogue only the _vin_, the _vehicle model_ and, the domain value _has5GSupport_
+are from importance.
 
-* **removes unnecessary dependencies** to methods the consumer doesn't need,
-* makes the existing **dependencies more visible**,
-* **prevents** potential trouble based on **side effects** and,
-* enables **extendibility** and **flexibility** 
+See the garage order form for more details:
 
-In origin sense the _Interface Segregation Principle_ says:
+![Garage Order Form](../img/garage-order-form.png)
 
----
-Many client-specific interfaces increase readability and understandability compared to one general-purpose interface. 
-No clients should be forced to depend on methods it does not use. In conclusion, interfaces should be separated into small 
-responsibilities as minimalistic as possible.
+See also the explosion chart of the front brake, as a example for the graphical visualization of a spare part in the parts catalogue:
 
-![Variants of slicing use cases](../img/usecaseslicing.png)
+![Explosion Chart for Front Brake](../img/explosion-chart.png)
 
-Personally I do not use the option _Root Entity_. As a default I use the option _Command & Query_. When different
-consumer exists and there are difference between their needs, then I recommend using the option _One Method Per
-Use Case (Port)_. Also referring to the package structure variants, there is a _separation of incoming and outgoing use
-cases_, which is recommended to _apply_ as _standard design principle_.
+Additional information are described in the corresponding spare parts table.
 
-Following code examples shows different variants of slicing use cases.
+![Spare Parts Table for Front Brake](../img/spare-parts-table.png)
 
-**Use Cases by Root Entity**
+## Kopplung zwischen Wurzelobjekten und Domänenmodulen neu denken
 
-```java
+In a traditional data-centric and layered architecture, it is common to design the application around a centric data model.
+But this leads to high coupling in the long term (see section "Problems of Layered Architecture" in the trainings slides).
+In this lab the <i>Adapter.Out - UseCase.In Pattern</i> and the <i>Application Service Pattern</i> are described. Additional approaches
+are shown in the training slides.
 
-public interface VehicleUseCase {
+## The Adapter.Out - UseCase.In Pattern
 
-    Vehicle readByVin(Vin vin);
+Implement the <i>Adapter.Out - UseCase.In Pattern</i> between the domain modules <i>Garage order</i> and <i>Vehicle</i>.
 
-    Vehicle readByLicensePlate(LicensePlate licensePlate);
+### Introduce the Use Case FetchVehicleByLicensePlate (Vehicle Module)
 
-    Vehicle update(Vin vin, VehicleMotionData vehicleMotionData);
+<details>
+   <summary>Coding Task 6.1</summary>
+   <ol>
+      <li>
+         Introduce an additional incoming use case in the domain module <i>Vehicle</i> with the name 
+         <i>FetchVehicleByLicensePlate</i>. The use case should contain the method <i>fetchByLicensePlate</i>
+      </li>
+      <li>
+         Implement the use case by extending the <i>VehicleQueryService</i>.
+      </li>
+   </ol>
 
-    Vehicle create(Vehicle vehicle);
-
-    void delete(Vin vin);
-}
-```
-
-**Use Case by Separating Command and Query**
+   <details>
+      <summary>Java</summary>
 
 ```java
-
-public interface VehicleQuery {
-
-    Vehicle readByVin(Vin vin);
-
-    Vehicle readByLicensePlate(LicensePlate licensePlate);
-}
+Vehicle fetchByLicensePlate(LicensePlate licensePlate);
 ```
+
+</details>
+
+<details>
+      <summary>Kotlin</summary>
+
+```kotlin
+fun fetchByLicensePlate(licensePlate: LicensePlate): Vehicle;
+```
+
+   </details>
+
+   <details>
+      <summary>C#</summary>
 
 ```java
-
-public interface VehicleCommand {
-
-    Vehicle update(Vin vin, VehicleMotionData vehicleMotionData);
-
-    Vehicle create(Vehicle vehicle);
-
-    void delete(Vin vin);
-}
+Vehicle FetchByLicensePlate(LicensePlate licensePlate);
 ```
 
-A separation in _Command and Query_ helps to prevent, that classes grow into complex and big units of code that are
-hard to understand. A good orientation for modularisation inside a _domain module_ can be found in _Command and Query_, even
-when you do not plan to apply the [Command Query Segregation Principle](https://martinfowler.com/bliki/CQRS.html). 
-But we can create a good foundation for such an evolution.
+   </details>
 
-**One Method per Use Case (Port)**
+</details>
+
+<details>
+   <summary>Verify 6.1</summary>
+   <b>RUN</b> DomainRing_Task_6_1
+   <br/>
+   <b>RUN</b> ArchitectureTest_Task_6_1 (Java & Kotlin)
+   <br/>
+   <b>RUN</b> all architecture tests (C#)
+</details>
+
+### Implement the Use Case FetchVehicle (Garage Order Module)
+
+<details>
+<summary>Coding Task 6.2</summary>
+   <ol>
+      <li>
+         Have a look at the outgoing use case <i>FetchVehicle</i> in <i>garage/order/usecase/out</i>
+      </li>
+      <li>
+         Implement the output adapter with the name <i>VehicleModuleClient</i> and a mapper with the name 
+         <i>VehicleToOriginVehicleMapper</i>.
+      </li>
+   </ol>
+</details>
+
+<details>
+   <summary>Verify 6.2</summary>
+   <b>RUN</b> OutputAdapter_Task_6_2
+   <br/>
+   <b>RUN</b> ArchitectureTest_Task_6_2 (Java & Kotlin)
+   <br/>
+   <b>RUN</b> all architecture tests (C#)
+</details>
+
+## The Application Service Pattern
+
+<details>
+   <summary>Coding Task 6.3</summary>
+Implement the <i>Application Service Pattern</i> between the domain modules <i>Parts Catalogue</i> and <i>Vehicle</i>.
+<ol>
+   <li>
+      Have a look at the <i>ExplosionChartApplicationService</i> in <i>parts/catalogue/appservice</i> and notice the dependency to
+      <i>VehicleQuery</i> of the domain module vehicle.
+   </li>
+   <li>
+        Complete the implementation of the use case <i>ExplosionChartQuery</i> in <i>ExplosionChartQueryService</i>
+   </li>
+   <li>
+        Use <i>VehicleQuery</i> from the vehicle module to fetch necessary vehicle data
+   </li>
+    <li>
+        Implement and use the mapper <i>VehicleToOriginVehicleMapper</i>
+   </li>
+</ol>
+
+</details>
+
+<details>
+   <summary>Verify 6.3</summary>
+   <b>RUN</b> ApplicationService_Task_6_3
+   <br/>
+   <b>RUN</b> ArchitectureTest_Task_6_3 (Java & Kotlin)
+   <br/>
+   <b>RUN</b> all architecture tests (C#)
+</details>
+
+##  Clean Architecture Fitness Functions - Currently Not Working
+
+<details>
+   <summary>Optional Coding Task 6.4</summary>
+
+<ol>
+   <li>
+      <b>RUN</b> CleanArchitectureTest
+   </li>
+   <li>
+      Fix the test by extending the test <i>should_check_clean_architecture_all_rings_architectural_expressive</i> 
+   </li>
+   <li>
+      <b>RUN</b> CleanArchitectureTest again. Why did the test pass now?
+   </li>
+</ol>
+</details>
+
+<details>
+   <summary>Java & Kotlin</summary>
 
 ```java
-public interface ReadVehicleByVin {
-
-    Vehicle read(Vin vin);
-}
+.adapterOutOfAdapterOutUseCaseInPattern("..garage.order.adapter.out..")
+.applicationService("..parts.catalogue.appservice..")
 ```
 
-```java
-public interface ReadVehicleByLicensePlate {
-
-    Vehicle read(LicensePlate licensePlate);
-}
-```
-
-```java
-public interface CreateVehicle {
-
-    Vehicle readByVin(Vin vin);
-
-    Vehicle readByLicensePlate(LicensePlate licensePlate);
-}
-```
-
-```java
-public interface UpdateVehicle {
-
-    Vehicle update(Vin vin, VehicleMotionData vehicleMotionData);
-}
-```
-
-```java
-public interface DeleteVehicle {
-
-    void delete(Vin vib);
-}
-```
-
-Even when the variant _One Method per Use Case_ is not typical Java, slicing use cases this way reduces coupling
-between clients. In conclusion, the overall coupling between components of the software system will be kept low.
-Coupling rises quickly and unavoidable. Due to this, we should avoid it every time when possible, especially in
-fast-growing software systems for complex business domains.
-
-Small sliced use cases allow assembling these use cases to a higher composition of functionality. Based on this,
-functionality can be extended fast for new or changing business processes or user group specific requirements.
-
-### Slicing Use Cases in Practice
-
-There is no right way by default. It depends on complexity and specific requirements of the project. 
-In practice a reasonable combination of these variants is may the best way to find a good balance between flexibility and 
-simplicity in the architecture in the long term.
-
-Let's have a look on following functional requirements. As we already know, we have the mission to build a great garage
-management that is maintainable, extendable and flexible. We want to modernize existing business processes and establish
-new business models. And the system now starts to live, and we can expect an evolution over the years because the
-business model change over time due to changing requirements of the stakeholder as well as technical evolution, which
-creates the need of modernization.
+</details>

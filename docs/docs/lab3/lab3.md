@@ -1,117 +1,88 @@
-# Mappings between Boundaries
+# Domain Service Pattern des Domain Ring
 
-Currently, the _Vehicle_ is the model of the application, and it is not separated from infrastructure.
-In conclusion the idea of ports and adapters is not consequently followed. The missing element for a fully decoupled
-domain from infrastructure is a _mapping between these boundaries_.
+##  Domain Service Pattern
 
----
-**Mapping**
+Ein _Domain Service_ implementiert Business Logik, die keinem Domänenobjekt zugeordnet werden kann, oder 
+wenn für die Ausführung der Business Logik zusätzlich Abhängigkeiten aufgebaut werden müssen, die den 
+Abhängigkeitsregeln eines Domänenobjekts widersprechen würden
 
-Mappings between boundaries describes a transformation of the state of a source entity model to a target entity model.
-The following code snippets shows an example of different entity model, where for example the _baumuster_ of
-_VehicleDto_ must be mapped on the property _modelName_ of _Vehicle_.
+## Anwendungsfall Risikobewertung und Diebstahlprüfung
 
-```java
-public class Vehicle {
+### Coding Task 4
 
-    public String modelName;
-
-    public String vin;
-
-    public Double mileage;
-
-}
-```
-
-```java
-public class VehicleDto {
-
-    public String vehicleModel;
-
-    public String vehicleId;
-
-    public Double mileage;
-
-}
-```
-
----
-**Pro Mapping**
-
-<ul>
-    <li>
-        If we don't map between layers, we have to use the same model on both layers, which means that the layers will be
-        tightly coupled.
-    </li>
-    <li> Mappings enables use to
-        <ol>
-            <li>reduce the amount of data from external models,</li>
-            <li>implement a model in our domain language, which is easier to understand and to extend</li>
-        </ol>
-    </li>
-</ul>
-
----
-**Contra Mapping**
-
-* If we do map between layers, we produce a lot of boilerplate code, which is overkill for many use cases.
-
----
-
-All arguments are true. We have to consider our architecture goals for this decision. Our goals are to create
-a isolated domain, and source code that expresses the domain functionality and language.
-A key element to reach this is mapping. A good balance between boilerplate code and decoupling can be reached by
-**simplifying** and **automating** mappings based on the so-called **_Two-Way Mapping Strategy_**.
-
-### Data Transfer Objects Between Layers
-
-The class-stereotype <i>Data Transfer Object</i> described data objects provided by infrastructure components. In
-detail <i>Data Transfer Object</i> can be a:
-
-* _DbEntity_
-* _Event_
-* _Resource_
-* _Response Object_
-* and so on
-
-### Benefits of Mappings
-
----
-**Stable Domain and Fast Adaption**
-
-Changes to the infrastructure do not affect the domain. For example an external service changes its response model
-then the changes affect only the mapper of the adapter. This single point of change enables us to
-adapt fast to infrastructure changes.
-
-In addition to that, it is possible to reduce test efforts. There are no tests of the domain needed when nothing
-changed. The adapter implementation could be tested in isolation on a pure technical level, which is less complex and
-cost-intensive.
-
----
-**Evolutionary Design**
-
-Change comes fast and unexpected. But for sure it comes! Domain-related change could arise due to
-
-* changing behaviour,
-* new requirements,
-* growing business model,
-* changing business model,
-* new consumers,
-* and so on.
-
-Since we cannot foresee change, we must look ahead and act. On an architectural level, this means that we have to
-apply **architecture** and **design** **principle** that **enables** **change**.
-
-The idea of ports and adapters is a powerful pattern to support change based on the decoupling of domain and
-infrastructure. Each of them can **grow**, **modernize** and **tested** independently.
+<b>Implementiere den TheftRiskRatingService</b>
+<br/>
+<ol>
+<li>Erstelle das Package <i>domain.service</i> als Subpackage von <i>vehicle</i> und erstelle den Domain Service <i>TheftRiskRatingService</i></li>
+<li>Integriere die Risikobewertung in den Anlageprozess für ein Fahrzeug</li>
+<li>Betrachte das ausgebaute Domänenmodell in <i>domain.service</i> und nutze die Domänenobjekte</li>
+<li>Wird ein Risikobewertung > 60 Risikopunkte ermittelt, muss eine Diebstahlabfrage bei Interpol durchgeführt werden</li>
+<li>Ergänze Use Case und Adapter Implementierung für die Diebstahlabfrage bei Interpol, für die Abfrage von Risikoländer sowie -marken</li>
+</ol>
+<br/>
 
 <details>
-<summary>Support Mappings with MapStruct</summary>
+   <summary>User Story Risikobewertung Fahrzeudiebstahl nach §0815a</summary>
 
-<ul>
-    <li><a href="https://www.baeldung.com/mapstruct">MapStruct Basics</a></li>
-    <li><a href="https://www.baeldung.com/mapstruct-custom-mapper">Custom Mapper with MapStruct</a></li>
-    <li><a href="https://mapstruct.org/documentation/stable/reference/html/">MapStruct Reference Guide Version 1.5.3</a></li>
-    <li><a href="https://mapstruct.org/community/other-resources/">Other sources</a></li>
-</ul>
+Als Produktmanager möchte ich, dass die Risikobewertung für ein Fahrzeug im Anlageprozess durchgeführt wird.
+Die Risikobewertung folgt dem im folgenden beschriebenen Regelwerk:
+
+<ol>
+<li></li>
+</ol>
+
+<i>Akzeptanzkriterien</i>:
+<ol>
+<li></li>
+</ol>
+
+</details>
+
+
+<details>
+   <summary>Erweitere Risikobewertung auf Basis von Risikoländer und Risikomarken für die Risikobewertung nach §0815a</summary>
+
+Als Produktmanager möchte dich die Risikobewertung nach §0815a mit der Berücksichtigung von Risikoländern und -marken erweitern.
+
+<ol>
+<li></li>
+</ol>
+
+<i>Akzeptanzkriterien</i>:
+<ol>
+<li></li>
+</ol>
+
+</details>
+
+<b>Weitere Informationen zur Risikobewertung und Diebstahlabfrage bei Interpol:</b>
+
+<details>
+      <summary>Use Case Diebstahlabfrage Interpol</summary>
+
+   ```java
+public interface DetectInterpolTheftStatus {
+    TheftStatus detect(Vin vin, LicensePlate licensePlate);
+}
+   ```
+</details>
+
+<details>
+      <summary>Use Case Abfrage Risikoländer</summary>
+
+   ```java
+public interface FetchHighRiskCountries {
+    HighRiskCountries fetch();
+}
+   ```
+</details>
+
+<details>
+      <summary>Use Case Abfrage Risikomarken</summary>
+
+   ```java
+public interface FetchHighRiskVehicleModels {
+    HighRiskVehicleModels fetch();
+}
+   ```
 </details>
