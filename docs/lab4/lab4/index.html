@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#encapsulation-und-lesbarkeit-durch-command-objekte" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -319,6 +324,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Ausbau mit weiteren Anforderungen
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -328,6 +344,56 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#encapsulation-und-lesbarkeit-durch-command-objekte" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encapsulation und Lesbarkeit durch Command Objekte
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erweiterung-des-domanenmodell-mileage-und-mileage-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erweiterung des Domänenmodell Mileage und Mileage History
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erweiterung des Domänenmodell Mileage und Mileage History">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anwendungsfall-update-mileage-mit-plausibilitatsprufung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anwendungsfall Update Mileage mit Plausibilitätsprüfung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -391,6 +457,47 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#encapsulation-und-lesbarkeit-durch-command-objekte" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encapsulation und Lesbarkeit durch Command Objekte
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#erweiterung-des-domanenmodell-mileage-und-mileage-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      Erweiterung des Domänenmodell Mileage und Mileage History
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Erweiterung des Domänenmodell Mileage und Mileage History">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anwendungsfall-update-mileage-mit-plausibilitatsprufung" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anwendungsfall Update Mileage mit Plausibilitätsprüfung
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -451,9 +558,14 @@
 -->
 
 <!---->
+<!--<h1>Ausbau mit weiteren Anforderungen</h1>-->
+<!---->
 
 <!-- Page content -->
-<h1 id="ausbau-mit-weiteren-anforderungen-und-funktionalitaten">Ausbau mit weiteren Anforderungen und Funktionalitäten<a class="headerlink" href="#ausbau-mit-weiteren-anforderungen-und-funktionalitaten" title="Permanent link">⚓︎</a></h1>
+<h1 id="weitere-designprinzipen">Weitere Designprinzipen<a class="headerlink" href="#weitere-designprinzipen" title="Permanent link">⚓︎</a></h1>
+<h2 id="encapsulation-und-lesbarkeit-durch-command-objekte">Encapsulation und Lesbarkeit durch Command Objekte<a class="headerlink" href="#encapsulation-und-lesbarkeit-durch-command-objekte" title="Permanent link">⚓︎</a></h2>
+<h2 id="erweiterung-des-domanenmodell-mileage-und-mileage-history">Erweiterung des Domänenmodell Mileage und Mileage History<a class="headerlink" href="#erweiterung-des-domanenmodell-mileage-und-mileage-history" title="Permanent link">⚓︎</a></h2>
+<h3 id="anwendungsfall-update-mileage-mit-plausibilitatsprufung">Anwendungsfall Update Mileage mit Plausibilitätsprüfung<a class="headerlink" href="#anwendungsfall-update-mileage-mit-plausibilitatsprufung" title="Permanent link">⚓︎</a></h3>
 <details>
 <summary>Coding Task 5</summary>
 
@@ -475,141 +587,6 @@
  <summary>Schnittstelle VehicleRepository</summary>
 
 <div class="highlight"><pre><span></span><code><span class="n">VehicleMotionData</span><span class="w"> </span><span class="nf">findVehicleMotionDataByVin</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">);</span>
-</code></pre></div>
-</details>
-</details>
-
-<details>
-<summary>Coding Task 5</summary>
-
-<details>
-<summary>Erweitere den Anwendungsfall der Fahrzeuganlage</summary>
-<li>Führe die ausgehenden Use Cases <i>DetectInterpolTheftStatus</i> und <i>FetchHighRiskCountries</i> mit der Schnittstelle wie unten beschrieben ein.</li>
-<li>Erweitere das Domänenmodell mit den benötigen Domänenobjekten</li>
-<li>Implementiere die entsprechende ausgehenden Adapter für die eingeführten ausgehenden Use Cases</li>
-<li>Führe den DomainService <i>TheftRiskRatingService</i> und lege die Klasse im vorgesehenen Package ab</li>
-<li>Erweitere die Implementierung der Methode <i>createVehicle</i> im <i>VehicleService</i> um die Risikobewertung und die Abfrage bei Interpol</li>
-<li>Eine Abfrage bei Interpol zum Diebstahlstatus des Fahrzeugs muss ab einem Risikowert von 75 durchgeführt werden</li>
-</details>
-
-<details>
- <summary>Schnittstelle DetectInterpolTheftStatus</summary>
-
-<div class="highlight"><pre><span></span><code><span class="n">TheftStatus</span><span class="w"> </span><span class="nf">detect</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">,</span><span class="w"> </span><span class="n">LicensePlate</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">);</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">TheftStatus</span><span class="p">(</span><span class="n">TheftStatusEnum</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">TheftStatus</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">validateTheftStatus</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">validateTheftStatus</span><span class="p">(</span><span class="n">TheftStatusEnum</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isTheftStatusValid</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;anti theft status not valid&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isTheftStatusValid</span><span class="p">(</span><span class="n">TheftStatusEnum</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">TheftStatusEnum</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">UNKNOWN</span><span class="p">,</span><span class="w"> </span><span class="n">STOLEN</span><span class="p">,</span><span class="w"> </span><span class="n">APPROVED</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-
-</details>
-
-<details>
- <summary>Schnittstelle FetchHighRiskCountries</summary>
-
-<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">HighRiskCountry</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">fetch</span><span class="p">();</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">HighRiskCountry</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">COUNTRY_CODE_PATTERN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;[A-Z]{2}-[a-z]{2}&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">HighRiskCountry</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">validateHighRiskCountry</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">validateHighRiskCountry</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isHighRiskCountryValid</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&quot;high risk country is not valid&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isHighRiskCountryValid</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">value</span><span class="p">.</span><span class="na">matches</span><span class="p">(</span><span class="n">COUNTRY_CODE_PATTERN</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-</details>
-
-<details>
- <summary>Implementierung TheftRiskRatingService</summary>
-
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TheftRiskRatingService</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">GERMAN_LICENSE_PLATE_PATTERN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;[A-ZÖÜÄ]{1,3}-[A-ZÖÜÄ]{1,2} [1-9]{1}[0-9]{1,3}&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">FRANCE_LICENSE_PLATE_PATTERN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;[A-Z]{3}-[0-9]{3}-[A-Z]{3}&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">GERMAN_COUNTRY_CODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DE-de&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">FRANCE_COUNTRY_CODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;FR-fr&quot;</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="nf">rateTheftRisk</span><span class="p">(</span><span class="n">RegistrationCountry</span><span class="w"> </span><span class="n">registrationCountry</span><span class="p">,</span><span class="w"> </span><span class="n">LicensePlate</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">HighRiskCountry</span><span class="o">&gt;</span><span class="w"> </span><span class="n">highRiskCountries</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Integer</span><span class="w"> </span><span class="n">riskScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">countryCodeOfLicensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">detectCountryCodeOfLicensePlate</span><span class="p">(</span><span class="n">licensePlate</span><span class="p">);</span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">registrationCountryCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">registrationCountry</span><span class="p">.</span><span class="na">value</span><span class="p">();</span>
-<span class="w">        </span><span class="n">riskScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">riskScore</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">detectRiskPointByLicensePlate</span><span class="p">(</span><span class="n">countryCodeOfLicensePlate</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                </span><span class="n">detectRiskPointByRegistrationCountry</span><span class="p">(</span><span class="n">registrationCountryCode</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                </span><span class="n">detectRiskPointHighRiskCountry</span><span class="p">(</span><span class="n">highRiskCountries</span><span class="p">,</span><span class="w"> </span><span class="n">countryCodeOfLicensePlate</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">countryCodeOfLicensePlate</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">registrationCountry</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">riskScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">riskScore</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">riskScore</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="nf">detectRiskPointHighRiskCountry</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">HighRiskCountry</span><span class="o">&gt;</span><span class="w"> </span><span class="n">highRiskCountries</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">countryCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">boolean</span><span class="w"> </span><span class="n">isHighRiskCountry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">highRiskCountries</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">filter</span><span class="p">(</span><span class="n">highRiskCountry</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">highRiskCountry</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">countryCode</span><span class="p">)).</span><span class="na">findFirst</span><span class="p">().</span><span class="na">isPresent</span><span class="p">();</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isHighRiskCountry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="nf">detectRiskPointByRegistrationCountry</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">countryCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">countryCode</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">GERMAN_COUNTRY_CODE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">countryCode</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">FRANCE_COUNTRY_CODE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="nf">detectRiskPointByLicensePlate</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">countryCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">countryCode</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">GERMAN_COUNTRY_CODE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">countryCode</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">FRANCE_COUNTRY_CODE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">detectCountryCodeOfLicensePlate</span><span class="p">(</span><span class="n">LicensePlate</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">licensePlate</span><span class="p">.</span><span class="na">value</span><span class="p">().</span><span class="na">matches</span><span class="p">(</span><span class="n">GERMAN_LICENSE_PLATE_PATTERN</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;DE-de&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">licensePlate</span><span class="p">.</span><span class="na">value</span><span class="p">().</span><span class="na">matches</span><span class="p">((</span><span class="n">FRANCE_LICENSE_PLATE_PATTERN</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;FR-fr&quot;</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="c1">//... and many more</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="p">}</span>
 </code></pre></div>
 </details>
 </details>

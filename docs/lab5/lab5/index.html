@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slicing-use-cases-in-practice" class="md-skip">
+        <a href="#neue-domanenmodule" class="md-skip">
           Skip to content
         </a>
       
@@ -379,9 +379,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#slicing-use-cases-in-practice" class="md-nav__link">
+  <a href="#neue-domanenmodule" class="md-nav__link">
     <span class="md-ellipsis">
-      Slicing Use Cases in Practice
+      Neue Domänenmodule
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kopplung-zwischen-wurzelobjekten-und-domanenmodulen-neu-denken" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kopplung zwischen Wurzelobjekten und Domänenmodulen neu denken
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-adapterout-usecasein-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Adapter.Out - UseCase.In Pattern
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Adapter.Out - UseCase.In Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduce-the-use-case-fetchvehiclebylicenseplate-vehicle-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduce the Use Case FetchVehicleByLicensePlate (Vehicle Module)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-the-use-case-fetchvehicle-garage-order-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implement the Use Case FetchVehicle (Garage Order Module)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-application-service-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Application Service Pattern
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-architecture-fitness-functions-currently-not-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clean Architecture Fitness Functions - Currently Not Working
     </span>
   </a>
   
@@ -440,9 +500,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#slicing-use-cases-in-practice" class="md-nav__link">
+  <a href="#neue-domanenmodule" class="md-nav__link">
     <span class="md-ellipsis">
-      Slicing Use Cases in Practice
+      Neue Domänenmodule
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kopplung-zwischen-wurzelobjekten-und-domanenmodulen-neu-denken" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kopplung zwischen Wurzelobjekten und Domänenmodulen neu denken
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-adapterout-usecasein-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Adapter.Out - UseCase.In Pattern
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Adapter.Out - UseCase.In Pattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduce-the-use-case-fetchvehiclebylicenseplate-vehicle-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduce the Use Case FetchVehicleByLicensePlate (Vehicle Module)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-the-use-case-fetchvehicle-garage-order-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implement the Use Case FetchVehicle (Garage Order Module)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-application-service-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Application Service Pattern
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-architecture-fitness-functions-currently-not-working" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clean Architecture Fitness Functions - Currently Not Working
     </span>
   </a>
   
@@ -514,111 +634,153 @@
 <!---->
 
 <!-- Page content -->
-<h1 id="slicing-use-cases-with-the-interface-segregation-principle">Slicing Use Cases with the Interface Segregation Principle<a class="headerlink" href="#slicing-use-cases-with-the-interface-segregation-principle" title="Permanent link">⚓︎</a></h1>
-<p><em>Robert C. Martin</em> points out in his book <em>Clean Architecture</em> that</p>
-<blockquote cite="https://example.com/optional-reference">
-depending on something that carries baggage that
-you don't need can cause you trouble that you didn't expect!
-</blockquote>
+<h1 id="abhangigkeiten-zwischen-domanenmodulen">Abhängigkeiten zwischen Domänenmodulen<a class="headerlink" href="#abhangigkeiten-zwischen-domanenmodulen" title="Permanent link">⚓︎</a></h1>
+<h2 id="neue-domanenmodule">Neue Domänenmodule<a class="headerlink" href="#neue-domanenmodule" title="Permanent link">⚓︎</a></h2>
+<p>Investigate the introduced domain modules <em>GarageOrder</em> and <em>PartsCatalogue</em>. Both domain modules
+depends on the <em>Vehicle</em> domain module.</p>
+<p>In context of the garage order only the <em>license plate</em> and, the <em>mileage</em> of a vehicle are relevant.</p>
+<p>For the parts catalogue only the <em>vin</em>, the <em>vehicle model</em> and, the domain value <em>has5GSupport</em>
+are from importance.</p>
+<p>See the garage order form for more details:</p>
+<p><img alt="Garage Order Form" src="../../img/garage-order-form.png" /></p>
+<p>See also the explosion chart of the front brake, as a example for the graphical visualization of a spare part in the parts catalogue:</p>
+<p><img alt="Explosion Chart for Front Brake" src="../../img/explosion-chart.png" /></p>
+<p>Additional information are described in the corresponding spare parts table.</p>
+<p><img alt="Spare Parts Table for Front Brake" src="../../img/spare-parts-table.png" /></p>
+<h2 id="kopplung-zwischen-wurzelobjekten-und-domanenmodulen-neu-denken">Kopplung zwischen Wurzelobjekten und Domänenmodulen neu denken<a class="headerlink" href="#kopplung-zwischen-wurzelobjekten-und-domanenmodulen-neu-denken" title="Permanent link">⚓︎</a></h2>
+<p>In a traditional data-centric and layered architecture, it is common to design the application around a centric data model.
+But this leads to high coupling in the long term (see section "Problems of Layered Architecture" in the trainings slides).
+In this lab the <i>Adapter.Out - UseCase.In Pattern</i> and the <i>Application Service Pattern</i> are described. Additional approaches
+are shown in the training slides.</p>
+<h2 id="the-adapterout-usecasein-pattern">The Adapter.Out - UseCase.In Pattern<a class="headerlink" href="#the-adapterout-usecasein-pattern" title="Permanent link">⚓︎</a></h2>
+<p>Implement the <i>Adapter.Out - UseCase.In Pattern</i> between the domain modules <i>Garage order</i> and <i>Vehicle</i>.</p>
+<h3 id="introduce-the-use-case-fetchvehiclebylicenseplate-vehicle-module">Introduce the Use Case FetchVehicleByLicensePlate (Vehicle Module)<a class="headerlink" href="#introduce-the-use-case-fetchvehiclebylicenseplate-vehicle-module" title="Permanent link">⚓︎</a></h3>
+<details>
+   <summary>Coding Task 6.1</summary>
+   <ol>
+      <li>
+         Introduce an additional incoming use case in the domain module <i>Vehicle</i> with the name 
+         <i>FetchVehicleByLicensePlate</i>. The use case should contain the method <i>fetchByLicensePlate</i>
+      </li>
+      <li>
+         Implement the use case by extending the <i>VehicleQueryService</i>.
+      </li>
+   </ol>
 
-<p>The <em>Interface Segregation Principle</em> provides an answer to this problem. It states that broad 
-interfaces should be split into specific ones so that clients only know the methods they need.</p>
-<p>Applying the <em>Interface Segregation Principle</em></p>
-<ul>
-<li><strong>removes unnecessary dependencies</strong> to methods the consumer doesn't need,</li>
-<li>makes the existing <strong>dependencies more visible</strong>,</li>
-<li><strong>prevents</strong> potential trouble based on <strong>side effects</strong> and,</li>
-<li>enables <strong>extendibility</strong> and <strong>flexibility</strong> </li>
-</ul>
-<p>In origin sense the <em>Interface Segregation Principle</em> says:</p>
-<hr />
-<p>Many client-specific interfaces increase readability and understandability compared to one general-purpose interface. 
-No clients should be forced to depend on methods it does not use. In conclusion, interfaces should be separated into small 
-responsibilities as minimalistic as possible.</p>
-<p><img alt="Variants of slicing use cases" src="../../img/usecaseslicing.png" /></p>
-<p>Personally I do not use the option <em>Root Entity</em>. As a default I use the option <em>Command &amp; Query</em>. When different
-consumer exists and there are difference between their needs, then I recommend using the option <em>One Method Per
-Use Case (Port)</em>. Also referring to the package structure variants, there is a <em>separation of incoming and outgoing use
-cases</em>, which is recommended to <em>apply</em> as <em>standard design principle</em>.</p>
-<p>Following code examples shows different variants of slicing use cases.</p>
-<p><strong>Use Cases by Root Entity</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">VehicleUseCase</span><span class="w"> </span><span class="p">{</span>
+   <details>
+      <summary>Java</summary>
 
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">readByVin</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">readByLicensePlate</span><span class="p">(</span><span class="n">LicensePlate</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">,</span><span class="w"> </span><span class="n">VehicleMotionData</span><span class="w"> </span><span class="n">vehicleMotionData</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="n">Vehicle</span><span class="w"> </span><span class="n">vehicle</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="n">Vehicle</span><span class="w"> </span><span class="nf">fetchByLicensePlate</span><span class="p">(</span><span class="n">LicensePlate</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">);</span>
 </code></pre></div>
-<p><strong>Use Case by Separating Command and Query</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">VehicleQuery</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">readByVin</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">);</span>
+</details>
 
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">readByLicensePlate</span><span class="p">(</span><span class="n">LicensePlate</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">);</span>
-<span class="p">}</span>
+<details>
+      <summary>Kotlin</summary>
+
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span><span class="w"> </span><span class="nf">fetchByLicensePlate</span><span class="p">(</span><span class="n">licensePlate</span><span class="p">:</span><span class="w"> </span><span class="n">LicensePlate</span><span class="p">):</span><span class="w"> </span><span class="n">Vehicle</span><span class="p">;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">VehicleCommand</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">,</span><span class="w"> </span><span class="n">VehicleMotionData</span><span class="w"> </span><span class="n">vehicleMotionData</span><span class="p">);</span>
+   </details>
 
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span><span class="n">Vehicle</span><span class="w"> </span><span class="n">vehicle</span><span class="p">);</span>
+   <details>
+      <summary>C#</summary>
 
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="n">Vehicle</span><span class="w"> </span><span class="nf">FetchByLicensePlate</span><span class="p">(</span><span class="n">LicensePlate</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">);</span>
 </code></pre></div>
-<p>A separation in <em>Command and Query</em> helps to prevent, that classes grow into complex and big units of code that are
-hard to understand. A good orientation for modularisation inside a <em>domain module</em> can be found in <em>Command and Query</em>, even
-when you do not plan to apply the <a href="https://martinfowler.com/bliki/CQRS.html">Command Query Segregation Principle</a>. 
-But we can create a good foundation for such an evolution.</p>
-<p><strong>One Method per Use Case (Port)</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">ReadVehicleByVin</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">);</span>
-<span class="p">}</span>
+   </details>
+
+</details>
+
+<details>
+   <summary>Verify 6.1</summary>
+   <b>RUN</b> DomainRing_Task_6_1
+   <br/>
+   <b>RUN</b> ArchitectureTest_Task_6_1 (Java & Kotlin)
+   <br/>
+   <b>RUN</b> all architecture tests (C#)
+</details>
+
+<h3 id="implement-the-use-case-fetchvehicle-garage-order-module">Implement the Use Case FetchVehicle (Garage Order Module)<a class="headerlink" href="#implement-the-use-case-fetchvehicle-garage-order-module" title="Permanent link">⚓︎</a></h3>
+<details>
+<summary>Coding Task 6.2</summary>
+   <ol>
+      <li>
+         Have a look at the outgoing use case <i>FetchVehicle</i> in <i>garage/order/usecase/out</i>
+      </li>
+      <li>
+         Implement the output adapter with the name <i>VehicleModuleClient</i> and a mapper with the name 
+         <i>VehicleToOriginVehicleMapper</i>.
+      </li>
+   </ol>
+</details>
+
+<details>
+   <summary>Verify 6.2</summary>
+   <b>RUN</b> OutputAdapter_Task_6_2
+   <br/>
+   <b>RUN</b> ArchitectureTest_Task_6_2 (Java & Kotlin)
+   <br/>
+   <b>RUN</b> all architecture tests (C#)
+</details>
+
+<h2 id="the-application-service-pattern">The Application Service Pattern<a class="headerlink" href="#the-application-service-pattern" title="Permanent link">⚓︎</a></h2>
+<details>
+   <summary>Coding Task 6.3</summary>
+Implement the <i>Application Service Pattern</i> between the domain modules <i>Parts Catalogue</i> and <i>Vehicle</i>.
+<ol>
+   <li>
+      Have a look at the <i>ExplosionChartApplicationService</i> in <i>parts/catalogue/appservice</i> and notice the dependency to
+      <i>VehicleQuery</i> of the domain module vehicle.
+   </li>
+   <li>
+        Complete the implementation of the use case <i>ExplosionChartQuery</i> in <i>ExplosionChartQueryService</i>
+   </li>
+   <li>
+        Use <i>VehicleQuery</i> from the vehicle module to fetch necessary vehicle data
+   </li>
+    <li>
+        Implement and use the mapper <i>VehicleToOriginVehicleMapper</i>
+   </li>
+</ol>
+
+</details>
+
+<details>
+   <summary>Verify 6.3</summary>
+   <b>RUN</b> ApplicationService_Task_6_3
+   <br/>
+   <b>RUN</b> ArchitectureTest_Task_6_3 (Java & Kotlin)
+   <br/>
+   <b>RUN</b> all architecture tests (C#)
+</details>
+
+<h2 id="clean-architecture-fitness-functions-currently-not-working">Clean Architecture Fitness Functions - Currently Not Working<a class="headerlink" href="#clean-architecture-fitness-functions-currently-not-working" title="Permanent link">⚓︎</a></h2>
+<details>
+   <summary>Optional Coding Task 6.4</summary>
+
+<ol>
+   <li>
+      <b>RUN</b> CleanArchitectureTest
+   </li>
+   <li>
+      Fix the test by extending the test <i>should_check_clean_architecture_all_rings_architectural_expressive</i> 
+   </li>
+   <li>
+      <b>RUN</b> CleanArchitectureTest again. Why did the test pass now?
+   </li>
+</ol>
+</details>
+
+<details>
+   <summary>Java & Kotlin</summary>
+
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="na">adapterOutOfAdapterOutUseCaseInPattern</span><span class="p">(</span><span class="s">&quot;..garage.order.adapter.out..&quot;</span><span class="p">)</span>
+<span class="p">.</span><span class="na">applicationService</span><span class="p">(</span><span class="s">&quot;..parts.catalogue.appservice..&quot;</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">ReadVehicleByLicensePlate</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">read</span><span class="p">(</span><span class="n">LicensePlate</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CreateVehicle</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">readByVin</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">readByLicensePlate</span><span class="p">(</span><span class="n">LicensePlate</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">UpdateVehicle</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="n">Vehicle</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vin</span><span class="p">,</span><span class="w"> </span><span class="n">VehicleMotionData</span><span class="w"> </span><span class="n">vehicleMotionData</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">DeleteVehicle</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span><span class="n">Vin</span><span class="w"> </span><span class="n">vib</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Even when the variant <em>One Method per Use Case</em> is not typical Java, slicing use cases this way reduces coupling
-between clients. In conclusion, the overall coupling between components of the software system will be kept low.
-Coupling rises quickly and unavoidable. Due to this, we should avoid it every time when possible, especially in
-fast-growing software systems for complex business domains.</p>
-<p>Small sliced use cases allow assembling these use cases to a higher composition of functionality. Based on this,
-functionality can be extended fast for new or changing business processes or user group specific requirements.</p>
-<h3 id="slicing-use-cases-in-practice">Slicing Use Cases in Practice<a class="headerlink" href="#slicing-use-cases-in-practice" title="Permanent link">⚓︎</a></h3>
-<p>There is no right way by default. It depends on complexity and specific requirements of the project. 
-In practice a reasonable combination of these variants is may the best way to find a good balance between flexibility and 
-simplicity in the architecture in the long term.</p>
-<p>Let's have a look on following functional requirements. As we already know, we have the mission to build a great garage
-management that is maintainable, extendable and flexible. We want to modernize existing business processes and establish
-new business models. And the system now starts to live, and we can expect an evolution over the years because the
-business model change over time due to changing requirements of the stakeholder as well as technical evolution, which
-creates the need of modernization.</p>
+</details>
 
 <!-- Source file information -->
 

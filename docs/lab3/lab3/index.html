@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-transfer-objects-between-layers" class="md-skip">
+        <a href="#domain-service-pattern" class="md-skip">
           Skip to content
         </a>
       
@@ -339,20 +339,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-transfer-objects-between-layers" class="md-nav__link">
+  <a href="#domain-service-pattern" class="md-nav__link">
     <span class="md-ellipsis">
-      Data Transfer Objects Between Layers
+      Domain Service Pattern
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#benefits-of-mappings" class="md-nav__link">
+  <a href="#anwendungsfall-risikobewertung-und-diebstahlprufung" class="md-nav__link">
     <span class="md-ellipsis">
-      Benefits of Mappings
+      Anwendungsfall Risikobewertung und Diebstahlprüfung
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Anwendungsfall Risikobewertung und Diebstahlprüfung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coding-task-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coding Task 4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -449,20 +464,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-transfer-objects-between-layers" class="md-nav__link">
+  <a href="#domain-service-pattern" class="md-nav__link">
     <span class="md-ellipsis">
-      Data Transfer Objects Between Layers
+      Domain Service Pattern
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#benefits-of-mappings" class="md-nav__link">
+  <a href="#anwendungsfall-risikobewertung-und-diebstahlprufung" class="md-nav__link">
     <span class="md-ellipsis">
-      Benefits of Mappings
+      Anwendungsfall Risikobewertung und Diebstahlprüfung
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Anwendungsfall Risikobewertung und Diebstahlprüfung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#coding-task-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coding Task 4
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -532,103 +562,85 @@
 <!---->
 
 <!-- Page content -->
-<h1 id="mappings-between-boundaries">Mappings between Boundaries<a class="headerlink" href="#mappings-between-boundaries" title="Permanent link">⚓︎</a></h1>
-<p>Currently, the <em>Vehicle</em> is the model of the application, and it is not separated from infrastructure.
-In conclusion the idea of ports and adapters is not consequently followed. The missing element for a fully decoupled
-domain from infrastructure is a <em>mapping between these boundaries</em>.</p>
-<hr />
-<p><strong>Mapping</strong></p>
-<p>Mappings between boundaries describes a transformation of the state of a source entity model to a target entity model.
-The following code snippets shows an example of different entity model, where for example the <em>baumuster</em> of
-<em>VehicleDto</em> must be mapped on the property <em>modelName</em> of <em>Vehicle</em>.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Vehicle</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">modelName</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">vin</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
-
-<span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">VehicleDto</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">vehicleModel</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">vehicleId</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
-
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<p><strong>Pro Mapping</strong></p>
-<ul>
-    <li>
-        If we don't map between layers, we have to use the same model on both layers, which means that the layers will be
-        tightly coupled.
-    </li>
-    <li> Mappings enables use to
-        <ol>
-            <li>reduce the amount of data from external models,</li>
-            <li>implement a model in our domain language, which is easier to understand and to extend</li>
-        </ol>
-    </li>
-</ul>
-
-<hr />
-<p><strong>Contra Mapping</strong></p>
-<ul>
-<li>If we do map between layers, we produce a lot of boilerplate code, which is overkill for many use cases.</li>
-</ul>
-<hr />
-<p>All arguments are true. We have to consider our architecture goals for this decision. Our goals are to create
-a isolated domain, and source code that expresses the domain functionality and language.
-A key element to reach this is mapping. A good balance between boilerplate code and decoupling can be reached by
-<strong>simplifying</strong> and <strong>automating</strong> mappings based on the so-called <strong><em>Two-Way Mapping Strategy</em></strong>.</p>
-<h3 id="data-transfer-objects-between-layers">Data Transfer Objects Between Layers<a class="headerlink" href="#data-transfer-objects-between-layers" title="Permanent link">⚓︎</a></h3>
-<p>The class-stereotype <i>Data Transfer Object</i> described data objects provided by infrastructure components. In
-detail <i>Data Transfer Object</i> can be a:</p>
-<ul>
-<li><em>DbEntity</em></li>
-<li><em>Event</em></li>
-<li><em>Resource</em></li>
-<li><em>Response Object</em></li>
-<li>and so on</li>
-</ul>
-<h3 id="benefits-of-mappings">Benefits of Mappings<a class="headerlink" href="#benefits-of-mappings" title="Permanent link">⚓︎</a></h3>
-<hr />
-<p><strong>Stable Domain and Fast Adaption</strong></p>
-<p>Changes to the infrastructure do not affect the domain. For example an external service changes its response model
-then the changes affect only the mapper of the adapter. This single point of change enables us to
-adapt fast to infrastructure changes.</p>
-<p>In addition to that, it is possible to reduce test efforts. There are no tests of the domain needed when nothing
-changed. The adapter implementation could be tested in isolation on a pure technical level, which is less complex and
-cost-intensive.</p>
-<hr />
-<p><strong>Evolutionary Design</strong></p>
-<p>Change comes fast and unexpected. But for sure it comes! Domain-related change could arise due to</p>
-<ul>
-<li>changing behaviour,</li>
-<li>new requirements,</li>
-<li>growing business model,</li>
-<li>changing business model,</li>
-<li>new consumers,</li>
-<li>and so on.</li>
-</ul>
-<p>Since we cannot foresee change, we must look ahead and act. On an architectural level, this means that we have to
-apply <strong>architecture</strong> and <strong>design</strong> <strong>principle</strong> that <strong>enables</strong> <strong>change</strong>.</p>
-<p>The idea of ports and adapters is a powerful pattern to support change based on the decoupling of domain and
-infrastructure. Each of them can <strong>grow</strong>, <strong>modernize</strong> and <strong>tested</strong> independently.</p>
+<h1 id="domain-service-pattern-des-domain-ring">Domain Service Pattern des Domain Ring<a class="headerlink" href="#domain-service-pattern-des-domain-ring" title="Permanent link">⚓︎</a></h1>
+<h2 id="domain-service-pattern">Domain Service Pattern<a class="headerlink" href="#domain-service-pattern" title="Permanent link">⚓︎</a></h2>
+<p>Ein <em>Domain Service</em> implementiert Business Logik, die keinem Domänenobjekt zugeordnet werden kann, oder 
+wenn für die Ausführung der Business Logik zusätzlich Abhängigkeiten aufgebaut werden müssen, die den 
+Abhängigkeitsregeln eines Domänenobjekts widersprechen würden</p>
+<h2 id="anwendungsfall-risikobewertung-und-diebstahlprufung">Anwendungsfall Risikobewertung und Diebstahlprüfung<a class="headerlink" href="#anwendungsfall-risikobewertung-und-diebstahlprufung" title="Permanent link">⚓︎</a></h2>
+<h3 id="coding-task-4">Coding Task 4<a class="headerlink" href="#coding-task-4" title="Permanent link">⚓︎</a></h3>
+<p><b>Implementiere den TheftRiskRatingService</b>
+<br/></p>
+<ol>
+<li>Erstelle das Package <i>domain.service</i> als Subpackage von <i>vehicle</i> und erstelle den Domain Service <i>TheftRiskRatingService</i></li>
+<li>Integriere die Risikobewertung in den Anlageprozess für ein Fahrzeug</li>
+<li>Betrachte das ausgebaute Domänenmodell in <i>domain.service</i> und nutze die Domänenobjekte</li>
+<li>Wird ein Risikobewertung > 60 Risikopunkte ermittelt, muss eine Diebstahlabfrage bei Interpol durchgeführt werden</li>
+<li>Ergänze Use Case und Adapter Implementierung für die Diebstahlabfrage bei Interpol, für die Abfrage von Risikoländer sowie -marken</li>
+</ol>
+<p><br/></p>
 <details>
-<summary>Support Mappings with MapStruct</summary>
+   <summary>User Story Risikobewertung Fahrzeudiebstahl nach §0815a</summary>
 
-<ul>
-    <li><a href="https://www.baeldung.com/mapstruct">MapStruct Basics</a></li>
-    <li><a href="https://www.baeldung.com/mapstruct-custom-mapper">Custom Mapper with MapStruct</a></li>
-    <li><a href="https://mapstruct.org/documentation/stable/reference/html/">MapStruct Reference Guide Version 1.5.3</a></li>
-    <li><a href="https://mapstruct.org/community/other-resources/">Other sources</a></li>
-</ul>
+Als Produktmanager möchte ich, dass die Risikobewertung für ein Fahrzeug im Anlageprozess durchgeführt wird.
+Die Risikobewertung folgt dem im folgenden beschriebenen Regelwerk:
+
+<ol>
+<li></li>
+</ol>
+
+<i>Akzeptanzkriterien</i>:
+<ol>
+<li></li>
+</ol>
+
+</details>
+
+<details>
+   <summary>Erweitere Risikobewertung auf Basis von Risikoländer und Risikomarken für die Risikobewertung nach §0815a</summary>
+
+Als Produktmanager möchte dich die Risikobewertung nach §0815a mit der Berücksichtigung von Risikoländern und -marken erweitern.
+
+<ol>
+<li></li>
+</ol>
+
+<i>Akzeptanzkriterien</i>:
+<ol>
+<li></li>
+</ol>
+
+</details>
+
+<p><b>Weitere Informationen zur Risikobewertung und Diebstahlabfrage bei Interpol:</b></p>
+<details>
+      <summary>Use Case Diebstahlabfrage Interpol</summary>
+
+   ```java
+public interface DetectInterpolTheftStatus {
+    TheftStatus detect(Vin vin, LicensePlate licensePlate);
+}
+   ```
+</details>
+
+<details>
+      <summary>Use Case Abfrage Risikoländer</summary>
+
+   ```java
+public interface FetchHighRiskCountries {
+    HighRiskCountries fetch();
+}
+   ```
+</details>
+
+<details>
+      <summary>Use Case Abfrage Risikomarken</summary>
+
+   ```java
+public interface FetchHighRiskVehicleModels {
+    HighRiskVehicleModels fetch();
+}
+   ```
 </details>
 
 <!-- Source file information -->
