@@ -14,21 +14,22 @@
  ![Vehicle Domain Model](../img/domain-model.png)
  Abb 1: Vehicle Domain Model
 
-| Domänenobjekt               | Validierungsregel                                                            |
-|-----------------------------|------------------------------------------------------------------------------|
-| Vehicle                     | Die Eigenschaften Vin, LicensePlate und Mileage müssen immer vorhanden sein. |
-| VIN                         | Ein valider Wert muss dem vorgesehenen Pattern folgen.                       |
-| LicensePlate                | Ein valider Wert muss dem vorgesehenen Pattern folgen.                       |
-| Mileage                     | Der Kilometerstand muss größer 0 sein.                                       |
-| CountryOfManufacture        | Ein valider Wert muss dem vorgesehenen Pattern folgen.                       |
-| Alle anderen Domänenobjekte | Kein Nullwerte, keine leeren oder blank Strings.                             |
+| Domänenobjekt               | Validierungsregel                                                                   |
+|-----------------------------|-------------------------------------------------------------------------------------|
+| Vehicle                     | Die Eigenschaften Vin, LicensePlate und MileageRecords müssen immer vorhanden sein. |
+| VIN                         | Ein valider Wert muss dem vorgesehenen Pattern folgen.                              |
+| LicensePlate                | Ein valider Wert muss dem vorgesehenen Pattern folgen.                              |
+| Mileage                     | Der Kilometerstand muss größer 0 sein.                                              |
+| CountryOfManufacture        | Ein valider Wert muss dem vorgesehenen Pattern folgen.                              |
+| Alle anderen Domänenobjekte | Kein Nullwerte, keine leeren oder blank Strings.                                    |
 
 
 ### Regex Pattern für das Value Object Vin
 
 Beispiele:
-- WP0ZZZ99ZTS392155 
-- WBAOLZ99ZTS349156
+
+* WP0ZZZ99ZTS392155
+* WBAOLZ99ZTS349156
 
  ```java
  "(?=.*\\d|=.*[A-Z])(?=.*[A-Z])[A-Z0-9]{17}"
@@ -37,8 +38,8 @@ Beispiele:
 ### Regex Pattern für das Value Object LicensePlate
    
 Beispiele:
-- B-AB 123 
-- ES-CD 456
+* B-AB 123 
+* ES-CD 456
 
 ```java
 "^[A-Z0-9]{1,7}$"
@@ -47,8 +48,8 @@ Beispiele:
 ### Regex Pattern für das Value Object CountryOfManufacture
 
 Beispiele:
-- US 
-- DE
+* US 
+* DE
 
 ```java
 "^[A-Z]{2}$"
