@@ -67,10 +67,7 @@ mew milegae > previous mileage
 
 ## Beispiel-Test für Vin
 
-
 ```java
-
-
 class VinTest {
 
     private final static List<String> VALID_VIN_LIST = Arrays.asList(
@@ -100,3 +97,4 @@ class VinTest {
         INVALID_VIN_LIST.forEach(vin -> assertThrows(IllegalArgumentException.class, () -> new Vin(vin)));
     }
 }
+```
