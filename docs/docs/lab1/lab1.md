@@ -12,8 +12,6 @@
 2) Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab
 3) Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten
 
- ![Vehicle Domain Model](../img/vehicle-domain-model.png)
- Abb 1: Vehicle Domain Model
 
 | Domänenobjekt               | Validierungsregel                                                            |
 |-----------------------------|------------------------------------------------------------------------------|
