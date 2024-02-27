@@ -7,10 +7,9 @@
 - Fundament des Entities Ring / Domain Hexagon verstehen
 
 ## Aufgabe 1.1 Grundstruktur Root Entity Vehicle
-
-1) Implementiere das Domänenmodell der Root Entity Vehicle wie dargestellt auf Folie 38 / Seite 35 im PDF
-2) Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab
-3) Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten
+- Implementiere das Domänenmodell der Root Entity Vehicle wie dargestellt auf Folie 38 / Seite 35 im PDF 
+- Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab
+- Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten
 
  ![Vehicle Domain Model](../img/domain-model.png)
  Abb 1: Vehicle Domain Model
@@ -28,8 +27,8 @@
 ### Regex Pattern für das Value Object Vin
 
 Beispiele:
-1) WP0ZZZ99ZTS392155
-2) WBAOLZ99ZTS349156
+- WP0ZZZ99ZTS392155 
+- WBAOLZ99ZTS349156
 
  ```java
  "(?=.*\\d|=.*[A-Z])(?=.*[A-Z])[A-Z0-9]{17}"
@@ -38,8 +37,8 @@ Beispiele:
 ### Regex Pattern für das Value Object LicensePlate
    
 Beispiele:
-1) B-AB 123
-2) ES-CD 456
+- B-AB 123 
+- ES-CD 456
 
 ```java
 "^[A-Z0-9]{1,7}$"
@@ -48,8 +47,8 @@ Beispiele:
 ### Regex Pattern für das Value Object CountryOfManufacture
 
 Beispiele:
-1) US
-2) DE
+- US 
+- DE
 
 ```java
 "^[A-Z]{2}$"
