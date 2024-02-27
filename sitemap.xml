@@ -1,43 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://matthiaseschhold.github.io/flexible-softwarearchitektur-training/</loc>
-         <lastmod>2024-01-11</lastmod>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/</loc>
+         <lastmod>2024-02-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://matthiaseschhold.github.io/flexible-softwarearchitektur-training/mkdocs/</loc>
-         <lastmod>2024-01-11</lastmod>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/mkdocs/</loc>
+         <lastmod>2024-02-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://matthiaseschhold.github.io/flexible-softwarearchitektur-training/docs/help/git/</loc>
-         <lastmod>2024-01-11</lastmod>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/help/git/</loc>
+         <lastmod>2024-02-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://matthiaseschhold.github.io/flexible-softwarearchitektur-training/docs/lab1/lab1/</loc>
-         <lastmod>2024-01-11</lastmod>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/lab1/lab1/</loc>
+         <lastmod>2024-02-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://matthiaseschhold.github.io/flexible-softwarearchitektur-training/docs/lab2/lab2/</loc>
-         <lastmod>2024-01-11</lastmod>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/lab2/lab2/</loc>
+         <lastmod>2024-02-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://matthiaseschhold.github.io/flexible-softwarearchitektur-training/docs/lab3/lab3/</loc>
-         <lastmod>2024-01-11</lastmod>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/lab3/lab3/</loc>
+         <lastmod>2024-02-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://matthiaseschhold.github.io/flexible-softwarearchitektur-training/docs/lab4/lab4/</loc>
-         <lastmod>2024-01-11</lastmod>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/lab4/lab4/</loc>
+         <lastmod>2024-02-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://matthiaseschhold.github.io/flexible-softwarearchitektur-training/docs/lab5/lab5/</loc>
-         <lastmod>2024-01-11</lastmod>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/lab5/lab5/</loc>
+         <lastmod>2024-02-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/old/lab1/</loc>
+         <lastmod>2024-02-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/old/lab2/</loc>
+         <lastmod>2024-02-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/old/lab3/</loc>
+         <lastmod>2024-02-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/old/lab4/</loc>
+         <lastmod>2024-02-27</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training/docs/old/lab5/</loc>
+         <lastmod>2024-02-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
