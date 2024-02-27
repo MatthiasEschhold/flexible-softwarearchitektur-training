@@ -1,46 +1,49 @@
-# Access Lab Description with MkDocs
+# Lokale Nutzung der Lab-Beschreibung
 
-The lab description is written with MkDocs.
+Für die Beschreibung wird MkDocs verwendet.
+Die wichtigsten Command für die lokale Nutzung sind:
 
 * `mkdocs serve` - Start the live-reloading docs server.
 * `mkdocs build` - Build the documentation site.
 * `mkdocs -h` - Print help message and exit.
 
-# Install MkDocs
+# Installation von MkDocs
 
-See [MkDocs Installation Guide](https://www.mkdocs.org/user-guide/installation/).
+Siehe [MkDocs Installation Guide](https://www.mkdocs.org/user-guide/installation/).
 
-## Prepare Installation on Ubuntu
+## Installation unter Ubuntu
 
-### Install Python
+### Installation von Python
 
 ```java
 sudo apt-get install python3
 ```
 
-### Install Pip
+### Installation von Pip
 
 ```java
 sudo apt-get install pip
 ```
 
-Check the installation:
+Installation überprüfen:
+
 ```java
 pip -V
 ```
 
-## Prepare Installation on Windows
+## Installation unter Windows
 
-### Install Python and Pip
+### Installation von Python und Pip
 
-Use the windows installer [available here](https://www.python.org/downloads/release/python-3113/).
+Windows-Installer ist [hier](https://www.python.org/downloads/release/python-3113/) verfügbar.
 
-Check the installation:
+Installation überprüfen:
+
 ```java
 pip -V
 ```
 
-## Install MkDocs
+## Installation von MkDocs
 
 ```java
 pip install mkdocs
@@ -54,8 +57,14 @@ pip install mkdocs-material
 pip install mkdocs-material-extensions
 ```
 
-# Publish Lab Description Locally with MkDocs
+# Lab-Beschreibung lokal veröffentlichen
 
-1. mkdocs build
-2. mkddocs serve
-3. [Open in browser](http://127.0.0.1:8000/hexacleanws/)
+```java
+mkdocs build
+```
+
+```java
+mkddocs serve
+```
+
+[Open in browser](http://127.0.0.1:8000/hexacleanws/) (http://127.0.0.1:8000/hexacleanws/)

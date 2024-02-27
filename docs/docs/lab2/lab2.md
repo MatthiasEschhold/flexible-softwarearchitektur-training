@@ -1,102 +1,55 @@
-# Adapter Ring - Implementierung des Ports & Adapters Pattern
+# Aufgabe 2 Anwendungsfälle der Root Entity Vehicle
 
-##  Input Adapter
+## Lernziele
 
-<details>
-   <summary>Coding Task 3</summary>
+- Stereotyp Use Case Input Port verstehen und anwenden können
+- Stereotyp Use Case Output Port verstehen und anwenden können
+- Stereotyp Interactor verstehen und anwenden können
+- Aufgaben des Use Cases Ring / Application Hexagon verstehen
 
-<b>Erstelle einen Input Adapter für den eingehenden Use Case</b>
-<br/>
-<ol>
-<li>Erstelle das Package <i>adapter.in</i> als Subpackage von <i>vehicle</i> und erstelle den Interface Adapter <i>VehicleController</i></li>
-<li>Implementiere die technische HTTP Schnittstelle zur Anlage eines Fahrzeugs und nutze hierfür den Use Case <i>VehicleCommand</i></li>
-<li>Erstelle das DTO <i>VehicleResource</i> (siehe Vorlage) und ein Mapper (<i>VehicleWebMapper</i>) für das DTO</li>
-<li>Ignoriere Details des Frameworks und des REST Architekturstils bei der Implementierung</li>
+## Aufgabe 2.0 Basisstruktur des Use Cases Ring anlegen
 
-</ol>
+1) Erstelle das Package _vehicle.usecase.in_
+2) Erstelle das Package _vehicle.usecase.out_
+3) Erstelle das Package _vehicle.usecase.interactor_
 
-<details>
-      <summary>VehicleResource</summary>
+## Aufgabe 2.1 Anwendungsfall Fahrzeug anlegen
 
-   ```java
-public class VehicleResource {
-    
-    private String vin;
-    private VehicleMotionDataResource vehicleMotionData;
-    private VehicleMasterDataResource vehicleMasterData;
+1) Erstelle die notwendigen ein- und ausgehenden Use Case für die Fahrzeuganlage
+2) Erstelle den Use Case Interactor des Anwendungsfalls
+3) Leg die Klassen in den entsprechenden Packages ab
 
-    public VehicleMasterDataResource getVehicleMasterData() {
-        return vehicleMasterData;
-    }
+### Schnittstellenbeschreibung
 
-    public void setVehicleMasterData(VehicleMasterDataResource vehicleMasterData) {
-        this.vehicleMasterData = vehicleMasterData;
-    }
+| Schnittstellenelement | Domänenobjekte             |
+|-----------------------|----------------------------|
+| Parameter             | Vin, LicensePlate, Mileage |
+| Rückgabe              | Vehicle                    |
 
-    public String getVin() {
-        return vin;
-    }
+### Ablauf des Anwendungsfalls
 
-    public void setVin(String vin) {
-        this.vin = vin;
-    }
 
-    public VehicleMotionDataResource getVehicleMotionData() {
-        return vehicleMotionData;
-    }
+1) Abfrage der Fahrzeugdaten bei einem externen Service anhand der Vin
+2) Erstellung des Fahrzeugs
+2) Speichern der Fahrzeugdaten in der Datenbank
 
-    public void setVehicleMotionData(VehicleMotionDataResource vehicleMotionData) {
-        this.vehicleMotionData = vehicleMotionData;
-    }
-}
+> Scope beachten! Use Cases Ring!
 
-   ```
-</details>
+## Aufgabe 2.2 Anwendungsfall Kilometerstand aktualisieren
 
-</details>
+1) Erstelle die notwendigen ein- und ausgehenden Use Case für die Fahrzeuganlage
+2) Erstelle den Use Case Interactor des Anwendungsfalls
+3) Leg die Klassen in den entsprechenden Packages ab
 
-## Output Adapter
+### Schnittstellenbeschreibung
 
-<details>
-   <summary>Coding Task 4</summary>
+| Schnittstellenelement | Domänenobjekte           |
+|-----------------------|--------------------------|
+| Parameter             | Vin, Mileage             |
+| Rückgabe              | void                     |
 
-<b>Erstelle die Output Adapter für die ausgehenden Use Cases</b>
-<br/>
-<ol>
-<li>Erstelle das Package <i>adapter.out</i> als Subpackage von <i>vehicle</i></li> und erstelle das Datenbank Repository <i>VehicleDbRepository</i></li>
-<li>Implementiere den Use Case <i>VehicleRepository</i></li>
-<li>Führe das DTO <i>VehicleDbEntity</i> (siehe Vorlage) sowie den Mapper <i>VehicleDbMapper</i> ein</li>
-<li>Ignoriere Details des Frameworks bei der Implementierung</li>
+### Ablauf des Anwendungsfalls
 
-</ol>
-
-<details>
-      <summary>VehicleDbEntity</summary>
-
-   ```java
-public class VehicleDbEntity {
-
-    private String vin;
-    private String licensePlate;
-
-    public String getVin() {
-        return vin;
-    }
-
-    public void setVin(String vin) {
-        this.vin = vin;
-    }
-
-    public String getLicensePlate() {
-        return licensePlate;
-    }
-
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-}
-
-   ```
-   </details>
-
-</details>
+1) Auslesen des Fahrzeugs aus der Datenbank anhand der Vin
+2) Aktualisierung mit Plausibilitätsprüfung des Kilometerstandes
+3) Speichern des Fahrzeugs in der Datenbank

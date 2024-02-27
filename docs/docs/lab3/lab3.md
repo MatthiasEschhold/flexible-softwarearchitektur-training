@@ -1,88 +1,39 @@
-# Domain Service Pattern des Domain Ring
+# Aufgabe 3 Implementierung der Interface Adapters
 
-##  Domain Service Pattern
+## Lernziele
 
-Ein _Domain Service_ implementiert Business Logik, die keinem Domänenobjekt zugeordnet werden kann, oder 
-wenn für die Ausführung der Business Logik zusätzlich Abhängigkeiten aufgebaut werden müssen, die den 
-Abhängigkeitsregeln eines Domänenobjekts widersprechen würden
+- Meta-Stereotyp Interface Adapter verstehen
+- Beispiele für Stereotypen von Interface Adapters verstehen und anwenden können
+- Aufgaben und Konzepte des Interface Adapters Ring / Adapters Hexagon verstehen
 
-## Anwendungsfall Risikobewertung und Diebstahlprüfung
+## Aufgabe 3.0 Basisstruktur des Interace Adapters Ring anlegen
 
-### Coding Task 4
+1) Erstelle das Package _vehicle.adapter.in_
+2) Erstelle das Package _vehicle.adapter.out_
 
-<b>Implementiere den TheftRiskRatingService</b>
-<br/>
-<ol>
-<li>Erstelle das Package <i>domain.service</i> als Subpackage von <i>vehicle</i> und erstelle den Domain Service <i>TheftRiskRatingService</i></li>
-<li>Integriere die Risikobewertung in den Anlageprozess für ein Fahrzeug</li>
-<li>Betrachte das ausgebaute Domänenmodell in <i>domain.service</i> und nutze die Domänenobjekte</li>
-<li>Wird ein Risikobewertung > 60 Risikopunkte ermittelt, muss eine Diebstahlabfrage bei Interpol durchgeführt werden</li>
-<li>Ergänze Use Case und Adapter Implementierung für die Diebstahlabfrage bei Interpol, für die Abfrage von Risikoländer sowie -marken</li>
-</ol>
-<br/>
+## Aufgabe 3.1 Anwendungsfall Fahrzeug anlegen
 
-<details>
-   <summary>User Story Risikobewertung Fahrzeudiebstahl nach §0815a</summary>
+> Die Interface Adapters solle die Integration der technischen Komponenten nur andeuten!
+> Fokus liegt auf der Implementierung der Use Cases, der eingesetzten Designkonzepte und der Adaption mittels Mapping.
 
-Als Produktmanager möchte ich, dass die Risikobewertung für ein Fahrzeug im Anlageprozess durchgeführt wird.
-Die Risikobewertung folgt dem im folgenden beschriebenen Regelwerk:
+1) Der Anwendungsfall wird durch eine REST API für das eigene JavaScript-Frontend exponiert
+2) Es wird eine relationale Datenbank für die Persistenz verwendet
+3) Es wird ein REST-Service für die Abfrage der Fahrzeugdaten verwendet
+4) Erstellt die notwendigen Interfaces Adapters und Data Transfer Objects
+5) Verwende die Two-Way Mapping Strategie für das Mapping der Data Transfer Objects und der Domänenobjekte
 
-<ol>
-<li></li>
-</ol>
+## Aufgabe 3.2 Anwendungsfall Kilometerstand aktualisieren
 
-<i>Akzeptanzkriterien</i>:
-<ol>
-<li></li>
-</ol>
+> Aufbauend auf Aufgabe 3.1
 
-</details>
+1) Der Anwendungsfall wird durch eine REST API für das eigene JavaScript-Frontend exponiert
+4) Erstellt die (noch weiter) notwendigen Interfaces Adapters und Data Transfer Objects
+5) Verwende die Two-Way Mapping Strategie für das Mapping der Data Transfer Objects und der Domänenobjekte
 
+## 3.3 Analysiert den Einsatz von Mapping-Frameworks
 
-<details>
-   <summary>Erweitere Risikobewertung auf Basis von Risikoländer und Risikomarken für die Risikobewertung nach §0815a</summary>
+1) Welche Mapping-Frameworks gibt es?
+2) Welche Vor- und Nachteile haben die Frameworks?
 
-Als Produktmanager möchte dich die Risikobewertung nach §0815a mit der Berücksichtigung von Risikoländern und -marken erweitern.
-
-<ol>
-<li></li>
-</ol>
-
-<i>Akzeptanzkriterien</i>:
-<ol>
-<li></li>
-</ol>
-
-</details>
-
-<b>Weitere Informationen zur Risikobewertung und Diebstahlabfrage bei Interpol:</b>
-
-<details>
-      <summary>Use Case Diebstahlabfrage Interpol</summary>
-
-   ```java
-public interface DetectInterpolTheftStatus {
-    TheftStatus detect(Vin vin, LicensePlate licensePlate);
-}
-   ```
-</details>
-
-<details>
-      <summary>Use Case Abfrage Risikoländer</summary>
-
-   ```java
-public interface FetchHighRiskCountries {
-    HighRiskCountries fetch();
-}
-   ```
-</details>
-
-<details>
-      <summary>Use Case Abfrage Risikomarken</summary>
-
-   ```java
-public interface FetchHighRiskVehicleModels {
-    HighRiskVehicleModels fetch();
-}
-   ```
-</details>
+[MapStruct](https://mapstruct.org/)
+[Orika](https://orika-mapper.github.io/orika-docs/)

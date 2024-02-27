@@ -1,8 +1,8 @@
 ---
-site_name: Flexible Softwarearchitektur Training
-site_url: https://matthiaseschhold.github.io/flexible-softwarearchitektur-training/
-repo_url: https://github.com/MatthiasEschhold/flexible-softwarearchitektur-training.git
-repo_name: MatthiasEschhold/flexible-softwarearchitektur-training
+site_name: hexagonal-and-clean-architecture-training
+site_url: https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training
+repo_url: https://github.com/MatthiasEschhold/hexagonal-and-clean-architecture-training.git
+repo_name: MatthiasEschhold/hexagonal-and-clean-architecture-training
 edit_uri: edit/develop/documentation/docs/
 
 extra_css:
@@ -51,10 +51,10 @@ plugins:
 
 nav:
   - Home: 'index.md'
-  - Access Lab Description: 'mkdocs.md'
-  - Domain Ring und Use Case Ring: 'docs/lab1/lab1.md'
-  - Adapter Ring: 'docs/lab2/lab2.md'
-  - Weitere Information zu Mappings: 'docs/lab3/lab3.md'
-  - Ausbau mit weiteren Anforderungen: 'docs/lab4/lab4.md'
-  - Weitere Informationen zum Schneiden von Use Cases: 'docs/lab5/lab5.md'
+  - Aufgabenbeschreibung: 'mkdocs.md'
+  - Domänenmodell: 'docs/lab1/lab1.md'
+  - Use Cases: 'docs/lab2/lab2.md'
+  - Adapters: 'docs/lab3/lab3.md'
+  - Wachstum des Domain Module: 'docs/lab4/lab4.md'
+  - Wachstum des Systems: 'docs/lab5/lab5.md'
   - Git Utils: 'docs/help/git.md'
