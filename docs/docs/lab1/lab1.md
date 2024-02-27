@@ -11,13 +11,13 @@
 - Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab
 - Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten
 
- ![Vehicle Domain Model](../img/domain-model.png)
+ ![Vehicle Domain Model](../img/vehicle-domain-model.png)
  Abb 1: Vehicle Domain Model
 
 | Domänenobjekt               | Validierungsregel                                                                   |
 |-----------------------------|-------------------------------------------------------------------------------------|
 | Vehicle                     | Die Eigenschaften Vin, LicensePlate und MileageRecords müssen immer vorhanden sein. |
-| VIN                         | Ein valider Wert muss dem vorgesehenen Pattern folgen.                              |
+| Vin                         | Ein valider Wert muss dem vorgesehenen Pattern folgen.                              |
 | LicensePlate                | Ein valider Wert muss dem vorgesehenen Pattern folgen.                              |
 | Mileage                     | Der Kilometerstand muss größer 0 sein.                                              |
 | CountryOfManufacture        | Ein valider Wert muss dem vorgesehenen Pattern folgen.                              |
@@ -59,13 +59,16 @@ Beispiele:
 
 Implementiere die Aktualisierung des Kilometerstandes (Mileage) mit Plausibilitätsprüfung.
 
+> Besonderheit:
+> Das Erfassungsdatum (RecordDate) wird automatisch vergeben.
+
 ### Plausibilitätsprüfung für den Kilometerstand
 
 ```java
-mew milegae > previous mileage
+neuer Kilometerstand > zuletzt gemeldeter Kilometerstand
 ```
 
-## Beispiel-Test für Vin
+## Beispiel-Test für das Value Object Vin
 
 ```java
 class VinTest {
