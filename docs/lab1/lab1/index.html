@@ -373,6 +373,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#beispiel-test-fur-vin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispiel-Test für Vin
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -580,6 +589,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#beispiel-test-fur-vin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispiel-Test für Vin
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -720,6 +738,37 @@
 <h3 id="plausibilitatsprufung-fur-den-kilometerstand">Plausibilitätsprüfung für den Kilometerstand<a class="headerlink" href="#plausibilitatsprufung-fur-den-kilometerstand" title="Permanent link">⚓︎</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">mew</span><span class="w"> </span><span class="n">milegae</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">mileage</span>
 </code></pre></div>
+<h2 id="beispiel-test-fur-vin">Beispiel-Test für Vin<a class="headerlink" href="#beispiel-test-fur-vin" title="Permanent link">⚓︎</a></h2>
+<p>```java</p>
+<p>class VinTest {</p>
+<pre><code>private final static List&lt;String&gt; VALID_VIN_LIST = Arrays.asList(
+        "KMHDU4ADXAU832403", //2010 Hyundai Elantra
+        "1GCHC33N7RJ376544", //1994 Chevrolet C/K 3500
+        "2S3TD52V3Y6103456", //2000 Suzuki Esteem
+        "1G1ZT51816F264066", //2006 Chevrolet Malibu
+        "1GBJK34G32E254979" //2002 Chevrolet Silverado 3500
+);
+
+private final static List&lt;String&gt; INVALID_VIN_LIST = Arrays.asList(
+        null,
+        "",
+        " ",
+        "K 234 Lm",
+        "123445667",
+        "WERTTZUUKHGH"
+);
+
+@Test
+void shouldCreateValidVinValueObject() {
+    VALID_VIN_LIST.forEach(vin -&gt; assertDoesNotThrow(() -&gt; new Vin(vin)));
+}
+
+@Test
+void shouldThrowIllegalArgumentExceptionDueToInvalidVinValue() {
+    INVALID_VIN_LIST.forEach(vin -&gt; assertThrows(IllegalArgumentException.class, () -&gt; new Vin(vin)));
+}
+</code></pre>
+<p>}</p>
 
 <!-- Source file information -->
 
