@@ -374,9 +374,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#beispiel-test-fur-vin" class="md-nav__link">
+  <a href="#beispiel-test-fur-das-value-object-vin" class="md-nav__link">
     <span class="md-ellipsis">
-      Beispiel-Test für Vin
+      Beispiel-Test für das Value Object Vin
     </span>
   </a>
   
@@ -590,9 +590,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#beispiel-test-fur-vin" class="md-nav__link">
+  <a href="#beispiel-test-fur-das-value-object-vin" class="md-nav__link">
     <span class="md-ellipsis">
-      Beispiel-Test für Vin
+      Beispiel-Test für das Value Object Vin
     </span>
   </a>
   
@@ -677,7 +677,7 @@
 <li>Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab</li>
 <li>Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten</li>
 </ul>
-<p><img alt="Vehicle Domain Model" src="../../img/domain-model.png" />
+<p><img alt="Vehicle Domain Model" src="../../img/vehicle-domain-model.png" />
  Abb 1: Vehicle Domain Model</p>
 <table>
 <thead>
@@ -692,7 +692,7 @@
 <td>Die Eigenschaften Vin, LicensePlate und MileageRecords müssen immer vorhanden sein.</td>
 </tr>
 <tr>
-<td>VIN</td>
+<td>Vin</td>
 <td>Ein valider Wert muss dem vorgesehenen Pattern folgen.</td>
 </tr>
 <tr>
@@ -735,10 +735,14 @@
 </code></pre></div>
 <h2 id="aufgabe-12-rich-domain-model-verhalten-am-domanenobjekt">Aufgabe 1.2 Rich Domain Model - Verhalten am Domänenobjekt<a class="headerlink" href="#aufgabe-12-rich-domain-model-verhalten-am-domanenobjekt" title="Permanent link">⚓︎</a></h2>
 <p>Implementiere die Aktualisierung des Kilometerstandes (Mileage) mit Plausibilitätsprüfung.</p>
+<blockquote>
+<p>Besonderheit:
+Das Erfassungsdatum (RecordDate) wird automatisch vergeben.</p>
+</blockquote>
 <h3 id="plausibilitatsprufung-fur-den-kilometerstand">Plausibilitätsprüfung für den Kilometerstand<a class="headerlink" href="#plausibilitatsprufung-fur-den-kilometerstand" title="Permanent link">⚓︎</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">mew</span><span class="w"> </span><span class="n">milegae</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">mileage</span>
+<div class="highlight"><pre><span></span><code><span class="n">neuer</span><span class="w"> </span><span class="n">Kilometerstand</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">zuletzt</span><span class="w"> </span><span class="n">gemeldeter</span><span class="w"> </span><span class="n">Kilometerstand</span>
 </code></pre></div>
-<h2 id="beispiel-test-fur-vin">Beispiel-Test für Vin<a class="headerlink" href="#beispiel-test-fur-vin" title="Permanent link">⚓︎</a></h2>
+<h2 id="beispiel-test-fur-das-value-object-vin">Beispiel-Test für das Value Object Vin<a class="headerlink" href="#beispiel-test-fur-das-value-object-vin" title="Permanent link">⚓︎</a></h2>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">VinTest</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">VALID_VIN_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
