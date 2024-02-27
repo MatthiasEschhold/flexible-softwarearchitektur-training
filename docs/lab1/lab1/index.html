@@ -739,36 +739,36 @@
 <div class="highlight"><pre><span></span><code><span class="n">mew</span><span class="w"> </span><span class="n">milegae</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">previous</span><span class="w"> </span><span class="n">mileage</span>
 </code></pre></div>
 <h2 id="beispiel-test-fur-vin">Beispiel-Test für Vin<a class="headerlink" href="#beispiel-test-fur-vin" title="Permanent link">⚓︎</a></h2>
-<p>```java</p>
-<p>class VinTest {</p>
-<pre><code>private final static List&lt;String&gt; VALID_VIN_LIST = Arrays.asList(
-        "KMHDU4ADXAU832403", //2010 Hyundai Elantra
-        "1GCHC33N7RJ376544", //1994 Chevrolet C/K 3500
-        "2S3TD52V3Y6103456", //2000 Suzuki Esteem
-        "1G1ZT51816F264066", //2006 Chevrolet Malibu
-        "1GBJK34G32E254979" //2002 Chevrolet Silverado 3500
-);
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">VinTest</span><span class="w"> </span><span class="p">{</span>
 
-private final static List&lt;String&gt; INVALID_VIN_LIST = Arrays.asList(
-        null,
-        "",
-        " ",
-        "K 234 Lm",
-        "123445667",
-        "WERTTZUUKHGH"
-);
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">VALID_VIN_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;KMHDU4ADXAU832403&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">//2010 Hyundai Elantra</span>
+<span class="w">            </span><span class="s">&quot;1GCHC33N7RJ376544&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">//1994 Chevrolet C/K 3500</span>
+<span class="w">            </span><span class="s">&quot;2S3TD52V3Y6103456&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">//2000 Suzuki Esteem</span>
+<span class="w">            </span><span class="s">&quot;1G1ZT51816F264066&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">//2006 Chevrolet Malibu</span>
+<span class="w">            </span><span class="s">&quot;1GBJK34G32E254979&quot;</span><span class="w"> </span><span class="c1">//2002 Chevrolet Silverado 3500</span>
+<span class="w">    </span><span class="p">);</span>
 
-@Test
-void shouldCreateValidVinValueObject() {
-    VALID_VIN_LIST.forEach(vin -&gt; assertDoesNotThrow(() -&gt; new Vin(vin)));
-}
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">INVALID_VIN_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+<span class="w">            </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot; &quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;K 234 Lm&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;123445667&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;WERTTZUUKHGH&quot;</span>
+<span class="w">    </span><span class="p">);</span>
 
-@Test
-void shouldThrowIllegalArgumentExceptionDueToInvalidVinValue() {
-    INVALID_VIN_LIST.forEach(vin -&gt; assertThrows(IllegalArgumentException.class, () -&gt; new Vin(vin)));
-}
-</code></pre>
-<p>}</p>
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldCreateValidVinValueObject</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">VALID_VIN_LIST</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">vin</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">assertDoesNotThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vin</span><span class="p">(</span><span class="n">vin</span><span class="p">)));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldThrowIllegalArgumentExceptionDueToInvalidVinValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">INVALID_VIN_LIST</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">vin</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">assertThrows</span><span class="p">(</span><span class="n">IllegalArgumentException</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vin</span><span class="p">(</span><span class="n">vin</span><span class="p">)));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <!-- Source file information -->
 
