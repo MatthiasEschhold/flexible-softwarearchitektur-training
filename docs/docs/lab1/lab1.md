@@ -12,6 +12,8 @@
 2) Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab
 3) Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten
 
+ ![Vehicle Domain Model](../img/domain-model.png)
+ Abb 1: Vehicle Domain Model
 
 | Domänenobjekt               | Validierungsregel                                                            |
 |-----------------------------|------------------------------------------------------------------------------|
@@ -19,7 +21,6 @@
 | VIN                         | Ein valider Wert muss dem vorgesehenen Pattern folgen.                       |
 | LicensePlate                | Ein valider Wert muss dem vorgesehenen Pattern folgen.                       |
 | Mileage                     | Der Kilometerstand muss größer 0 sein.                                       |
-| EquipmentCode               | Ein valider Wert muss dem vorgesehenen Pattern folgen.                       |
 | CountryOfManufacture        | Ein valider Wert muss dem vorgesehenen Pattern folgen.                       |
 | Alle anderen Domänenobjekte | Kein Nullwerte, keine leeren oder blank Strings.                             |
 
