@@ -363,6 +363,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Aufgabe 3.1 Anwendungsfall Fahrzeug anlegen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-als-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource als DTO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db-model-als-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      DB-Model als DTO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -500,6 +524,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Aufgabe 3.1 Anwendungsfall Fahrzeug anlegen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-als-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource als DTO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db-model-als-dto" class="md-nav__link">
+    <span class="md-ellipsis">
+      DB-Model als DTO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -610,6 +658,187 @@ Fokus liegt auf der Implementierung der Use Cases, der eingesetzten Designkonzep
 <li>Erstellt die notwendigen Interfaces Adapters und Data Transfer Objects</li>
 <li>Verwende die Two-Way Mapping Strategie für das Mapping der Data Transfer Objects und der Domänenobjekte</li>
 </ul>
+<h3 id="resource-als-dto">Resource als DTO<a class="headerlink" href="#resource-als-dto" title="Permanent link">⚓︎</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">VehicleResource</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">vin</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">MileageRecordResource</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mileageRecords</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">VehicleMasterDataResource</span><span class="w"> </span><span class="n">vehicleMasterData</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">VehicleMasterDataResource</span><span class="w"> </span><span class="nf">getVehicleMasterData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">vehicleMasterData</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setVehicleMasterData</span><span class="p">(</span><span class="n">VehicleMasterDataResource</span><span class="w"> </span><span class="n">vehicleMasterData</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">vehicleMasterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vehicleMasterData</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getVin</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">vin</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setVin</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">vin</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">vin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vin</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getLicensePlate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setLicensePlate</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">licensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">MileageRecordResource</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getMileageRecords</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">mileageRecords</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setMileageRecords</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MileageRecordResource</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mileageRecords</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">mileageRecords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mileageRecords</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">VehicleMasterDataResource</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">EquipmentResource</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equipmentList</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">countryOfManufacture</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">EquipmentResource</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getEquipmentList</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">equipmentList</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setEquipmentList</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">EquipmentResource</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equipmentList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">equipmentList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equipmentList</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getCountryOfManufacture</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">countryOfManufacture</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setCountryOfManufacture</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">countryOfManufacture</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">countryOfManufacture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countryOfManufacture</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MileageRecordResource</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">recordDate</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getRecordDate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">recordDate</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setRecordDate</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">recordDate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">recordDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recordDate</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Double</span><span class="w"> </span><span class="nf">getMileage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EquipmentResource</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">equipmentCode</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">equipmentLabel</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getEquipmentCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">equipmentCode</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setEquipmentCode</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">equipmentCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">equipmentCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equipmentCode</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getEquipmentLabel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">equipmentLabel</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setEquipmentLabel</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">equipmentLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">equipmentLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equipmentLabel</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="db-model-als-dto">DB-Model als DTO<a class="headerlink" href="#db-model-als-dto" title="Permanent link">⚓︎</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">VehicleDbEntity</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">vin</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">MileageRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mileageRecords</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">EquipmentDbEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equipmentList</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getVin</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">vin</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setVin</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">vin</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">vin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vin</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getLicensePlate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setLicensePlate</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">licensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">MileageRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getMileageRecords</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">mileageRecords</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setMileageRecords</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">MileageRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mileageRecords</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">mileageRecords</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mileageRecords</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">EquipmentDbEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getEquipmentList</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">equipmentList</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setEquipmentList</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">EquipmentDbEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equipmentList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">equipmentList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equipmentList</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EquipmentDbEntity</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">equipmentCode</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">equipmentLabel</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getEquipmentCode</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">equipmentCode</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setEquipmentCode</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">equipmentCode</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">equipmentCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equipmentCode</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getEquipmentLabel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">equipmentLabel</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setEquipmentLabel</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">equipmentLabel</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">equipmentLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equipmentLabel</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MileageRecordDbEntity</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">recordTime</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getMileage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setMileage</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">mileage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">mileage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getRecordTime</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">recordTime</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setRecordTime</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">recordTime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">recordTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recordTime</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="aufgabe-32-anwendungsfall-kilometerstand-aktualisieren">Aufgabe 3.2 Anwendungsfall Kilometerstand aktualisieren<a class="headerlink" href="#aufgabe-32-anwendungsfall-kilometerstand-aktualisieren" title="Permanent link">⚓︎</a></h2>
 <blockquote>
 <p>Aufbauend auf Aufgabe 3.1</p>
