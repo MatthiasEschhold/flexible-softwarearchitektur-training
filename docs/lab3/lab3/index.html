@@ -761,7 +761,7 @@ Fokus liegt auf der Implementierung der Use Cases, der eingesetzten Designkonzep
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">vin</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">MileageRecord</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mileageRecords</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">MileageRecordDbEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mileageRecords</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">EquipmentDbEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">equipmentList</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getVin</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -819,14 +819,14 @@ Fokus liegt auf der Implementierung der Use Cases, der eingesetzten Designkonzep
 <span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MileageRecordDbEntity</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">recordTime</span><span class="p">;</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getMileage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">getMileage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setMileage</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">mileage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setMileage</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">mileage</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">mileage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mileage</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
