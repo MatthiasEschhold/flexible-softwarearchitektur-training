@@ -10,6 +10,7 @@
 - Implementiere das Domänenmodell der Root Entity Vehicle wie dargestellt auf Folie 38 / Seite 35 im PDF 
 - Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab
 - Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten
+- Erstelle einen Unit-Test für jedes Domänenobjekt zum Testen der Erzeugung oder des Verhaltens (jedoch keine Tests für Getter und Setter)
 
  ![Vehicle Domain Model](../img/vehicle-domain-model.png)
  Abb 1: Vehicle Domain Model

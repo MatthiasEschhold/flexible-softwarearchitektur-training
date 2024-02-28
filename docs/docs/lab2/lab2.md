@@ -9,15 +9,16 @@
 
 ## Aufgabe 2.0 Basisstruktur des Use Cases Ring anlegen
 
-1) Erstelle das Package _vehicle.usecase.in_
-2) Erstelle das Package _vehicle.usecase.out_
-3) Erstelle das Package _vehicle.usecase.interactor_
+- Erstelle das Package _vehicle.usecase.in_
+- Erstelle das Package _vehicle.usecase.out_
+- Erstelle das Package _vehicle.usecase.interactor_
 
 ## Aufgabe 2.1 Anwendungsfall Fahrzeug anlegen
 
-1) Erstelle die notwendigen ein- und ausgehenden Use Case für die Fahrzeuganlage
-2) Erstelle den Use Case Interactor des Anwendungsfalls
-3) Leg die Klassen in den entsprechenden Packages ab
+- Erstelle die notwendigen ein- und ausgehenden Use Case für die Fahrzeuganlage
+- Erstelle den Use Case Interactor des Anwendungsfalls
+- Leg die Klassen in den entsprechenden Packages ab
+- Erstelle einen Unit-Test für den Interactor
 
 ### Schnittstellenbeschreibung
 
@@ -28,18 +29,18 @@
 
 ### Ablauf des Anwendungsfalls
 
-
-1) Abfrage der Fahrzeugdaten bei einem externen Service anhand der Vin
-2) Erstellung des Fahrzeugs
-2) Speichern der Fahrzeugdaten in der Datenbank
+- Abfrage der Fahrzeugstammdaten bei einem externen Service anhand der Vin
+- Erstellung des Fahrzeugs
+- Speichern der Fahrzeugdaten in der Datenbank
 
 > Scope beachten! Use Cases Ring!
 
 ## Aufgabe 2.2 Anwendungsfall Kilometerstand aktualisieren
 
-1) Erstelle die notwendigen ein- und ausgehenden Use Case für die Fahrzeuganlage
-2) Erstelle den Use Case Interactor des Anwendungsfalls
-3) Leg die Klassen in den entsprechenden Packages ab
+- Erstelle die notwendigen ein- und ausgehenden Use Case für die Fahrzeuganlage
+- Erstelle den Use Case Interactor des Anwendungsfalls
+- Leg die Klassen in den entsprechenden Packages ab
+- Erstelle einen Unit-Test für den Interactor
 
 ### Schnittstellenbeschreibung
 
@@ -50,6 +51,61 @@
 
 ### Ablauf des Anwendungsfalls
 
-1) Auslesen des Fahrzeugs aus der Datenbank anhand der Vin
-2) Aktualisierung mit Plausibilitätsprüfung des Kilometerstandes
-3) Speichern des Fahrzeugs in der Datenbank
+- Auslesen des Fahrzeugs aus der Datenbank anhand der Vin 
+- Aktualisierung mit Plausibilitätsprüfung des Kilometerstandes
+- Speichern des Fahrzeugs in der Datenbank
+
+## Aufgabe 2.3 Erweiterung des Anwendungsfalls Fahrzeuganlage mit Risikobewertung und Diebstahlstatus
+
+- Bei der Fahrzeuganlage ist eine Risikobewertung sowie die Abfrage des Diebstahlstatus notwendig
+- Für die Risikobewertung sind Risikoländer relevant, die von einem externen Service abgefragt werden
+- Entscheide dich für einen Use-Case-Schnitt und implementiere diesen
+- Wird ein Risiko-Score von X ermittelt, muss eine Diebstahlstatusabfrage bei Interpol erfolgen
+- Erstelle das Package _vehicle.domain.service_ und erstelle den Domain Service für die Ermittlung des Risikoscores
+- Welche neuen Domänenobjekte werden benötigt und wie können diese im Package-Baum eingeordnet werden?
+- Erweitere den Unit-Test für den CreateVehicleInteractor
+- Schreibe einen Unit-Test für den Domain Service
+
+## Risikobewertung
+
+- Hatte das Fahrzeug einen nachvollziehbaren Grenzübergang (countryOfManufacture != registrationCountry)
+- Ist das Fahrzeug in einem Risikoland angemeldet
+
+#### Hilfsmethode zur Ermittlung des Registrierungslandes anhand des Kennzeichens
+```java
+public TheftStatusRequestResponse {
+    private String vin;
+    private boolean stolen;
+}
+```
+
+### Schnittstellenbeschreibung Risikoländer
+
+| Schnittstellenelement | Domänenobjekte      |
+|-----------------------|---------------------|
+| Parameter             | Keine               |
+| Rückgabe              | List of RiskCountry |
+
+### Schnittstellenbeschreibung Diebstahlstatusabfrage Interpol
+
+| Schnittstellenelement | Domänenobjekte |
+|-----------------------|----------------|
+| Parameter             | Vin            |
+| Rückgabe              | TheftStatus    |
+
+#### Response der Diebstahlabfrage
+```java
+public TheftStatusRequestResponse {
+    private String vin;
+    private boolean stolen;
+}
+```
+
+### Ablauf des Anwendungsfalls
+
+- Ermittlung des Risikoscores anhand der Risikoländer (RiskCountries), Kennzeichen (LicensePlate)
+- Abfrage der Fahrzeugdaten bei einem externen Service anhand der Vin
+- Bei einem Risikoscore > 20 erfolgt die Abfrage des Diebstahlstatus bei Interpol 
+- Abfrage der Fahrzeugdaten bei einem externen Service anhand der Vin 
+- Erstellung des Fahrzeugs
+- Speichern der Fahrzeugdaten in der Datenbank

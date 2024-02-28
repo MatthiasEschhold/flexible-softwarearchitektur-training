@@ -8,9 +8,9 @@
 
 ## Aufgabe 5.1 Anwendungsfall Werkstattauftrag anlegen
 
-1) Für die Anlage eines Werkstattauftrags werden **ein Teil** der Fahrzeugdaten benötigt
-2) Die Abfrage muss anhand des Kennzeichens oder auch Fahrgestellnummer möglich sein
-3) Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entites zu implementieren
+- Für die Anlage eines Werkstattauftrags werden **ein Teil** der Fahrzeugdaten benötigt
+- Die Abfrage muss anhand des Kennzeichens oder auch Fahrgestellnummer möglich sein
+- Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entites zu implementieren
 
 ### Schnittstellenbeschreibung
 
@@ -41,9 +41,9 @@ Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank
 
 ## Aufgabe 5.2 Anwendungsfall Kunde und Fahrzeug verknüpfen 
 
-1) In der Kundenverwaltung wird ein Fahrzeug nach Anlage mit dem Kunden verknüpft
-2) Diese Zuordnung wird anhand des Kennzeichens und der Fahrgestellnummer am Kundenobjekt durchgeführt
-3) Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entites zu implementieren
+- In der Kundenverwaltung wird ein Fahrzeug nach Anlage mit dem Kunden verknüpft
+- Diese Zuordnung wird anhand des Kennzeichens und der Fahrgestellnummer am Kundenobjekt durchgeführt
+- Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entites zu implementieren
 
 ### Schnittstellenbeschreibung
 
