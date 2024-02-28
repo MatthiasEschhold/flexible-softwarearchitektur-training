@@ -35,6 +35,77 @@
 
 > Scope beachten! Use Cases Ring!
 
+### Beispiel für ein Test mit Mockito
+
+```java
+package de.arkem.clean.arc.demo.app.lab.aufgabe2.vehicle.usecase.interactor;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
+class CreateVehicleInteractorTest {
+    
+    private static final String VIN_TEST_VALUE = "WP0ZZZ99ZTS392155";
+    private static final String LICENSE_PLATE_TEST_VALUE = "ES-EL 0815";
+    private static final double MILEAGE_TEST_VALUE = 1000;
+    
+    CreateVehicleInteractor interactorUnderTest;
+    
+    SaveVehicle saveVehicle = Mockito.mock(SaveVehicle.class);
+    FetchVehicleMasterData fetchVehicleMasterData = Mockito.mock(FetchVehicleMasterData.class);
+    FetchRiskCountries fetchRiskCountries = Mockito.mock(FetchRiskCountries.class);
+    DetectTheftStatus detectTheftStatus = Mockito.mock(DetectTheftStatus.class);
+    TheftRiskRatingService theftRiskRatingService = Mockito.mock(TheftRiskRatingService.class);
+    
+    @BeforeEach
+    void setUp() {
+        interactorUnderTest = new CreateVehicleInteractor(saveVehicle, fetchVehicleMasterData, fetchRiskCountries, detectTheftStatus, theftRiskRatingService);
+    }
+
+    @Test
+    void shouldCreateANewVehicle() {
+        var licensePlate = new LicensePlate(LICENSE_PLATE_TEST_VALUE);
+        var vin = new Vin(VIN_TEST_VALUE);
+        var mileage = new Mileage(MILEAGE_TEST_VALUE);
+        var vehicleMasterData = getVehicleMasterData();
+        var savedVehicle = new Vehicle(vin, licensePlate, mileage, vehicleMasterData);
+
+        when(fetchVehicleMasterData.fetchVehicleMasterData(any(Vin.class))).thenReturn(vehicleMasterData);
+        when(saveVehicle.save(any(Vehicle.class))).thenReturn(savedVehicle);
+        when(fetchRiskCountries.fetch()).thenReturn(Arrays.asList(new RiskCountry("DE"), new RiskCountry("FR")));
+        when(detectTheftStatus.detect(any(Vin.class))).thenReturn(new TheftStatus("NOT_STOLEN"));
+
+        var vehicle = interactorUnderTest.create(vin, licensePlate, mileage);
+
+        assertThat(vehicle.getVin(), equalTo(vin));
+        assertThat(vehicle.getLicensePlate(), equalTo(licensePlate));
+    }
+
+    @Test
+    void shouldThrowExceptionDueToStolenVehicle() {
+        var licensePlate = new LicensePlate(LICENSE_PLATE_TEST_VALUE);
+        var vin = new Vin(VIN_TEST_VALUE);
+        var mileage = new Mileage(MILEAGE_TEST_VALUE);
+        var vehicleMasterData = getVehicleMasterData();
+
+        when(fetchVehicleMasterData.fetchVehicleMasterData(any(Vin.class))).thenReturn(vehicleMasterData);
+        when(fetchRiskCountries.fetch()).thenReturn(Arrays.asList(new RiskCountry("DE"), new RiskCountry("FR")));
+        when(detectTheftStatus.detect(any(Vin.class))).thenReturn(new TheftStatus("STOLEN"));
+
+        assertDoesNotThrow(()  -> interactorUnderTest.create(vin, licensePlate, mileage));
+
+    }
+
+    private VehicleMasterData getVehicleMasterData() {
+        return new VehicleMasterData(new CountryOfManufacture("DE"),
+                Arrays.asList(new Equipment(new EquipmentCode("1234"), new EquipmentLabel("Test Equipment"))));
+    }
+}
+```
+
 ## Aufgabe 2.2 Anwendungsfall Kilometerstand aktualisieren
 
 - Erstelle die notwendigen ein- und ausgehenden Use Case für die Fahrzeuganlage
