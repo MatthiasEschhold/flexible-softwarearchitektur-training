@@ -146,7 +146,7 @@ public class VehicleDbEntity {
 
     private String vin;
     private String licensePlate;
-    private List<MileageRecord> mileageRecords;
+    private List<MileageRecordDbEntity> mileageRecords;
     private List<EquipmentDbEntity> equipmentList;
 
     public String getVin() {
@@ -211,14 +211,14 @@ public class EquipmentDbEntity {
 
 ```java
 public class MileageRecordDbEntity {
-    private String mileage;
+    private double mileage;
     private String recordTime;
 
-    public String getMileage() {
+    public double getMileage() {
         return mileage;
     }
 
-    public void setMileage(String mileage) {
+    public void setMileage(double mileage) {
         this.mileage = mileage;
     }
 

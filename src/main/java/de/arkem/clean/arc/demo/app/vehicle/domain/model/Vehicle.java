@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+
 public class Vehicle {
     private Vin vin;
     private LicensePlate licensePlate;
@@ -28,9 +29,8 @@ public class Vehicle {
      */
     public Vehicle(Vin vin, LicensePlate licensePlate, Mileage mileage) {
         this(vin, licensePlate);
-        this.mileageRecords = new ArrayList<>();
         validateMandatoryData(vin, licensePlate, mileage);
-        this.updateMileage(mileage);
+        createInitialMileageRecordList(mileage);
     }
 
     /**
@@ -87,6 +87,11 @@ public class Vehicle {
         }
     }
 
+    private void createInitialMileageRecordList(Mileage mileage) {
+        this.mileageRecords = new ArrayList<>();
+        this.mileageRecords.add(new MileageRecord(mileage, new RecordDate(new Date())));
+    }
+
     /**
      * Static Factory Methode um ein neues Fahrzeug zu erstellen, oft ein aussagekräftigere und
      * flexiblere Alternative zu einem Konstruktor
@@ -97,7 +102,8 @@ public class Vehicle {
      */
     public static Vehicle createNewVehicle(Vin vin, LicensePlate licensePlate, Mileage mileage) {
         Vehicle vehicle = new Vehicle(vin, licensePlate);
-        vehicle.updateMileage(mileage);
+        List<MileageRecord> mileageRecords = new ArrayList<>();
+        mileageRecords.add(new MileageRecord(mileage, new RecordDate(new Date())));
         return vehicle;
     }
 }
