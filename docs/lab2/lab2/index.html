@@ -364,6 +364,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#beispiel-fur-ein-test-mit-mockito" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispiel für ein Test mit Mockito
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -635,6 +644,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#beispiel-fur-ein-test-mit-mockito" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispiel für ein Test mit Mockito
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -863,6 +881,74 @@
 <blockquote>
 <p>Scope beachten! Use Cases Ring!</p>
 </blockquote>
+<h3 id="beispiel-fur-ein-test-mit-mockito">Beispiel für ein Test mit Mockito<a class="headerlink" href="#beispiel-fur-ein-test-mit-mockito" title="Permanent link">⚓︎</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">de.arkem.clean.arc.demo.app.lab.aufgabe2.vehicle.usecase.interactor</span><span class="p">;</span>
+
+<span class="kn">import static</span><span class="w"> </span><span class="nn">org.hamcrest.MatcherAssert.assertThat</span><span class="p">;</span>
+<span class="kn">import static</span><span class="w"> </span><span class="nn">org.hamcrest.Matchers.equalTo</span><span class="p">;</span>
+<span class="kn">import static</span><span class="w"> </span><span class="nn">org.junit.jupiter.api.Assertions.assertDoesNotThrow</span><span class="p">;</span>
+<span class="kn">import static</span><span class="w"> </span><span class="nn">org.mockito.ArgumentMatchers.any</span><span class="p">;</span>
+<span class="kn">import static</span><span class="w"> </span><span class="nn">org.mockito.Mockito.when</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">CreateVehicleInteractorTest</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">VIN_TEST_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WP0ZZZ99ZTS392155&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">LICENSE_PLATE_TEST_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ES-EL 0815&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">MILEAGE_TEST_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">CreateVehicleInteractor</span><span class="w"> </span><span class="n">interactorUnderTest</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">SaveVehicle</span><span class="w"> </span><span class="n">saveVehicle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">SaveVehicle</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="n">FetchVehicleMasterData</span><span class="w"> </span><span class="n">fetchVehicleMasterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">FetchVehicleMasterData</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="n">FetchRiskCountries</span><span class="w"> </span><span class="n">fetchRiskCountries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">FetchRiskCountries</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="n">DetectTheftStatus</span><span class="w"> </span><span class="n">detectTheftStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">DetectTheftStatus</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="n">TheftRiskRatingService</span><span class="w"> </span><span class="n">theftRiskRatingService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">TheftRiskRatingService</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nd">@BeforeEach</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">setUp</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">interactorUnderTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateVehicleInteractor</span><span class="p">(</span><span class="n">saveVehicle</span><span class="p">,</span><span class="w"> </span><span class="n">fetchVehicleMasterData</span><span class="p">,</span><span class="w"> </span><span class="n">fetchRiskCountries</span><span class="p">,</span><span class="w"> </span><span class="n">detectTheftStatus</span><span class="p">,</span><span class="w"> </span><span class="n">theftRiskRatingService</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldCreateANewVehicle</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">licensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LicensePlate</span><span class="p">(</span><span class="n">LICENSE_PLATE_TEST_VALUE</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">vin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vin</span><span class="p">(</span><span class="n">VIN_TEST_VALUE</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">mileage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mileage</span><span class="p">(</span><span class="n">MILEAGE_TEST_VALUE</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">vehicleMasterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getVehicleMasterData</span><span class="p">();</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">savedVehicle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vehicle</span><span class="p">(</span><span class="n">vin</span><span class="p">,</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">,</span><span class="w"> </span><span class="n">mileage</span><span class="p">,</span><span class="w"> </span><span class="n">vehicleMasterData</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">fetchVehicleMasterData</span><span class="p">.</span><span class="na">fetchVehicleMasterData</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Vin</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">vehicleMasterData</span><span class="p">);</span>
+<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">saveVehicle</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">savedVehicle</span><span class="p">);</span>
+<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">fetchRiskCountries</span><span class="p">.</span><span class="na">fetch</span><span class="p">()).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">RiskCountry</span><span class="p">(</span><span class="s">&quot;DE&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RiskCountry</span><span class="p">(</span><span class="s">&quot;FR&quot;</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">detectTheftStatus</span><span class="p">.</span><span class="na">detect</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Vin</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">TheftStatus</span><span class="p">(</span><span class="s">&quot;NOT_STOLEN&quot;</span><span class="p">));</span>
+
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">vehicle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">interactorUnderTest</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">vin</span><span class="p">,</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">,</span><span class="w"> </span><span class="n">mileage</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">vehicle</span><span class="p">.</span><span class="na">getVin</span><span class="p">(),</span><span class="w"> </span><span class="n">equalTo</span><span class="p">(</span><span class="n">vin</span><span class="p">));</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">vehicle</span><span class="p">.</span><span class="na">getLicensePlate</span><span class="p">(),</span><span class="w"> </span><span class="n">equalTo</span><span class="p">(</span><span class="n">licensePlate</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldThrowExceptionDueToStolenVehicle</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">licensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LicensePlate</span><span class="p">(</span><span class="n">LICENSE_PLATE_TEST_VALUE</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">vin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vin</span><span class="p">(</span><span class="n">VIN_TEST_VALUE</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">mileage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mileage</span><span class="p">(</span><span class="n">MILEAGE_TEST_VALUE</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">vehicleMasterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getVehicleMasterData</span><span class="p">();</span>
+
+<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">fetchVehicleMasterData</span><span class="p">.</span><span class="na">fetchVehicleMasterData</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Vin</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">vehicleMasterData</span><span class="p">);</span>
+<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">fetchRiskCountries</span><span class="p">.</span><span class="na">fetch</span><span class="p">()).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">RiskCountry</span><span class="p">(</span><span class="s">&quot;DE&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RiskCountry</span><span class="p">(</span><span class="s">&quot;FR&quot;</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">detectTheftStatus</span><span class="p">.</span><span class="na">detect</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Vin</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">TheftStatus</span><span class="p">(</span><span class="s">&quot;STOLEN&quot;</span><span class="p">));</span>
+
+<span class="w">        </span><span class="n">assertDoesNotThrow</span><span class="p">(()</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">interactorUnderTest</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">vin</span><span class="p">,</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">,</span><span class="w"> </span><span class="n">mileage</span><span class="p">));</span>
+
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">VehicleMasterData</span><span class="w"> </span><span class="nf">getVehicleMasterData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">VehicleMasterData</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">CountryOfManufacture</span><span class="p">(</span><span class="s">&quot;DE&quot;</span><span class="p">),</span>
+<span class="w">                </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Equipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">EquipmentCode</span><span class="p">(</span><span class="s">&quot;1234&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EquipmentLabel</span><span class="p">(</span><span class="s">&quot;Test Equipment&quot;</span><span class="p">))));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="aufgabe-22-anwendungsfall-kilometerstand-aktualisieren">Aufgabe 2.2 Anwendungsfall Kilometerstand aktualisieren<a class="headerlink" href="#aufgabe-22-anwendungsfall-kilometerstand-aktualisieren" title="Permanent link">⚓︎</a></h2>
 <ul>
 <li>Erstelle die notwendigen ein- und ausgehenden Use Case für die Fahrzeuganlage</li>
