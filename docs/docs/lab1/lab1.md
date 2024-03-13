@@ -7,7 +7,7 @@
 - Fundament des Entities Ring / Domain Hexagon verstehen
 
 ## Aufgabe 1.1 Grundstruktur Root Entity Vehicle
-- Implementiere das Domänenmodell der Root Entity Vehicle wie dargestellt auf Folie 38 / Seite 35 im PDF 
+- Implementiere das Domänenmodell der Root Entity Vehicle wie in Abb 1 dargestellt  
 - Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab
 - Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten
 - Erstelle einen Unit-Test für jedes Domänenobjekt zum Testen der Erzeugung oder des Verhaltens (jedoch keine Tests für Getter und Setter)
