@@ -436,13 +436,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#aufgabe-52-anwendungsfall-kunde-und-fahrzeug-verknupfen" class="md-nav__link">
+  <a href="#aufgabe-52-anwendungsfall-fahrzeugstammdaten-abfragen-fur-ersatzteilebestellungen" class="md-nav__link">
     <span class="md-ellipsis">
-      Aufgabe 5.2 Anwendungsfall Kunde und Fahrzeug verknüpfen
+      Aufgabe 5.2 Anwendungsfall Fahrzeugstammdaten abfragen für Ersatzteilebestellungen
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Aufgabe 5.2 Anwendungsfall Kunde und Fahrzeug verknüpfen">
+    <nav class="md-nav" aria-label="Aufgabe 5.2 Anwendungsfall Fahrzeugstammdaten abfragen für Ersatzteilebestellungen">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -451,21 +451,6 @@
       Schnittstellenbeschreibung
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Schnittstellenbeschreibung">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fahrzeugdaten-die-am-kundenobjekt-benotigt-werden" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fahrzeugdaten die am Kundenobjekt benötigt werden
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -593,13 +578,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#aufgabe-52-anwendungsfall-kunde-und-fahrzeug-verknupfen" class="md-nav__link">
+  <a href="#aufgabe-52-anwendungsfall-fahrzeugstammdaten-abfragen-fur-ersatzteilebestellungen" class="md-nav__link">
     <span class="md-ellipsis">
-      Aufgabe 5.2 Anwendungsfall Kunde und Fahrzeug verknüpfen
+      Aufgabe 5.2 Anwendungsfall Fahrzeugstammdaten abfragen für Ersatzteilebestellungen
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Aufgabe 5.2 Anwendungsfall Kunde und Fahrzeug verknüpfen">
+    <nav class="md-nav" aria-label="Aufgabe 5.2 Anwendungsfall Fahrzeugstammdaten abfragen für Ersatzteilebestellungen">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -608,21 +593,6 @@
       Schnittstellenbeschreibung
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Schnittstellenbeschreibung">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fahrzeugdaten-die-am-kundenobjekt-benotigt-werden" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fahrzeugdaten die am Kundenobjekt benötigt werden
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -765,11 +735,11 @@
 </code></pre></div>
 <h3 id="ablauf-des-anwendungsfalls">Ablauf des Anwendungsfalls<a class="headerlink" href="#ablauf-des-anwendungsfalls" title="Permanent link">⚓︎</a></h3>
 <p>Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank</p>
-<h2 id="aufgabe-52-anwendungsfall-kunde-und-fahrzeug-verknupfen">Aufgabe 5.2 Anwendungsfall Kunde und Fahrzeug verknüpfen<a class="headerlink" href="#aufgabe-52-anwendungsfall-kunde-und-fahrzeug-verknupfen" title="Permanent link">⚓︎</a></h2>
+<h2 id="aufgabe-52-anwendungsfall-fahrzeugstammdaten-abfragen-fur-ersatzteilebestellungen">Aufgabe 5.2 Anwendungsfall Fahrzeugstammdaten abfragen für Ersatzteilebestellungen<a class="headerlink" href="#aufgabe-52-anwendungsfall-fahrzeugstammdaten-abfragen-fur-ersatzteilebestellungen" title="Permanent link">⚓︎</a></h2>
 <ul>
-<li>In der Kundenverwaltung wird ein Fahrzeug nach Anlage mit dem Kunden verknüpft</li>
-<li>Diese Zuordnung wird anhand des Kennzeichens und der Fahrgestellnummer am Kundenobjekt durchgeführt</li>
+<li>Der Ersatzteilbestellprozess benötigt Fahrzeugstammdaten</li>
 <li>Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entites zu implementieren</li>
+<li>Diskutiere / Überlege, wann ein Shared Output Adapter Pattern oder Supporting Service Pattern eine alternative sein kann, und wann welches Muster besser geeignet ist</li>
 </ul>
 <h3 id="schnittstellenbeschreibung_1">Schnittstellenbeschreibung<a class="headerlink" href="#schnittstellenbeschreibung_1" title="Permanent link">⚓︎</a></h3>
 <table>
@@ -786,34 +756,10 @@
 </tr>
 <tr>
 <td>Rückgabe</td>
-<td>Vehicle Data</td>
+<td>VehicleMasterData</td>
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th>Schnittstellenelement</th>
-<th>Domänenobjekte</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Parameter</td>
-<td>LicensePlate</td>
-</tr>
-<tr>
-<td>Rückgabe</td>
-<td>Vehicle Data</td>
-</tr>
-</tbody>
-</table>
-<h4 id="fahrzeugdaten-die-am-kundenobjekt-benotigt-werden">Fahrzeugdaten die am Kundenobjekt benötigt werden<a class="headerlink" href="#fahrzeugdaten-die-am-kundenobjekt-benotigt-werden" title="Permanent link">⚓︎</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">VehicleData</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">licensePlate</span><span class="p">:</span><span class="w"> </span><span class="n">String</span>
-<span class="w">    </span><span class="n">vin</span><span class="p">:</span><span class="w"> </span><span class="n">String</span><span class="w">    </span>
-<span class="p">}</span>
-</code></pre></div>
 <h3 id="ablauf-des-anwendungsfalls_1">Ablauf des Anwendungsfalls<a class="headerlink" href="#ablauf-des-anwendungsfalls_1" title="Permanent link">⚓︎</a></h3>
 <p>Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank</p>
 
