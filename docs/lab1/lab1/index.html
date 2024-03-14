@@ -382,6 +382,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#beispiel-test-fur-das-value-object-licenseplate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispiel-Test für das Value Object LicensePlate
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -598,6 +607,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#beispiel-test-fur-das-value-object-licenseplate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beispiel-Test für das Value Object LicensePlate
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -673,7 +691,7 @@
 </ul>
 <h2 id="aufgabe-11-grundstruktur-root-entity-vehicle">Aufgabe 1.1 Grundstruktur Root Entity Vehicle<a class="headerlink" href="#aufgabe-11-grundstruktur-root-entity-vehicle" title="Permanent link">⚓︎</a></h2>
 <ul>
-<li>Implementiere das Domänenmodell der Root Entity Vehicle wie in Abb 1 dargestellt  </li>
+<li>Implementiere das Domänenmodell der Root Entity Vehicle wie in Abb. 1  dargestellt  </li>
 <li>Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab</li>
 <li>Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten</li>
 <li>Erstelle einen Unit-Test für jedes Domänenobjekt zum Testen der Erzeugung oder des Verhaltens (jedoch keine Tests für Getter und Setter)</li>
@@ -684,13 +702,13 @@
 <thead>
 <tr>
 <th>Domänenobjekt</th>
-<th>Validierungsregel</th>
+<th>Validierungsregel und Verhalten</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Vehicle</td>
-<td>Die Eigenschaften Vin, LicensePlate und MileageRecords müssen immer vorhanden sein.</td>
+<td>Die Eigenschaften Vin, LicensePlate und Mileage müssen bei einer initialen Fahrzeuganlage immer vorhanden sein. Der MileageRecord sowie das RecordDate werden im Erzeugungsprozess auf Basis des übergebenen Mileage erstellt.</td>
 </tr>
 <tr>
 <td>Vin</td>
@@ -726,7 +744,7 @@
 <p>Beispiele:
 * B-AB 123 
 * ES-CD 456</p>
-<div class="highlight"><pre><span></span><code><span class="s">&quot;^[A-Z0-9]{1,7}$&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="s">&quot;^[A-Z]{1,3}[a-z]{0,1}[-]{0,1}[A-Z]{0,2}\\s[0-9]{1,5}(\\s){0,1}[A-Z]{0,1}[a-z]{0,2}$&quot;</span>
 </code></pre></div>
 <h3 id="regex-pattern-fur-das-value-object-countryofmanufacture">Regex Pattern für das Value Object CountryOfManufacture<a class="headerlink" href="#regex-pattern-fur-das-value-object-countryofmanufacture" title="Permanent link">⚓︎</a></h3>
 <p>Beispiele:
@@ -738,7 +756,7 @@
 <p>Implementiere die Aktualisierung des Kilometerstandes (Mileage) mit Plausibilitätsprüfung.</p>
 <blockquote>
 <p>Besonderheit:
-Das Erfassungsdatum (RecordDate) wird automatisch vergeben.</p>
+Das Erfassungsdatum (RecordDate) wird automatisch vergeben (als Verhalten am Domänenobjekt).</p>
 </blockquote>
 <h3 id="plausibilitatsprufung-fur-den-kilometerstand">Plausibilitätsprüfung für den Kilometerstand<a class="headerlink" href="#plausibilitatsprufung-fur-den-kilometerstand" title="Permanent link">⚓︎</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">neuer</span><span class="w"> </span><span class="n">Kilometerstand</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">zuletzt</span><span class="w"> </span><span class="n">gemeldeter</span><span class="w"> </span><span class="n">Kilometerstand</span>
@@ -771,6 +789,92 @@ Das Erfassungsdatum (RecordDate) wird automatisch vergeben.</p>
 <span class="w">    </span><span class="nd">@Test</span>
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldThrowIllegalArgumentExceptionDueToInvalidVinValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">INVALID_VIN_LIST</span><span class="p">.</span><span class="na">forEach</span><span class="p">(</span><span class="n">vin</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">assertThrows</span><span class="p">(</span><span class="n">IllegalArgumentException</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vin</span><span class="p">(</span><span class="n">vin</span><span class="p">)));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="beispiel-test-fur-das-value-object-licenseplate">Beispiel-Test für das Value Object LicensePlate<a class="headerlink" href="#beispiel-test-fur-das-value-object-licenseplate" title="Permanent link">⚓︎</a></h2>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LicensePlateTest</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AUSTRIA_LICENSE_PLATE_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;A 1 B&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;X 12 Y&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Zz 123 Ab&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;K 234 Lm&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Mn 345 Op&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Pq 456 Rst&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Uv 567 Wxy&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Zz 678 Xyz&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Aa 789 Bcd&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;Ef 890 Ghi&quot;</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GERMAN_LICENSE_PLATE_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+<span class="w">            </span><span class="s">&quot;EES-EL 0815&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;EES-EL 815&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;EES-EL 15&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;EES-EL 5&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;EES-L 0815&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;EES-L 085&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;EES-L 08&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;EES-L 5&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;ES-EL 0815&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;ES-EL 085&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;ES-EL 08&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;ES-EL 0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;ES-L 0815&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;ES-L 085&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;ES-L 08&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;ES-L 5&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;E-EL 0815&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;E-EL 085&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;E-EL 08&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;E-EL 0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;E-L 0815&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;E-L 085&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;E-L 08&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;E-L 5&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldCreateValidEuLicensePlateValueObjects</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inputList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="n">inputList</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">GERMAN_LICENSE_PLATE_LIST</span><span class="p">);</span>
+<span class="w">        </span><span class="n">inputList</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">AUSTRIA_LICENSE_PLATE_LIST</span><span class="p">);</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">LicensePlate</span><span class="o">&gt;</span><span class="w"> </span><span class="n">licensePlateList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">createLicensePlateValueObjects</span><span class="p">(</span><span class="n">inputList</span><span class="p">);</span>
+<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">licensePlateList</span><span class="p">,</span><span class="w"> </span><span class="n">everyItem</span><span class="p">(</span><span class="n">hasValueInList</span><span class="p">(</span><span class="n">inputList</span><span class="p">)));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@Test</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldThrowExceptionForInvalidEuLicensePlateValueObjects</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">inputList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="n">inputList</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">&quot;123456&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;A 1 B C&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;EES-EL 0815 123&quot;</span><span class="p">));</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">inputList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">assertThrows</span><span class="p">(</span><span class="n">IllegalArgumentException</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LicensePlate</span><span class="p">(</span><span class="n">input</span><span class="p">));</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Hamcrest could not handle records, due to this hasProperty(&quot;value&quot;, inList(stringList()) does not work</span>
+<span class="cm">     *</span>
+<span class="cm">     * @param stringList</span>
+<span class="cm">     * @return</span>
+<span class="cm">     */</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Matcher</span><span class="o">&lt;</span><span class="n">LicensePlate</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">hasValueInList</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stringList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TypeSafeMatcher</span><span class="o">&lt;&gt;</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nd">@Override</span>
+<span class="w">            </span><span class="kd">protected</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">matchesSafely</span><span class="p">(</span><span class="n">LicensePlate</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="n">stringList</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="n">licensePlate</span><span class="p">.</span><span class="na">value</span><span class="p">());</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="nd">@Override</span>
+<span class="w">            </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">describeTo</span><span class="p">(</span><span class="n">Description</span><span class="w"> </span><span class="n">description</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">description</span><span class="p">.</span><span class="na">appendText</span><span class="p">(</span><span class="s">&quot;value should be in the list&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">LicensePlate</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createLicensePlateValueObjects</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">stringList</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">stringList</span><span class="p">.</span><span class="na">stream</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">LicensePlate</span><span class="p">::</span><span class="k">new</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">toList</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
