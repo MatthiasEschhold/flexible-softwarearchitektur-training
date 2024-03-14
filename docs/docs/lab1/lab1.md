@@ -7,7 +7,7 @@
 - Fundament des Entities Ring / Domain Hexagon verstehen
 
 ## Aufgabe 1.1 Grundstruktur Root Entity Vehicle
-- Implementiere das Domänenmodell der Root Entity Vehicle wie in Abb 1 dargestellt  
+- Implementiere das Domänenmodell der Root Entity Vehicle wie in Abb. 1  dargestellt  
 - Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab
 - Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten
 - Erstelle einen Unit-Test für jedes Domänenobjekt zum Testen der Erzeugung oder des Verhaltens (jedoch keine Tests für Getter und Setter)
@@ -15,14 +15,14 @@
  ![Vehicle Domain Model](../img/vehicle-domain-model.png)
  Abb 1: Vehicle Domain Model
 
-| Domänenobjekt               | Validierungsregel                                                                   |
-|-----------------------------|-------------------------------------------------------------------------------------|
-| Vehicle                     | Die Eigenschaften Vin, LicensePlate und MileageRecords müssen immer vorhanden sein. |
-| Vin                         | Ein valider Wert muss dem vorgesehenen Pattern folgen.                              |
-| LicensePlate                | Ein valider Wert muss dem vorgesehenen Pattern folgen.                              |
-| Mileage                     | Der Kilometerstand muss größer 0 sein.                                              |
-| CountryOfManufacture        | Ein valider Wert muss dem vorgesehenen Pattern folgen.                              |
-| Alle anderen Domänenobjekte | Kein Nullwerte, keine leeren oder blank Strings.                                    |
+| Domänenobjekt               | Validierungsregel und Verhalten                                                                                                                                                                                                |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Vehicle                     | Die Eigenschaften Vin, LicensePlate und Mileage müssen bei einer initialen Fahrzeuganlage immer vorhanden sein. Der MileageRecord sowie das RecordDate werden im Erzeugungsprozess auf Basis des übergebenen Mileage erstellt. |
+| Vin                         | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
+| LicensePlate                | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
+| Mileage                     | Der Kilometerstand muss größer 0 sein.                                                                                                                                                                                         |
+| CountryOfManufacture        | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
+| Alle anderen Domänenobjekte | Kein Nullwerte, keine leeren oder blank Strings.                                                                                                                                                                               |
 
 
 ### Regex Pattern für das Value Object Vin
@@ -43,7 +43,7 @@ Beispiele:
 * ES-CD 456
 
 ```java
-"^[A-Z0-9]{1,7}$"
+"^[A-Z]{1,3}[a-z]{0,1}[-]{0,1}[A-Z]{0,2}\\s[0-9]{1,5}(\\s){0,1}[A-Z]{0,1}[a-z]{0,2}$"
 ```
 
 ### Regex Pattern für das Value Object CountryOfManufacture
@@ -61,7 +61,7 @@ Beispiele:
 Implementiere die Aktualisierung des Kilometerstandes (Mileage) mit Plausibilitätsprüfung.
 
 > Besonderheit:
-> Das Erfassungsdatum (RecordDate) wird automatisch vergeben.
+> Das Erfassungsdatum (RecordDate) wird automatisch vergeben (als Verhalten am Domänenobjekt).
 
 ### Plausibilitätsprüfung für den Kilometerstand
 
@@ -99,6 +99,95 @@ class VinTest {
     @Test
     void shouldThrowIllegalArgumentExceptionDueToInvalidVinValue() {
         INVALID_VIN_LIST.forEach(vin -> assertThrows(IllegalArgumentException.class, () -> new Vin(vin)));
+    }
+}
+```
+
+## Beispiel-Test für das Value Object LicensePlate
+
+```java
+public class LicensePlateTest {
+
+    private final static List<String> AUSTRIA_LICENSE_PLATE_LIST = Arrays.asList(
+            "A 1 B",
+            "X 12 Y",
+            "Zz 123 Ab",
+            "K 234 Lm",
+            "Mn 345 Op",
+            "Pq 456 Rst",
+            "Uv 567 Wxy",
+            "Zz 678 Xyz",
+            "Aa 789 Bcd",
+            "Ef 890 Ghi"
+    );
+    private final static List<String> GERMAN_LICENSE_PLATE_LIST = Arrays.asList(
+            "EES-EL 0815",
+            "EES-EL 815",
+            "EES-EL 15",
+            "EES-EL 5",
+            "EES-L 0815",
+            "EES-L 085",
+            "EES-L 08",
+            "EES-L 5",
+            "ES-EL 0815",
+            "ES-EL 085",
+            "ES-EL 08",
+            "ES-EL 0",
+            "ES-L 0815",
+            "ES-L 085",
+            "ES-L 08",
+            "ES-L 5",
+            "E-EL 0815",
+            "E-EL 085",
+            "E-EL 08",
+            "E-EL 0",
+            "E-L 0815",
+            "E-L 085",
+            "E-L 08",
+            "E-L 5");
+
+    @Test
+    public void shouldCreateValidEuLicensePlateValueObjects() {
+        List<String> inputList = new ArrayList<>();
+        inputList.addAll(GERMAN_LICENSE_PLATE_LIST);
+        inputList.addAll(AUSTRIA_LICENSE_PLATE_LIST);
+        List<LicensePlate> licensePlateList = createLicensePlateValueObjects(inputList);
+        assertThat(licensePlateList, everyItem(hasValueInList(inputList)));
+    }
+
+    @Test
+    public void shouldThrowExceptionForInvalidEuLicensePlateValueObjects() {
+        List<String> inputList = new ArrayList<>();
+        inputList.addAll(Arrays.asList("123456", "A 1 B C", "EES-EL 0815 123"));
+        for (String input : inputList) {
+            assertThrows(IllegalArgumentException.class, () -> new LicensePlate(input));
+        }
+    }
+
+    /**
+     * Hamcrest could not handle records, due to this hasProperty("value", inList(stringList()) does not work
+     *
+     * @param stringList
+     * @return
+     */
+    private Matcher<LicensePlate> hasValueInList(List<String> stringList) {
+        return new TypeSafeMatcher<>() {
+            @Override
+            protected boolean matchesSafely(LicensePlate licensePlate) {
+                return stringList.contains(licensePlate.value());
+            }
+
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("value should be in the list");
+            }
+        };
+    }
+
+    private List<LicensePlate> createLicensePlateValueObjects(List<String> stringList) {
+        return stringList.stream()
+                .map(LicensePlate::new)
+                .toList();
     }
 }
 ```
