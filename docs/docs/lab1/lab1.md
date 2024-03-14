@@ -7,7 +7,7 @@
 - Fundament des Entities Ring / Domain Hexagon verstehen
 
 ## Aufgabe 1.1 Grundstruktur Root Entity Vehicle
-- Implementiere das Domänenmodell der Root Entity Vehicle wie in Abb. 1  dargestellt  
+- Implementiere die in der Tabelle aufgeführten Domänenobjekte des Domänenmodells der Root Entity Vehicle (siehe Abb. 1)  
 - Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab
 - Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten
 - Erstelle einen Unit-Test für jedes Domänenobjekt zum Testen der Erzeugung oder des Verhaltens (jedoch keine Tests für Getter und Setter)
@@ -15,14 +15,14 @@
  ![Vehicle Domain Model](../img/vehicle-domain-model.png)
  Abb 1: Vehicle Domain Model
 
-| Domänenobjekt               | Validierungsregel und Verhalten                                                                                                                                                                                                |
-|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Vehicle                     | Die Eigenschaften Vin, LicensePlate und Mileage müssen bei einer initialen Fahrzeuganlage immer vorhanden sein. Der MileageRecord sowie das RecordDate werden im Erzeugungsprozess auf Basis des übergebenen Mileage erstellt. |
-| Vin                         | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
-| LicensePlate                | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
-| Mileage                     | Der Kilometerstand muss größer 0 sein.                                                                                                                                                                                         |
-| CountryOfManufacture        | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
-| Alle anderen Domänenobjekte | Kein Nullwerte, keine leeren oder blank Strings.                                                                                                                                                                               |
+| Domänenobjekt | Validierungsregel und Verhalten                                                                                                                                                                                                |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Vehicle       | Die Eigenschaften Vin, LicensePlate und Mileage müssen bei einer initialen Fahrzeuganlage immer vorhanden sein. Der MileageRecord sowie das RecordDate werden im Erzeugungsprozess auf Basis des übergebenen Mileage erstellt. |
+| Vin           | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
+| LicensePlate  | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
+| Mileage       | Der Kilometerstand muss größer 0 sein.                                                                                                                                                                                         |
+| MileageRecord | Keine Nullwerte.                                                                                                                                                                                                               |
+| RecordDate    | Kein Nullwert.                                                                                                                                                                                                                 |
 
 
 ### Regex Pattern für das Value Object Vin
