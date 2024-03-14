@@ -431,9 +431,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hilfsmethode-zur-ermittlung-des-registrierungslandes-anhand-des-kennzeichens" class="md-nav__link">
+  <a href="#hilfsmethode-zur-ermittlung-des-registrierungslandes-anhand-des-kennzeichens-im-domainservice" class="md-nav__link">
     <span class="md-ellipsis">
-      Hilfsmethode zur Ermittlung des Registrierungslandes anhand des Kennzeichens
+      Hilfsmethode zur Ermittlung des Registrierungslandes anhand des Kennzeichens im DomainService
     </span>
   </a>
   
@@ -711,9 +711,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hilfsmethode-zur-ermittlung-des-registrierungslandes-anhand-des-kennzeichens" class="md-nav__link">
+  <a href="#hilfsmethode-zur-ermittlung-des-registrierungslandes-anhand-des-kennzeichens-im-domainservice" class="md-nav__link">
     <span class="md-ellipsis">
-      Hilfsmethode zur Ermittlung des Registrierungslandes anhand des Kennzeichens
+      Hilfsmethode zur Ermittlung des Registrierungslandes anhand des Kennzeichens im DomainService
     </span>
   </a>
   
@@ -848,7 +848,7 @@
 </ul>
 <h2 id="aufgabe-21-anwendungsfall-fahrzeug-anlegen">Aufgabe 2.1 Anwendungsfall Fahrzeug anlegen<a class="headerlink" href="#aufgabe-21-anwendungsfall-fahrzeug-anlegen" title="Permanent link">⚓︎</a></h2>
 <ul>
-<li>Erstelle die notwendigen ein- und ausgehenden Use Case für die Fahrzeuganlage</li>
+<li>Erstelle die notwendigen ein- und ausgehenden Use Cases für die Fahrzeuganlage</li>
 <li>Erstelle den Use Case Interactor des Anwendungsfalls</li>
 <li>Leg die Klassen in den entsprechenden Packages ab</li>
 <li>Erstelle einen Unit-Test für den Interactor</li>
@@ -882,72 +882,7 @@
 <p>Scope beachten! Use Cases Ring!</p>
 </blockquote>
 <h3 id="beispiel-fur-ein-test-mit-mockito">Beispiel für ein Test mit Mockito<a class="headerlink" href="#beispiel-fur-ein-test-mit-mockito" title="Permanent link">⚓︎</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">de.arkem.clean.arc.demo.app.lab.aufgabe2.vehicle.usecase.interactor</span><span class="p">;</span>
-
-<span class="kn">import static</span><span class="w"> </span><span class="nn">org.hamcrest.MatcherAssert.assertThat</span><span class="p">;</span>
-<span class="kn">import static</span><span class="w"> </span><span class="nn">org.hamcrest.Matchers.equalTo</span><span class="p">;</span>
-<span class="kn">import static</span><span class="w"> </span><span class="nn">org.junit.jupiter.api.Assertions.assertDoesNotThrow</span><span class="p">;</span>
-<span class="kn">import static</span><span class="w"> </span><span class="nn">org.mockito.ArgumentMatchers.any</span><span class="p">;</span>
-<span class="kn">import static</span><span class="w"> </span><span class="nn">org.mockito.Mockito.when</span><span class="p">;</span>
-
-<span class="kd">class</span> <span class="nc">CreateVehicleInteractorTest</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">VIN_TEST_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;WP0ZZZ99ZTS392155&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">LICENSE_PLATE_TEST_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ES-EL 0815&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">MILEAGE_TEST_VALUE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">CreateVehicleInteractor</span><span class="w"> </span><span class="n">interactorUnderTest</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">SaveVehicle</span><span class="w"> </span><span class="n">saveVehicle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">SaveVehicle</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">    </span><span class="n">FetchVehicleMasterData</span><span class="w"> </span><span class="n">fetchVehicleMasterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">FetchVehicleMasterData</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">    </span><span class="n">FetchRiskCountries</span><span class="w"> </span><span class="n">fetchRiskCountries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">FetchRiskCountries</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">    </span><span class="n">DetectTheftStatus</span><span class="w"> </span><span class="n">detectTheftStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">DetectTheftStatus</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-<span class="w">    </span><span class="n">TheftRiskRatingService</span><span class="w"> </span><span class="n">theftRiskRatingService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Mockito</span><span class="p">.</span><span class="na">mock</span><span class="p">(</span><span class="n">TheftRiskRatingService</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
-
-<span class="w">    </span><span class="nd">@BeforeEach</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">setUp</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">interactorUnderTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CreateVehicleInteractor</span><span class="p">(</span><span class="n">saveVehicle</span><span class="p">,</span><span class="w"> </span><span class="n">fetchVehicleMasterData</span><span class="p">,</span><span class="w"> </span><span class="n">fetchRiskCountries</span><span class="p">,</span><span class="w"> </span><span class="n">detectTheftStatus</span><span class="p">,</span><span class="w"> </span><span class="n">theftRiskRatingService</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nd">@Test</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldCreateANewVehicle</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">licensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LicensePlate</span><span class="p">(</span><span class="n">LICENSE_PLATE_TEST_VALUE</span><span class="p">);</span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">vin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vin</span><span class="p">(</span><span class="n">VIN_TEST_VALUE</span><span class="p">);</span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">mileage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mileage</span><span class="p">(</span><span class="n">MILEAGE_TEST_VALUE</span><span class="p">);</span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">vehicleMasterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getVehicleMasterData</span><span class="p">();</span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">savedVehicle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vehicle</span><span class="p">(</span><span class="n">vin</span><span class="p">,</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">,</span><span class="w"> </span><span class="n">mileage</span><span class="p">,</span><span class="w"> </span><span class="n">vehicleMasterData</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">fetchVehicleMasterData</span><span class="p">.</span><span class="na">fetchVehicleMasterData</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Vin</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">vehicleMasterData</span><span class="p">);</span>
-<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">saveVehicle</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Vehicle</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">savedVehicle</span><span class="p">);</span>
-<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">fetchRiskCountries</span><span class="p">.</span><span class="na">fetch</span><span class="p">()).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">RiskCountry</span><span class="p">(</span><span class="s">&quot;DE&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RiskCountry</span><span class="p">(</span><span class="s">&quot;FR&quot;</span><span class="p">)));</span>
-<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">detectTheftStatus</span><span class="p">.</span><span class="na">detect</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Vin</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">TheftStatus</span><span class="p">(</span><span class="s">&quot;NOT_STOLEN&quot;</span><span class="p">));</span>
-
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">vehicle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">interactorUnderTest</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">vin</span><span class="p">,</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">,</span><span class="w"> </span><span class="n">mileage</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">vehicle</span><span class="p">.</span><span class="na">getVin</span><span class="p">(),</span><span class="w"> </span><span class="n">equalTo</span><span class="p">(</span><span class="n">vin</span><span class="p">));</span>
-<span class="w">        </span><span class="n">assertThat</span><span class="p">(</span><span class="n">vehicle</span><span class="p">.</span><span class="na">getLicensePlate</span><span class="p">(),</span><span class="w"> </span><span class="n">equalTo</span><span class="p">(</span><span class="n">licensePlate</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nd">@Test</span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldThrowExceptionDueToStolenVehicle</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">licensePlate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LicensePlate</span><span class="p">(</span><span class="n">LICENSE_PLATE_TEST_VALUE</span><span class="p">);</span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">vin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vin</span><span class="p">(</span><span class="n">VIN_TEST_VALUE</span><span class="p">);</span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">mileage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mileage</span><span class="p">(</span><span class="n">MILEAGE_TEST_VALUE</span><span class="p">);</span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="n">vehicleMasterData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getVehicleMasterData</span><span class="p">();</span>
-
-<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">fetchVehicleMasterData</span><span class="p">.</span><span class="na">fetchVehicleMasterData</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Vin</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">vehicleMasterData</span><span class="p">);</span>
-<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">fetchRiskCountries</span><span class="p">.</span><span class="na">fetch</span><span class="p">()).</span><span class="na">thenReturn</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">RiskCountry</span><span class="p">(</span><span class="s">&quot;DE&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RiskCountry</span><span class="p">(</span><span class="s">&quot;FR&quot;</span><span class="p">)));</span>
-<span class="w">        </span><span class="n">when</span><span class="p">(</span><span class="n">detectTheftStatus</span><span class="p">.</span><span class="na">detect</span><span class="p">(</span><span class="n">any</span><span class="p">(</span><span class="n">Vin</span><span class="p">.</span><span class="na">class</span><span class="p">))).</span><span class="na">thenReturn</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">TheftStatus</span><span class="p">(</span><span class="s">&quot;STOLEN&quot;</span><span class="p">));</span>
-
-<span class="w">        </span><span class="n">assertDoesNotThrow</span><span class="p">(()</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">interactorUnderTest</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">vin</span><span class="p">,</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">,</span><span class="w"> </span><span class="n">mileage</span><span class="p">));</span>
-
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">VehicleMasterData</span><span class="w"> </span><span class="nf">getVehicleMasterData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">VehicleMasterData</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">CountryOfManufacture</span><span class="p">(</span><span class="s">&quot;DE&quot;</span><span class="p">),</span>
-<span class="w">                </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Equipment</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">EquipmentCode</span><span class="p">(</span><span class="s">&quot;1234&quot;</span><span class="p">),</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EquipmentLabel</span><span class="p">(</span><span class="s">&quot;Test Equipment&quot;</span><span class="p">))));</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="c1">//...</span>
 </code></pre></div>
 <h2 id="aufgabe-22-anwendungsfall-kilometerstand-aktualisieren">Aufgabe 2.2 Anwendungsfall Kilometerstand aktualisieren<a class="headerlink" href="#aufgabe-22-anwendungsfall-kilometerstand-aktualisieren" title="Permanent link">⚓︎</a></h2>
 <ul>
@@ -987,20 +922,20 @@
 <li>Für die Risikobewertung sind Risikoländer relevant, die von einem externen Service abgefragt werden</li>
 <li>Entscheide dich für einen Use-Case-Schnitt und implementiere diesen</li>
 <li>Wird ein Risiko-Score von X ermittelt, muss eine Diebstahlstatusabfrage bei Interpol erfolgen</li>
-<li>Erstelle das Package <em>vehicle.domain.service</em> und erstelle den Domain Service für die Ermittlung des Risikoscores</li>
+<li>Erstelle das Package <em>vehicle.domain.service</em> und erstelle den DomainService für die Ermittlung des Risikoscore</li>
 <li>Welche neuen Domänenobjekte werden benötigt und wie können diese im Package-Baum eingeordnet werden?</li>
 <li>Erweitere den Unit-Test für den CreateVehicleInteractor</li>
-<li>Schreibe einen Unit-Test für den Domain Service</li>
+<li>Schreibe einen Unit-Test für den DomainService</li>
 </ul>
 <h2 id="risikobewertung">Risikobewertung<a class="headerlink" href="#risikobewertung" title="Permanent link">⚓︎</a></h2>
 <ul>
 <li>Hatte das Fahrzeug einen nachvollziehbaren Grenzübergang (countryOfManufacture != registrationCountry)</li>
 <li>Ist das Fahrzeug in einem Risikoland angemeldet</li>
 </ul>
-<h4 id="hilfsmethode-zur-ermittlung-des-registrierungslandes-anhand-des-kennzeichens">Hilfsmethode zur Ermittlung des Registrierungslandes anhand des Kennzeichens<a class="headerlink" href="#hilfsmethode-zur-ermittlung-des-registrierungslandes-anhand-des-kennzeichens" title="Permanent link">⚓︎</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">TheftStatusRequestResponse</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">vin</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="n">stolen</span><span class="p">;</span>
+<h4 id="hilfsmethode-zur-ermittlung-des-registrierungslandes-anhand-des-kennzeichens-im-domainservice">Hilfsmethode zur Ermittlung des Registrierungslandes anhand des Kennzeichens im DomainService<a class="headerlink" href="#hilfsmethode-zur-ermittlung-des-registrierungslandes-anhand-des-kennzeichens-im-domainservice" title="Permanent link">⚓︎</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getRegistrationCountry</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">licensePlate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// magic...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RegistrationCountry</span><span class="p">(</span><span class="s">&quot;DE&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="schnittstellenbeschreibung-risikolander">Schnittstellenbeschreibung Risikoländer<a class="headerlink" href="#schnittstellenbeschreibung-risikolander" title="Permanent link">⚓︎</a></h3>
@@ -1049,7 +984,7 @@
 </code></pre></div>
 <h3 id="ablauf-des-anwendungsfalls_2">Ablauf des Anwendungsfalls<a class="headerlink" href="#ablauf-des-anwendungsfalls_2" title="Permanent link">⚓︎</a></h3>
 <ul>
-<li>Ermittlung des Risikoscores anhand der Risikoländer (RiskCountries), Kennzeichen (LicensePlate)</li>
+<li>Ermittlung des Risikoscore anhand der Risikoländer (RiskCountries), Kennzeichen (LicensePlate)</li>
 <li>Abfrage der Fahrzeugdaten bei einem externen Service anhand der Vin</li>
 <li>Bei einem Risikoscore &gt; 20 erfolgt die Abfrage des Diebstahlstatus bei Interpol </li>
 <li>Abfrage der Fahrzeugdaten bei einem externen Service anhand der Vin </li>
