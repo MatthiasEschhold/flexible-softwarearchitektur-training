@@ -15,7 +15,7 @@
 
 ## Aufgabe 2.1 Anwendungsfall Fahrzeug anlegen
 
-- Erstelle die notwendigen ein- und ausgehenden Use Case für die Fahrzeuganlage
+- Erstelle die notwendigen ein- und ausgehenden Use Cases für die Fahrzeuganlage
 - Erstelle den Use Case Interactor des Anwendungsfalls
 - Leg die Klassen in den entsprechenden Packages ab
 - Erstelle einen Unit-Test für den Interactor
@@ -36,74 +36,9 @@
 > Scope beachten! Use Cases Ring!
 
 ### Beispiel für ein Test mit Mockito
-
+    
 ```java
-package de.arkem.clean.arc.demo.app.lab.aufgabe2.vehicle.usecase.interactor;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-
-class CreateVehicleInteractorTest {
-    
-    private static final String VIN_TEST_VALUE = "WP0ZZZ99ZTS392155";
-    private static final String LICENSE_PLATE_TEST_VALUE = "ES-EL 0815";
-    private static final double MILEAGE_TEST_VALUE = 1000;
-    
-    CreateVehicleInteractor interactorUnderTest;
-    
-    SaveVehicle saveVehicle = Mockito.mock(SaveVehicle.class);
-    FetchVehicleMasterData fetchVehicleMasterData = Mockito.mock(FetchVehicleMasterData.class);
-    FetchRiskCountries fetchRiskCountries = Mockito.mock(FetchRiskCountries.class);
-    DetectTheftStatus detectTheftStatus = Mockito.mock(DetectTheftStatus.class);
-    TheftRiskRatingService theftRiskRatingService = Mockito.mock(TheftRiskRatingService.class);
-    
-    @BeforeEach
-    void setUp() {
-        interactorUnderTest = new CreateVehicleInteractor(saveVehicle, fetchVehicleMasterData, fetchRiskCountries, detectTheftStatus, theftRiskRatingService);
-    }
-
-    @Test
-    void shouldCreateANewVehicle() {
-        var licensePlate = new LicensePlate(LICENSE_PLATE_TEST_VALUE);
-        var vin = new Vin(VIN_TEST_VALUE);
-        var mileage = new Mileage(MILEAGE_TEST_VALUE);
-        var vehicleMasterData = getVehicleMasterData();
-        var savedVehicle = new Vehicle(vin, licensePlate, mileage, vehicleMasterData);
-
-        when(fetchVehicleMasterData.fetchVehicleMasterData(any(Vin.class))).thenReturn(vehicleMasterData);
-        when(saveVehicle.save(any(Vehicle.class))).thenReturn(savedVehicle);
-        when(fetchRiskCountries.fetch()).thenReturn(Arrays.asList(new RiskCountry("DE"), new RiskCountry("FR")));
-        when(detectTheftStatus.detect(any(Vin.class))).thenReturn(new TheftStatus("NOT_STOLEN"));
-
-        var vehicle = interactorUnderTest.create(vin, licensePlate, mileage);
-
-        assertThat(vehicle.getVin(), equalTo(vin));
-        assertThat(vehicle.getLicensePlate(), equalTo(licensePlate));
-    }
-
-    @Test
-    void shouldThrowExceptionDueToStolenVehicle() {
-        var licensePlate = new LicensePlate(LICENSE_PLATE_TEST_VALUE);
-        var vin = new Vin(VIN_TEST_VALUE);
-        var mileage = new Mileage(MILEAGE_TEST_VALUE);
-        var vehicleMasterData = getVehicleMasterData();
-
-        when(fetchVehicleMasterData.fetchVehicleMasterData(any(Vin.class))).thenReturn(vehicleMasterData);
-        when(fetchRiskCountries.fetch()).thenReturn(Arrays.asList(new RiskCountry("DE"), new RiskCountry("FR")));
-        when(detectTheftStatus.detect(any(Vin.class))).thenReturn(new TheftStatus("STOLEN"));
-
-        assertDoesNotThrow(()  -> interactorUnderTest.create(vin, licensePlate, mileage));
-
-    }
-
-    private VehicleMasterData getVehicleMasterData() {
-        return new VehicleMasterData(new CountryOfManufacture("DE"),
-                Arrays.asList(new Equipment(new EquipmentCode("1234"), new EquipmentLabel("Test Equipment"))));
-    }
-}
+//...
 ```
 
 ## Aufgabe 2.2 Anwendungsfall Kilometerstand aktualisieren
@@ -132,21 +67,22 @@ class CreateVehicleInteractorTest {
 - Für die Risikobewertung sind Risikoländer relevant, die von einem externen Service abgefragt werden
 - Entscheide dich für einen Use-Case-Schnitt und implementiere diesen
 - Wird ein Risiko-Score von X ermittelt, muss eine Diebstahlstatusabfrage bei Interpol erfolgen
-- Erstelle das Package _vehicle.domain.service_ und erstelle den Domain Service für die Ermittlung des Risikoscores
+- Erstelle das Package _vehicle.domain.service_ und erstelle den DomainService für die Ermittlung des Risikoscore
 - Welche neuen Domänenobjekte werden benötigt und wie können diese im Package-Baum eingeordnet werden?
 - Erweitere den Unit-Test für den CreateVehicleInteractor
-- Schreibe einen Unit-Test für den Domain Service
+- Schreibe einen Unit-Test für den DomainService
 
 ## Risikobewertung
 
 - Hatte das Fahrzeug einen nachvollziehbaren Grenzübergang (countryOfManufacture != registrationCountry)
 - Ist das Fahrzeug in einem Risikoland angemeldet
 
-#### Hilfsmethode zur Ermittlung des Registrierungslandes anhand des Kennzeichens
+#### Hilfsmethode zur Ermittlung des Registrierungslandes anhand des Kennzeichens im DomainService
+
 ```java
-public TheftStatusRequestResponse {
-    private String vin;
-    private boolean stolen;
+public String getRegistrationCountry(String licensePlate) {
+    // magic...
+    return new RegistrationCountry("DE");
 }
 ```
 
@@ -165,6 +101,7 @@ public TheftStatusRequestResponse {
 | Rückgabe              | TheftStatus    |
 
 #### Response der Diebstahlabfrage
+
 ```java
 public TheftStatusRequestResponse {
     private String vin;
@@ -174,7 +111,7 @@ public TheftStatusRequestResponse {
 
 ### Ablauf des Anwendungsfalls
 
-- Ermittlung des Risikoscores anhand der Risikoländer (RiskCountries), Kennzeichen (LicensePlate)
+- Ermittlung des Risikoscore anhand der Risikoländer (RiskCountries), Kennzeichen (LicensePlate)
 - Abfrage der Fahrzeugdaten bei einem externen Service anhand der Vin
 - Bei einem Risikoscore > 20 erfolgt die Abfrage des Diebstahlstatus bei Interpol 
 - Abfrage der Fahrzeugdaten bei einem externen Service anhand der Vin 
