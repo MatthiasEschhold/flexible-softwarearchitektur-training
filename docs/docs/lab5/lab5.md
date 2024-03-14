@@ -39,33 +39,18 @@ VehicleData {
 
 Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank
 
-## Aufgabe 5.2 Anwendungsfall Kunde und Fahrzeug verknüpfen 
+## Aufgabe 5.2 Anwendungsfall Fahrzeugstammdaten abfragen für Ersatzteilebestellungen
 
-- In der Kundenverwaltung wird ein Fahrzeug nach Anlage mit dem Kunden verknüpft
-- Diese Zuordnung wird anhand des Kennzeichens und der Fahrgestellnummer am Kundenobjekt durchgeführt
+- Der Ersatzteilbestellprozess benötigt Fahrzeugstammdaten
 - Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entites zu implementieren
+- Diskutiere / Überlege, wann ein Shared Output Adapter Pattern oder Supporting Service Pattern eine alternative sein kann, und wann welches Muster besser geeignet ist
 
 ### Schnittstellenbeschreibung
 
-| Schnittstellenelement | Domänenobjekte           |
-|-----------------------|--------------------------|
-| Parameter             | Vin                      |
-| Rückgabe              | Vehicle Data      |
-
-
-| Schnittstellenelement | Domänenobjekte           |
-|-----------------------|--------------------------|
-| Parameter             | LicensePlate             |
-| Rückgabe              | Vehicle Data             |
-
-#### Fahrzeugdaten die am Kundenobjekt benötigt werden
-
-```java
-VehicleData {
-    licensePlate: String
-    vin: String    
-}
-```
+| Schnittstellenelement | Domänenobjekte    |
+|-----------------------|-------------------|
+| Parameter             | Vin               |
+| Rückgabe              | VehicleMasterData |
 
 ### Ablauf des Anwendungsfalls
 
