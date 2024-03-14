@@ -29,8 +29,8 @@
 
 Beispiele:
 
-* WP0ZZZ99ZTS392155
-* WBAOLZ99ZTS349156
+- WP0ZZZ99ZTS392155
+- WBAOLZ99ZTS349156
 
  ```java
  "(?=.*\\d|=.*[A-Z])(?=.*[A-Z])[A-Z0-9]{17}"
@@ -39,8 +39,9 @@ Beispiele:
 ### Regex Pattern für das Value Object LicensePlate
    
 Beispiele:
-* B-AB 123 
-* ES-CD 456
+
+- B-AB 123 
+- ES-CD 456
 
 ```java
 "^[A-Z]{1,3}[a-z]{0,1}[-]{0,1}[A-Z]{0,2}\\s[0-9]{1,5}(\\s){0,1}[A-Z]{0,1}[a-z]{0,2}$"
@@ -49,8 +50,9 @@ Beispiele:
 ### Regex Pattern für das Value Object CountryOfManufacture
 
 Beispiele:
-* US 
-* DE
+
+- US 
+- DE
 
 ```java
 "^[A-Z]{2}$"
