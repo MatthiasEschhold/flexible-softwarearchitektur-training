@@ -6,10 +6,11 @@
 - Erfahren, wie das Modul in der Clean Architecture wächst und erweitert wird
 - Einsatzmöglichkeit Full Mapping Strategie verstehen
 
-## Aufgabe 4.0 Basisstruktur des Interface Adapters Ring anlegen
+## Aufgabe 4.0 Mapping Strategie
 
-- Verwende die Two-Way oder Full Mapping Strategie für das Mapping der Data Transfer Objects und der Domänenobjekte
-- Betrachtet bei der Entscheidung die Aufgabe 4.1 und 4.2
+Verwende die Two-Way oder Full Mapping Strategie für das Mapping der Data Transfer Objects und der Domänenobjekte in 
+den Aufgaben 4.1 und 4.2.
+
 
 ## Aufgabe 4.1 Anwendungsfall Abfrage der Fahrzeugdaten für das eigene Frontend
 
