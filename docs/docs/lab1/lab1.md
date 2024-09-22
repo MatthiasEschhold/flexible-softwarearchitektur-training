@@ -15,15 +15,18 @@
  ![Vehicle Domain Model](../img/vehicle-domain-model.png)
  Abb 1: Vehicle Domain Model
 
-| Domänenobjekt | Validierungsregel und Verhalten                                                                                                                                                                                                |
-|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Vehicle       | Die Eigenschaften Vin, LicensePlate und Mileage müssen bei einer initialen Fahrzeuganlage immer vorhanden sein. Der MileageRecord sowie das RecordDate werden im Erzeugungsprozess auf Basis des übergebenen Mileage erstellt. |
-| Vin           | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
-| LicensePlate  | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
-| Mileage       | Der Kilometerstand muss größer 0 sein.                                                                                                                                                                                         |
-| MileageRecord | Keine Nullwerte.                                                                                                                                                                                                               |
-| RecordDate    | Kein Nullwert.                                                                                                                                                                                                                 |
-
+| Domänenobjekt     | Validierungsregel und Verhalten                                                                                                                                                                                                |
+|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Vehicle           | Die Eigenschaften Vin, LicensePlate und Mileage müssen bei einer initialen Fahrzeuganlage immer vorhanden sein. Der MileageRecord sowie das RecordDate werden im Erzeugungsprozess auf Basis des übergebenen Mileage erstellt. |
+| Vin               | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
+| LicensePlate      | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
+| Mileage           | Der Kilometerstand muss größer 0 sein.                                                                                                                                                                                         |
+| MileageRecord     | Keine Nullwerte.                                                                                                                                                                                                               |
+| RecordDate        | Kein Nullwert.                                                                                                                                                                                                                 |
+| VehicleMasterData | Die Eigenschaften CountryOfManufacture und Equipment müssen bei einer initialen Fahrzeuganlage immer vorhanden sein.                                                                                                           |
+| Equipment         | Keine Nullwerte.                                                                                                                                                                                                               |
+| EquipmentCode     | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
+| EquipmentLabel    | Ein valider Wert muss dem vorgesehenen Pattern folgen.                                                                                                                                                                         |
 
 ### Regex Pattern für das Value Object Vin
 
@@ -56,6 +59,25 @@ Beispiele:
 
 ```java
 "^[A-Z]{2}$"
+```
+
+### Regex Pattern für das Value Object EquipmentLabel
+
+Nur Buchstaben und Leerzeichen sind erlaubt.
+
+```java
+"^[A-Za-z\\s]+$"
+```
+
+### Regex Pattern für das Value Object EquipmentCode
+
+Beispiele:
+
+- AB1234
+- UC7934
+
+```java
+"^[A-Z]{2}[0-9]{4}$"
 ```
 
 ## Aufgabe 1.2 Rich Domain Model - Verhalten am Domänenobjekt

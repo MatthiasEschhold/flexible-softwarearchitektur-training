@@ -52,8 +52,8 @@ plugins:
 nav:
   - Home: 'index.md'
   - Aufgabenbeschreibung: 'mkdocs.md'
-  - Domänenmodell: 'docs/lab1/lab1.md'
-  - Use Cases: 'docs/lab2/lab2.md'
+  - Aufgabe 1 Domänenmodell: 'docs/lab1/lab1.md'
+  - Aufgabe 2 Anwendungsfälle: 'docs/lab2/lab2.md'
   - Adapters: 'docs/lab3/lab3.md'
   - Wachstum des Domain Module: 'docs/lab4/lab4.md'
   - Wachstum des Systems: 'docs/lab5/lab5.md'
