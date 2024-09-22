@@ -51,7 +51,7 @@ class VehicleTest {
     @Test
     void shouldReturnEmptyOptionalForFindLatestMileage() {
         Vehicle vehicle = new Vehicle(new Vin(VehicleTestDataFactory.VIN_TEST_VALUE),
-                new LicensePlate(VehicleTestDataFactory.LICENSE_PLATE_TEST_VALUE), new ArrayList<>());
+                new LicensePlate(VehicleTestDataFactory.LICENSE_PLATE_TEST_VALUE), new ArrayList<>(), VehicleTestDataFactory.createVehicleMasterData());
         assertThat(vehicle.findLatestMileage().isPresent(), is(false));
     }
 

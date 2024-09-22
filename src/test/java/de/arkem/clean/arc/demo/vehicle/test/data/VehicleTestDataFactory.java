@@ -3,6 +3,11 @@ package de.arkem.clean.arc.demo.vehicle.test.data;
 import de.arkem.clean.arc.demo.app.vehicle.domain.model.LicensePlate;
 import de.arkem.clean.arc.demo.app.vehicle.domain.model.Vehicle;
 import de.arkem.clean.arc.demo.app.vehicle.domain.model.Vin;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.CountryOfManufacture;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.VehicleMasterData;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment.Equipment;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment.EquipmentCode;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment.EquipmentLabel;
 import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.Mileage;
 import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.MileageRecord;
 import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.RecordDate;
@@ -22,8 +27,8 @@ public class VehicleTestDataFactory {
     public static Vehicle createVehicle() {
         return new Vehicle(new Vin(VIN_TEST_VALUE),
                 new LicensePlate(LICENSE_PLATE_TEST_VALUE),
-                createMileageRecords());/*,
-                createVehicleMasterData());*/
+                createMileageRecords(),
+                createVehicleMasterData());
     }
 
     public static List<MileageRecord> createMileageRecords() {
@@ -47,4 +52,12 @@ public class VehicleTestDataFactory {
         return LocalDateTime.of(date, time);
     }
 
+    public static VehicleMasterData createVehicleMasterData() {
+        return new VehicleMasterData(new CountryOfManufacture("DE"),
+                List.of(new Equipment(new EquipmentCode("AB1234"), new EquipmentLabel("test"))));
+    }
+
+    public static Equipment createEquipment(String code, String label) {
+        return new Equipment(new EquipmentCode(code), new EquipmentLabel(label));
+    }
 }

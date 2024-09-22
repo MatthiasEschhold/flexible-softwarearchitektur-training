@@ -1,5 +1,6 @@
 package de.arkem.clean.arc.demo.app.vehicle.domain.model;
 
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.VehicleMasterData;
 import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.Mileage;
 import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.MileageRecord;
 import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.RecordDate;
@@ -13,11 +14,13 @@ import java.util.Optional;
 public class Vehicle {
     private final Vin vin;
     private final LicensePlate licensePlate;
+    private final VehicleMasterData vehicleMasterData;
     private List<MileageRecord> mileageRecords;
 
-    private Vehicle(Vin vin, LicensePlate licensePlate) {
+    private Vehicle(Vin vin, LicensePlate licensePlate, VehicleMasterData vehicleMasterData) {
         this.vin = vin;
         this.licensePlate = licensePlate;
+        this.vehicleMasterData = vehicleMasterData;
     }
 
     /**
@@ -27,8 +30,8 @@ public class Vehicle {
      * @param licensePlate
      * @param mileage
      */
-    public Vehicle(Vin vin, LicensePlate licensePlate, Mileage mileage) {
-        this(vin, licensePlate);
+    public Vehicle(Vin vin, LicensePlate licensePlate, Mileage mileage, VehicleMasterData vehicleMasterData) {
+        this(vin, licensePlate, vehicleMasterData);
         this.mileageRecords = new ArrayList<>();
         validateMandatoryData(vin, licensePlate, mileage);
     }
@@ -40,8 +43,8 @@ public class Vehicle {
      * @param licensePlate
      * @param mileageRecords
      */
-    public Vehicle(Vin vin, LicensePlate licensePlate, List<MileageRecord> mileageRecords) {
-        this(vin, licensePlate);
+    public Vehicle(Vin vin, LicensePlate licensePlate, List<MileageRecord> mileageRecords, VehicleMasterData vehicleMasterData) {
+        this(vin, licensePlate, vehicleMasterData);
         this.mileageRecords = mileageRecords;
     }
 
@@ -54,8 +57,8 @@ public class Vehicle {
      * @param mileage
      * @return
      */
-    public static Vehicle createNewVehicle(Vin vin, LicensePlate licensePlate, Mileage mileage) {
-        Vehicle vehicle = new Vehicle(vin, licensePlate);
+    public static Vehicle createNewVehicle(Vin vin, LicensePlate licensePlate, Mileage mileage, VehicleMasterData vehicleMasterData) {
+        Vehicle vehicle = new Vehicle(vin, licensePlate, vehicleMasterData);
         vehicle.mileageRecords = new ArrayList<>();
         vehicle.mileageRecords.add(new MileageRecord(mileage, new RecordDate(LocalDateTime.now())));
         return vehicle;
