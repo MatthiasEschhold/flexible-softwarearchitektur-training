@@ -11,18 +11,38 @@
 - Erstelle das Package _vehicle.adapter.in_
 - Erstelle das Package _vehicle.adapter.out_
 
-## Aufgabe 3.1 Anwendungsfall Fahrzeug anlegen
+## Aufgabe 3.1 Implementierung der Interface Adapters
 
 > Die Interface Adapters solle die Integration der technischen Komponenten nur andeuten!
 > Fokus liegt auf der Implementierung der Use Cases, der eingesetzten Designkonzepte und der Adaption mittels Mapping.
 
-- Der Anwendungsfall wird durch eine REST API für das eigene JavaScript-Frontend exponiert
-- Es wird eine relationale Datenbank für die Persistenz verwendet
-- Es wird ein REST-Service für die Abfrage der Fahrzeugdaten verwendet
-- Erstellt die notwendigen Interfaces Adapters und Data Transfer Objects
-- Verwende die Two-Way Mapping Strategie für das Mapping der Data Transfer Objects und der Domänenobjekte
+| Anwendungsfall               | Eingehende Interface Adapter | Technische Komponente |
+|------------------------------|------------------------------|-----------------------|
+| Fahrzeug anlegen             | Controller                   | Web                   |
+| Kilometerstand aktualisieren | Controller                   | Web                   |
 
-### Resource als DTO
+| Anwendungsfall             | Ausgehende Interface Adapter | Technische Komponente |
+|----------------------------|------------------------------|-----------------------|
+| Fahrzeug speichern         | Repository                   | Datenbank             |
+| Fahrzeug lesen             | Repository                   | Datenbank             |
+| Risikoländer abfragen      | ServiceClient                | Externe REST API      |
+| Abfrage Diebstahlstatus    | ServiceClient                | Externe REST API      |
+| Abfrage Fahrzeugstammdaten | ServiceClient                | Externe REST API      |  
+
+
+- Implementiert die Interface Adapters und deren Datentransferobjekte für die Anwendungsfälle Fahrzeug anlegen und Kilometerstand aktualisieren sowie die für die sich daraus ergebenden ausgehenden Anwendungsfälle
+- Verwende die Two-Way Mapping Strategie
+- Implementiere keine Tests für die Interface Adapters
+- Optional: 
+  - Wende die One-Way Mapping Strategie im Interface Adapter des Anwendungsfall "Kilometerstand aktualisieren" an
+    - Was hälst du davon? Wie empfindest du die Mischung der Strategien und Auswirkung auf die Domänenobjekte
+  - Wende die No Mapping Strategie im Interface Adapter des Anwendungsfall "Fahrzeug speichern" und "Fahrzeug lesen" an
+    - Was hälst du davon? Wie empfindest du die Mischung der Strategien und Auswirkung auf die Domänenobjekte
+  - Verwende eine Mapping-Library deiner Wahl für das Mapping im ausgehenden Interface Adapter für die Abfrage der Fahrzeugstammdaten (siehe auch Aufgabe 3.2)
+
+## Hilfestellung für die Implementierung
+
+### Resource-Model der REST API
 
 ```java
 
@@ -136,7 +156,7 @@ public class EquipmentResource {
 
 ```
 
-### DB-Model als DTO
+### Das Domänenmodell in der Datenbank
 
 
 ```java
@@ -233,18 +253,11 @@ public class MileageRecordDbEntity {
 
 ```
 
-## Aufgabe 3.2 Anwendungsfall Kilometerstand aktualisieren
-
-> Aufbauend auf Aufgabe 3.1
-
-- Der Anwendungsfall wird durch eine REST API für das eigene JavaScript-Frontend exponiert
-- Erstellt die (noch weiter) notwendigen Interfaces Adapters und Data Transfer Objects
-- Verwende die Two-Way Mapping Strategie für das Mapping der Data Transfer Objects und der Domänenobjekte, falls weitere Mappings notwendig sind
-
-## 3.3 Analysiert den Einsatz von Mapping-Frameworks
+## (Optional) 3.2 Analysiere den Einsatz von Mapping-Frameworks
 
 - Welche Mapping-Frameworks gibt es?
 - Welche Vor- und Nachteile haben die Frameworks?
-
+- 
+[Object-to-object mapping framework microbenchmark](https://github.com/arey/java-object-mapper-benchmark)
 [MapStruct](https://mapstruct.org/)
 [Orika](https://orika-mapper.github.io/orika-docs/)
