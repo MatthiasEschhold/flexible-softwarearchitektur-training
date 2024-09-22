@@ -10,7 +10,7 @@
 - Implementiere die in der Tabelle aufgeführten Domänenobjekte des Domänenmodells der Root Entity Vehicle (siehe Abb. 1)  
 - Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab
 - Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten
-- Erstelle einen Unit-Test für jedes Domänenobjekt zum Testen der Erzeugung oder des Verhaltens (jedoch keine Tests für Getter und Setter)
+- Erstelle einen Unit-Test für jedes Domänenobjekt zum Testen der Objekterzeugung und Validierung
 
  ![Vehicle Domain Model](../img/vehicle-domain-model.png)
  Abb 1: Vehicle Domain Model
@@ -71,7 +71,9 @@ Implementiere die Aktualisierung des Kilometerstandes (Mileage) mit Plausibilit�
 neuer Kilometerstand > zuletzt gemeldeter Kilometerstand
 ```
 
-## Beispiel-Test für das Value Object Vin
+## Hilfestellung für die Unit-Tests
+
+### Beispiel-Test für das Value Object Vin
 
 ```java
 class VinTest {
@@ -105,7 +107,7 @@ class VinTest {
 }
 ```
 
-## Beispiel-Test für das Value Object LicensePlate
+### Beispiel-Test für das Value Object LicensePlate
 
 ```java
 public class LicensePlateTest {
