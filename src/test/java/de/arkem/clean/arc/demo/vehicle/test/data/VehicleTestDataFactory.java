@@ -21,7 +21,6 @@ import java.util.List;
 public class VehicleTestDataFactory {
     public static final String VIN_TEST_VALUE = "WP0ZZZ99ZTS392155";
     public static final String LICENSE_PLATE_TEST_VALUE = "AB-CD 1234";
-
     public static final Double MILEAGE_TEST_VALUE = 1000.00;
 
     public static Vehicle createVehicle() {
