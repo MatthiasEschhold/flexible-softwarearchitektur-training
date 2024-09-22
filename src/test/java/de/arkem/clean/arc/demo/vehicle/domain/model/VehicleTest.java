@@ -1,9 +1,9 @@
 package de.arkem.clean.arc.demo.vehicle.domain.model;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.LicensePlate;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.Vehicle;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.Vin;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.Mileage;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.LicensePlate;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.Vehicle;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.Vin;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.mileage.record.Mileage;
 import de.arkem.clean.arc.demo.vehicle.test.data.VehicleTestDataFactory;
 import org.junit.jupiter.api.Test;
 

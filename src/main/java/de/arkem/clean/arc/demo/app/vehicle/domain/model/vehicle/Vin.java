@@ -1,4 +1,4 @@
-package de.arkem.clean.arc.demo.app.vehicle.domain.model;
+package de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle;
 
 public record Vin(String value) {
     private static final String VIN_PATTERN = "(?=.*\\d|=.*[A-Z])(?=.*[A-Z])[A-Z0-9]{17}";

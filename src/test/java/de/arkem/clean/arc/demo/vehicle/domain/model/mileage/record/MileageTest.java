@@ -1,6 +1,6 @@
 package de.arkem.clean.arc.demo.vehicle.domain.model.mileage.record;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.Mileage;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.mileage.record.Mileage;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

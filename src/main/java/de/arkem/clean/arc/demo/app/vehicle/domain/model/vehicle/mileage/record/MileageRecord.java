@@ -1,4 +1,4 @@
-package de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record;
+package de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.mileage.record;
 
 public record MileageRecord(Mileage mileage, RecordDate recordDate) {
     public MileageRecord {

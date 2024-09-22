@@ -1,6 +1,6 @@
 package de.arkem.clean.arc.demo.vehicle.domain.model.master.data.equipment;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment.EquipmentCode;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.equipment.EquipmentCode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

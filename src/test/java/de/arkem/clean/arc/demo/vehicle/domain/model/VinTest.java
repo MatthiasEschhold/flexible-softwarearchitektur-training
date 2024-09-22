@@ -1,6 +1,6 @@
 package de.arkem.clean.arc.demo.vehicle.domain.model;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.Vin;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.Vin;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

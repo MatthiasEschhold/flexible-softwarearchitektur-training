@@ -1,6 +1,6 @@
 package de.arkem.clean.arc.demo.vehicle.domain.model;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.LicensePlate;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.LicensePlate;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;

@@ -1,4 +1,4 @@
-package de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data;
+package de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data;
 
 public record CountryOfManufacture(String value) {
     private static final String CODE_OF_MANUFACTURE_PATTERN = "^[A-Z]{2}$";

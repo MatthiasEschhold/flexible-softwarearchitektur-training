@@ -1,6 +1,6 @@
-package de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data;
+package de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment.Equipment;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.equipment.Equipment;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
 package de.arkem.clean.arc.demo.vehicle.usecase.interactor;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.LicensePlate;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.Vehicle;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.Vin;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.CountryOfManufacture;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.VehicleMasterData;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment.Equipment;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment.EquipmentCode;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment.EquipmentLabel;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.Mileage;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.LicensePlate;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.Vehicle;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.Vin;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.CountryOfManufacture;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.VehicleMasterData;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.equipment.Equipment;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.equipment.EquipmentCode;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.equipment.EquipmentLabel;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.mileage.record.Mileage;
 import de.arkem.clean.arc.demo.app.vehicle.usecase.interactor.UpdateMileageInteractor;
 import de.arkem.clean.arc.demo.app.vehicle.usecase.out.FindVehicle;
 import de.arkem.clean.arc.demo.app.vehicle.usecase.out.SaveVehicle;

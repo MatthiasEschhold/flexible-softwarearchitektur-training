@@ -1,6 +1,6 @@
 package de.arkem.clean.arc.demo.vehicle.domain.model.master.data;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.CountryOfManufacture;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.CountryOfManufacture;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

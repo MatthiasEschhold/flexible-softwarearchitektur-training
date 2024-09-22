@@ -1,6 +1,6 @@
 package de.arkem.clean.arc.demo.vehicle.domain.model.master.data.equipment;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment.EquipmentLabel;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.equipment.EquipmentLabel;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

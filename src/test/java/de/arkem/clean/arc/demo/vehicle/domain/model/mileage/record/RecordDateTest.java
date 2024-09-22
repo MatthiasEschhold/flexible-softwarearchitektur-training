@@ -1,6 +1,6 @@
 package de.arkem.clean.arc.demo.vehicle.domain.model.mileage.record;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.RecordDate;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.mileage.record.RecordDate;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;

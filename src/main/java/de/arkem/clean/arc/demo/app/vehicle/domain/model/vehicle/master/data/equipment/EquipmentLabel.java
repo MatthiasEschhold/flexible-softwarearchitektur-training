@@ -1,4 +1,4 @@
-package de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment;
+package de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.equipment;
 
 public record EquipmentLabel(String value) {
     private final static String EQUIPMENT_LABEL_PATTERN = "^[A-Za-z\\s]+$";
@@ -8,7 +8,7 @@ public record EquipmentLabel(String value) {
     }
 
     private void validateEquipmentLabel(String value) {
-        if (!value.matches(EQUIPMENT_LABEL_PATTERN)) {
+        if (value.isBlank() || !value.matches(EQUIPMENT_LABEL_PATTERN)) {
             throw new IllegalArgumentException("equipment label is not valid");
         }
     }

@@ -1,9 +1,9 @@
-package de.arkem.clean.arc.demo.app.vehicle.domain.model;
+package de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.VehicleMasterData;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.Mileage;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.MileageRecord;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.mileage.record.RecordDate;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.VehicleMasterData;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.mileage.record.Mileage;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.mileage.record.MileageRecord;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.mileage.record.RecordDate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

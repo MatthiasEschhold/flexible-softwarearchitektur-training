@@ -1,4 +1,4 @@
-package de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment;
+package de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.equipment;
 
 public record EquipmentCode(String value) {
 

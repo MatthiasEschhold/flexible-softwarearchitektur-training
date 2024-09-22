@@ -1,8 +1,8 @@
 package de.arkem.clean.arc.demo.vehicle.domain.model.master.data;
 
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.CountryOfManufacture;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.VehicleMasterData;
-import de.arkem.clean.arc.demo.app.vehicle.domain.model.master.data.equipment.Equipment;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.CountryOfManufacture;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.VehicleMasterData;
+import de.arkem.clean.arc.demo.app.vehicle.domain.model.vehicle.master.data.equipment.Equipment;
 import de.arkem.clean.arc.demo.vehicle.test.data.VehicleTestDataFactory;
 import org.junit.jupiter.api.Test;
 
