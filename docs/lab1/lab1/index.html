@@ -374,6 +374,16 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#hilfestellung-fur-die-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hilfestellung für die Unit-Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hilfestellung für die Unit-Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#beispiel-test-fur-das-value-object-vin" class="md-nav__link">
     <span class="md-ellipsis">
       Beispiel-Test für das Value Object Vin
@@ -381,13 +391,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#beispiel-test-fur-das-value-object-licenseplate" class="md-nav__link">
     <span class="md-ellipsis">
       Beispiel-Test für das Value Object LicensePlate
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -599,6 +614,16 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#hilfestellung-fur-die-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hilfestellung für die Unit-Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hilfestellung für die Unit-Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#beispiel-test-fur-das-value-object-vin" class="md-nav__link">
     <span class="md-ellipsis">
       Beispiel-Test für das Value Object Vin
@@ -606,13 +631,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#beispiel-test-fur-das-value-object-licenseplate" class="md-nav__link">
     <span class="md-ellipsis">
       Beispiel-Test für das Value Object LicensePlate
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -694,7 +724,7 @@
 <li>Implementiere die in der Tabelle aufgeführten Domänenobjekte des Domänenmodells der Root Entity Vehicle (siehe Abb. 1)  </li>
 <li>Erstelle das Package <i>vehicle.domain.model</i> und lege die Domänenobjekte in diesem Package ab</li>
 <li>Implementiere die im folgenden aufgeführten Validierungsregeln in den betroffenen Domänenobjekten</li>
-<li>Erstelle einen Unit-Test für jedes Domänenobjekt zum Testen der Erzeugung oder des Verhaltens (jedoch keine Tests für Getter und Setter)</li>
+<li>Erstelle einen Unit-Test für jedes Domänenobjekt zum Testen der Objekterzeugung und Validierung</li>
 </ul>
 <p><img alt="Vehicle Domain Model" src="../../img/vehicle-domain-model.png" />
  Abb 1: Vehicle Domain Model</p>
@@ -765,7 +795,8 @@ Das Erfassungsdatum (RecordDate) wird automatisch vergeben (als Verhalten am Dom
 <h3 id="plausibilitatsprufung-fur-den-kilometerstand">Plausibilitätsprüfung für den Kilometerstand<a class="headerlink" href="#plausibilitatsprufung-fur-den-kilometerstand" title="Permanent link">⚓︎</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">neuer</span><span class="w"> </span><span class="n">Kilometerstand</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">zuletzt</span><span class="w"> </span><span class="n">gemeldeter</span><span class="w"> </span><span class="n">Kilometerstand</span>
 </code></pre></div>
-<h2 id="beispiel-test-fur-das-value-object-vin">Beispiel-Test für das Value Object Vin<a class="headerlink" href="#beispiel-test-fur-das-value-object-vin" title="Permanent link">⚓︎</a></h2>
+<h2 id="hilfestellung-fur-die-unit-tests">Hilfestellung für die Unit-Tests<a class="headerlink" href="#hilfestellung-fur-die-unit-tests" title="Permanent link">⚓︎</a></h2>
+<h3 id="beispiel-test-fur-das-value-object-vin">Beispiel-Test für das Value Object Vin<a class="headerlink" href="#beispiel-test-fur-das-value-object-vin" title="Permanent link">⚓︎</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">VinTest</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">VALID_VIN_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
@@ -796,7 +827,7 @@ Das Erfassungsdatum (RecordDate) wird automatisch vergeben (als Verhalten am Dom
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="beispiel-test-fur-das-value-object-licenseplate">Beispiel-Test für das Value Object LicensePlate<a class="headerlink" href="#beispiel-test-fur-das-value-object-licenseplate" title="Permanent link">⚓︎</a></h2>
+<h3 id="beispiel-test-fur-das-value-object-licenseplate">Beispiel-Test für das Value Object LicensePlate<a class="headerlink" href="#beispiel-test-fur-das-value-object-licenseplate" title="Permanent link">⚓︎</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LicensePlateTest</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AUSTRIA_LICENSE_PLATE_LIST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
