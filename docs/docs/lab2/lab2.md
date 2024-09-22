@@ -132,8 +132,8 @@ public TheftStatusRequestResponse {
 #### Methode zur Ermittlung des Risikoscores auf dem Kennzeichen
 
 ```java
-public String getRegistrationCountry(String licensePlate) {
-    // magic...
-    return new RegistrationCountry("DE");
+private CountryCode detectRegistrationCountry(LicensePlate licensePlate) {
+  // magic...
+  return new CountryCode("DE");
 }
 ```
