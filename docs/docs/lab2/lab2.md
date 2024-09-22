@@ -16,11 +16,13 @@
 ## Aufgabe 2.1 Anwendungsfall Fahrzeug anlegen
 
 - Erstelle die notwendigen ein- und ausgehenden Use Cases für die Fahrzeuganlage
+  - Entscheide dich für einen Use-Case-Schnitt (mit Begründung)
 - Erstelle den Use Case Interactor des Anwendungsfalls "Fahrzeug anlegen"
 - Leg die Klassen in die entsprechenden Packages ab
 - Erstelle einen Unit-Test für den Interactor
+  - Hier wir die Verwendung einer Mocking-Library, wie z.B. [mockito](https://site.mockito.org/), notwendig
 
-### Schnittstellenbeschreibung
+### Schnittstellenbeschreibung Fahrzeug anlegen 
 
 | Schnittstellenelement | Domänenobjekte             |
 |-----------------------|----------------------------|
@@ -30,25 +32,21 @@
 ### Ablauf (Flow of Control) des Anwendungsfalls (Happy Path)
 
 - Abfrage der Fahrzeugstammdaten bei einem externen Service anhand der Vin
-- Erstellung des Fahrzeugs
-- Speichern der Fahrzeugdaten
+- Erstellung des Fahrzeugs und der intialen Kilometerstandsmeldung
+- Speichern des Fahrzeugs
 
 > Scope beachten! Use Cases Ring!
-
-### Beispiel für ein Test mit Mockito
-    
-```java
-//...
-```
 
 ## Aufgabe 2.2 Anwendungsfall Kilometerstand aktualisieren
 
 - Erstelle die notwendigen ein- und ausgehenden Use Case für die Kilometerstandaktualisierung
+  - Entscheide dich für einen Use-Case-Schnitt (mit Begründung)
 - Erstelle den Use Case Interactor des Anwendungsfalls
 - Leg die Klassen in die entsprechenden Packages ab
 - Erstelle einen Unit-Test für den Interactor
+  - Hier wir die Verwendung einer Mocking-Library, wie z.B. [mockito](https://site.mockito.org/), notwendig
 
-### Schnittstellenbeschreibung
+### Schnittstellenbeschreibung Kilometerstand aktualisieren
 
 | Schnittstellenelement | Domänenobjekte           |
 |-----------------------|--------------------------|
@@ -59,60 +57,73 @@
 
 - Auslesen des Fahrzeugs aus der Datenbank anhand der Vin 
 - Plausibilitätsprüfung der Kilometerstandsmeldung
-- Aktualisierung des Kilometerstands im Domänenobjekt
+- Aktualisierung des Kilometerstands
 - Speichern des Fahrzeugs
 
-## Aufgabe 2.3 Erweiterung des Anwendungsfalls Fahrzeuganlage mit Risikobewertung und Diebstahlstatus
+## Aufgabe 2.3 Erweiterung des Anwendungsfalls Fahrzeug anlegen um die Diebstahlprüfung
 
 ### Beschreibung
 
-- Bei der Fahrzeuganlage ist eine Risikobewertung sowie die Abfrage des Diebstahlstatus notwendig
-- Für die Risikobewertung sind Risikoländer relevant. Diese werden von einem externen Service bezogen
-- Wird ein Risiko-Score von > 20 ermittelt, muss eine Diebstahlstatusabfrage bei Interpol erfolgen
+- Bei der Fahrzeuganlage ist eine Diebstahlprüfung durchzuführen
+- Die Diebstahlprüfung besteht aus: 
+  - Risikobewertung: Welches Risiko besteht, dass das Fahrzeug geklaut sein könnte
+  - Abfrage des Diebstahlstatus: Abfrage des Diebstahlstatus anhand der Vin bei Interpol
+- Ist die Diebstahlprüfung negativ, wird das Fahrzeug, wie unter 2.1 beschrieben, angelegt
+  
+### Diebstahlprüfung und Risikobewertung
 
 #### Ermittlung des RiskScore
 
-- Hatte das Fahrzeug einen nachvollziehbaren Grenzübergang (countryOfManufacture != registrationCountry)? Wenn ja: +10
-- Ist das Fahrzeug in einem Risikoland angemeldet? Wenn ja: +20 Punkte
+| Risikofaktor                                              | Beschreibung des Risikofaktor                                                                                                              | Bewertung des Risikofaktor<br> (Risk Score Points) |
+|-----------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| Hatte das Fahrzeug einen nachvollziehbaren Grenzübergang? | - Herstellungsland != Land der Registrierung<br> - Land der Registrierung wird anhand des Kennzeichen ermitteln                            | +10                                                |
+| Ist das Fahrzeug in einem Risikoland angemeldet?          | - Liste von Risikoländer wird von einem externen Service bereitgestellt<br> - Land der Registrierung wird anhand des Kennzeichen ermitteln | +20                                                |
+| Beide Risikofaktoren treffen zur gleichen Zeit zu?        | -                                                                                                                                          | +30                                                |
+
+#### Anwendungsfall-spezifische Regel Risk Score >=50
+
+**_WENN_** RisikScore **>= 50**, **_DANN_** führe eine Diebstahlstatusabfrage bei Interpol durch
 
 ### Aufgabe
 
-- Entscheidung: Welchen Use-Case-Schnitt setzt du für die ausgehenden Anwendungsfälle ein? Begründe deine Entscheidung!
+- Führe die notwendigen ein- und ausgehende Use Cases ein
+  - Entscheide dich für einen Use-Case-Schnitt (mit Begründung)
 - Erstelle das Package _vehicle.domain.service_ und erstelle den DomainService für die Ermittlung des Risikoscore
-- Welche neuen Domänenobjekte werden benötigt und wie können diese im Package-Baum eingeordnet werden? (Alles erlaubt - Renaming, Verschieben, neues Packages, etc.)
+  - Welche neuen Domänenobjekte werden benötigt und wie können diese im Package-Baum eingeordnet werden?
+  - Es ist alles erlaubt: Umbenennen, verschieben, neues Packages, etc.
 - Erweitere den Unit-Test für den Interactor des Anwendungsfalls "Fahrzeug anlegen"
-- Schreibe einen Unit-Test für den DomainService
+- Schreibe einen Unit-Test für den DomainService für die Ermittlung des Risikoscore
 
 ### Ablauf (Flow of Control) des Anwendungsfalls (Happy Path)
 
-- Ermittlung des Risikoscore anhand der Risikoländer (RiskCountries), Kennzeichen (LicensePlate)
-- Bei einem Risikoscore > 25 erfolgt die Abfrage des Diebstahlstatus bei Interpol
+- Ermittlung des Risikoscore
+- Auswertung des Risikoscore und bei Bedarf Abfrage des Diebstahlstatus
 - Abfrage der Fahrzeugdaten bei einem externen Service anhand der Vin
-- Erstellung des Fahrzeugs
-- Speichern der Fahrzeugdaten
+- Erstellung des Fahrzeugs und der intialen Kilometerstandsmeldung
+- Speichern des Fahrzeugs
 
 ### Externe Schnittstellen
 
-#### Schnittstellenbeschreibung Risikoländer
+#### Schnittstellenbeschreibung externer Service für Risikoländer
 
-| Schnittstellenelement | Domänenobjekte      |
-|-----------------------|---------------------|
-| Parameter             | Keine               |
-| Rückgabe              | List of RiskCountry |
+| Schnittstellenelement | Domänenobjekte    |
+|-----------------------|-------------------|
+| Parameter             | Keine             |
+| Rückgabe              | List(RiskCountry) |
 
-#### Schnittstellenbeschreibung Diebstahlstatusabfrage Interpol
+#### Schnittstellenbeschreibung Abfrage des Diebstahlstatus bei Interpol
 
 | Schnittstellenelement | Domänenobjekte |
 |-----------------------|----------------|
 | Parameter             | Vin            |
 | Rückgabe              | TheftStatus    |
 
-#### Response der Diebstahlabfrage
+##### Response der Abfrage des Diebstahlstatus
 
 ```java
 public TheftStatusRequestResponse {
     private String vin;
-    private boolean stolen;
+    private boolean isStolen;
 }
 ```
 
