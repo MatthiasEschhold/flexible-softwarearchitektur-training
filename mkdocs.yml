@@ -29,7 +29,7 @@ theme:
   name: material
   docs_dir: docs
   custom_dir: docs/overrides
-  logo: docs/img/arkem-white.png
+  logo: docs/img/logo.png
   favicon: docs/img/logo.png
   icon:
     repo: fontawesome/brands/github
