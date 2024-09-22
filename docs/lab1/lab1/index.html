@@ -22,7 +22,7 @@
     
     
       
-        <title>Domänenmodell - hexagonal-and-clean-architecture-training</title>
+        <title>Aufgabe 1 Domänenmodell - hexagonal-and-clean-architecture-training</title>
       
     
     
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Domänenmodell
+              Aufgabe 1 Domänenmodell
             
           </span>
         </div>
@@ -268,7 +268,7 @@
           
   
   <span class="md-ellipsis">
-    Domänenmodell
+    Aufgabe 1 Domänenmodell
   </span>
   
 
@@ -279,7 +279,7 @@
         
   
   <span class="md-ellipsis">
-    Domänenmodell
+    Aufgabe 1 Domänenmodell
   </span>
   
 
@@ -339,6 +339,24 @@
   <a href="#regex-pattern-fur-das-value-object-countryofmanufacture" class="md-nav__link">
     <span class="md-ellipsis">
       Regex Pattern für das Value Object CountryOfManufacture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex-pattern-fur-das-value-object-equipmentlabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex Pattern für das Value Object EquipmentLabel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex-pattern-fur-das-value-object-equipmentcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex Pattern für das Value Object EquipmentCode
     </span>
   </a>
   
@@ -425,7 +443,7 @@
         
   
   <span class="md-ellipsis">
-    Use Cases
+    Aufgabe 2 Anwendungsfälle
   </span>
   
 
@@ -584,6 +602,24 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#regex-pattern-fur-das-value-object-equipmentlabel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex Pattern für das Value Object EquipmentLabel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regex-pattern-fur-das-value-object-equipmentcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regex Pattern für das Value Object EquipmentCode
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -708,7 +744,7 @@
 -->
 
 <!---->
-<!--<h1>Domänenmodell</h1>-->
+<!--<h1>Aufgabe 1 Domänenmodell</h1>-->
 <!---->
 
 <!-- Page content -->
@@ -760,6 +796,22 @@
 <td>RecordDate</td>
 <td>Kein Nullwert.</td>
 </tr>
+<tr>
+<td>VehicleMasterData</td>
+<td>Die Eigenschaften CountryOfManufacture und Equipment müssen bei einer initialen Fahrzeuganlage immer vorhanden sein.</td>
+</tr>
+<tr>
+<td>Equipment</td>
+<td>Keine Nullwerte.</td>
+</tr>
+<tr>
+<td>EquipmentCode</td>
+<td>Ein valider Wert muss dem vorgesehenen Pattern folgen.</td>
+</tr>
+<tr>
+<td>EquipmentLabel</td>
+<td>Ein valider Wert muss dem vorgesehenen Pattern folgen.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="regex-pattern-fur-das-value-object-vin">Regex Pattern für das Value Object Vin<a class="headerlink" href="#regex-pattern-fur-das-value-object-vin" title="Permanent link">⚓︎</a></h3>
@@ -785,6 +837,18 @@
 <li>DE</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="s">&quot;^[A-Z]{2}$&quot;</span>
+</code></pre></div>
+<h3 id="regex-pattern-fur-das-value-object-equipmentlabel">Regex Pattern für das Value Object EquipmentLabel<a class="headerlink" href="#regex-pattern-fur-das-value-object-equipmentlabel" title="Permanent link">⚓︎</a></h3>
+<p>Nur Buchstaben und Leerzeichen sind erlaubt.</p>
+<div class="highlight"><pre><span></span><code><span class="s">&quot;^[A-Za-z\\s]+$&quot;</span>
+</code></pre></div>
+<h3 id="regex-pattern-fur-das-value-object-equipmentcode">Regex Pattern für das Value Object EquipmentCode<a class="headerlink" href="#regex-pattern-fur-das-value-object-equipmentcode" title="Permanent link">⚓︎</a></h3>
+<p>Beispiele:</p>
+<ul>
+<li>AB1234</li>
+<li>UC7934</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="s">&quot;^[A-Z]{2}[0-9]{4}$&quot;</span>
 </code></pre></div>
 <h2 id="aufgabe-12-rich-domain-model-verhalten-am-domanenobjekt">Aufgabe 1.2 Rich Domain Model - Verhalten am Domänenobjekt<a class="headerlink" href="#aufgabe-12-rich-domain-model-verhalten-am-domanenobjekt" title="Permanent link">⚓︎</a></h2>
 <p>Implementiere die Aktualisierung des Kilometerstandes (Mileage) mit Plausibilitätsprüfung.</p>
@@ -964,13 +1028,13 @@ Das Erfassungsdatum (RecordDate) wird automatisch vergeben (als Verhalten am Dom
         
         
           
-          <a href="../../lab2/lab2/" class="md-footer__link md-footer__link--next" aria-label="Next: Use Cases">
+          <a href="../../lab2/lab2/" class="md-footer__link md-footer__link--next" aria-label="Next: Aufgabe 2 Anwendungsfälle">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Use Cases
+                Aufgabe 2 Anwendungsfälle
               </div>
             </div>
             <div class="md-footer__button md-icon">
