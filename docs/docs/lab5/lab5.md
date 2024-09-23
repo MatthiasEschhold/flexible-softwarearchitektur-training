@@ -6,24 +6,28 @@
 - Erfahren, wie das System in der Clean Architecture wächst und erweitert wird
 - Strategien für die Behandlung von Abhängigkeiten zwischen Root Entities verstehen
 
+## Aufgabe 5.0 Fachliche Modularisierung
+
+- Betrachte die Module GarageOrder und SpareParts
+
 ## Aufgabe 5.1 Anwendungsfall Werkstattauftrag anlegen
 
-- Für die Anlage eines Werkstattauftrags werden **ein Teil** der Fahrzeugdaten benötigt
-- Die Abfrage muss anhand des Kennzeichens oder auch Fahrgestellnummer möglich sein
-- Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entites zu implementieren
+- Für die Anlage eines Werkstattauftrags im Modul GarageOrder werden die Vin, das Kennzeichen (LicensePlate) und der aktuelle Kilometerstand (Mileage) des Fahrzeugs benötigt
+- Die Abfrage muss anhand des Kennzeichens oder der Fahrgestellnummer möglich sein
+- Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entities / Modulen zu implementieren
 
-### Schnittstellenbeschreibung
+### Schnittstellenbeschreibung Fahrzeugdaten abfragen
 
-| Schnittstellenelement | Domänenobjekte           |
-|-----------------------|--------------------------|
-| Parameter             | Vin                      |
-| Rückgabe              | Vehicle Data      |
+| Schnittstellenelement | Domänenobjekte |
+|-----------------------|---------------|
+| Parameter             | Vin           |
+| Rückgabe              | VehicleData   |
 
 
-| Schnittstellenelement | Domänenobjekte           |
-|-----------------------|--------------------------|
-| Parameter             | LicensePlate             |
-| Rückgabe              | Vehicle Data             |
+| Schnittstellenelement | Domänenobjekte          |
+|-----------------------|-------------------------|
+| Parameter             | LicensePlate            |
+| Rückgabe              | VehicleData             |
 
 #### Fahrzeugdaten die im Werkstattauftrag benötigt werden
 
@@ -37,14 +41,13 @@ VehicleData {
 
 ### Ablauf des Anwendungsfalls
 
-Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank
+- Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank
 
-## Aufgabe 5.2 Anwendungsfall Fahrzeugstammdaten abfragen für Ersatzteilebestellungen
+## Aufgabe 5.2 Anwendungsfall Fahrzeugstammdaten abfragen
 
-- Der Ersatzteilbestellprozess benötigt Fahrzeugstammdaten
-- Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entites zu implementieren
-- Diskutiere / Überlege, wann ein Shared Output Adapter Pattern oder Supporting Service Pattern eine alternative sein kann, und wann welches Muster besser geeignet ist
-
+- Die Ersatzteileverwaltung (Modul SpareParts) benötigt Fahrzeugstammdaten
+- Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entities / Modulen zu implementieren
+- 
 ### Schnittstellenbeschreibung
 
 | Schnittstellenelement | Domänenobjekte    |
@@ -54,4 +57,8 @@ Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank
 
 ### Ablauf des Anwendungsfalls
 
-Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank
+- Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank
+
+## Aufgabe 5.3 Weitere Muster
+
+- Diskutiere in der Gruppe oder analysiere für dich, wann ein Shared Output Adapter Pattern oder Supporting Service Pattern eine gute alternative sein kann

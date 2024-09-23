@@ -2,22 +2,23 @@
 
 ## Lernziele
 
-- Strategie für den Use Case Schnitt verstehen und anwenden können
+- Strategien für den Use-Case-Schnitt verstehen und anwenden können
 - Erfahren, wie das Modul in der Clean Architecture wächst und erweitert wird
-- Einsatzmöglichkeit Full Mapping Strategie verstehen
+- Einsatzmöglichkeiten der Full Mapping Strategie verstehen
 
 ## Aufgabe 4.0 Mapping Strategie
 
-Verwende die Two-Way oder Full Mapping Strategie für das Mapping der Data Transfer Objects und der Domänenobjekte in 
-den Aufgaben 4.1 und 4.2.
+- Verwende die Two-Way oder One-Way Mapping Strategie für das Mapping zwischen den Datentransferobjekten und den Domänenobjekten
+- Betrachte beide Aufgaben und entscheide dich für einen Use-Case-Schnitt
 
-
-## Aufgabe 4.1 Anwendungsfall Abfrage der Fahrzeugdaten für das eigene Frontend
+## Aufgabe 4.1 Anwendungsfall Fahrzeug lesen für das eigene Frontend
 
 - Das Frontend benötigt Fahrzeugdaten für die Anzeige
-- Entscheide dich für einen Use-Case-Schnitt und implementiere den Anwendungsfall inklusive Interactor, Interfaces Adapters und Data Transfer Objects
+-  Implementiere den Anwendungsfall
+  - Interactor, Interfaces Adapters, Mappings und Datentransferobjekten
 
-### Schnittstellenbeschreibung
+
+### Schnittstellenbeschreibung Anwendungsfall Fahrzeug lesen
 
 | Schnittstellenelement | Domänenobjekte         |
 |-----------------------|------------------------|
@@ -26,15 +27,15 @@ den Aufgaben 4.1 und 4.2.
 
 ### Ablauf des Anwendungsfalls
 
-Abfrage der Fahrzeugdaten aus der eigenen Datenbank anhand der Vin
+- Abfrage des Fahrzeugs anhand der Vin
 
-## Aufgabe 4.2 Anwendungsfall Fahrzeugstammdaten für externe Konsumenten
+## Aufgabe 4.2 Anwendungsfall Fahrzeugstammdaten lesen für externe Konsumenten
 
-- Das System _Spare Parts Management_ benötigt Fahrzeugstammdaten für Ersatzteilbestellungen
-- Entscheide dich für einen Use-Case-Schnitt und implementiere den Anwendungsfall inklusive Interactor, Interfaces Adapters und Data Transfer Objects
-- Verwende die Two-Way Mapping Strategie für das Mapping der Data Transfer Objects und der Domänenobjekte
+- Das System _Ersatzteileverwaltung_ (_Spare Parts Management_) benötigt Fahrzeugstammdaten für Ersatzteilefindung und -bestellung.
+-  Implementiere den Anwendungsfall
+  - Interactor, Interfaces Adapters, Mappings und Datentransferobjekten
 
-### Schnittstellenbeschreibung
+### Schnittstellenbeschreibung Fahrzeugstammdaten lesen
 
 | Schnittstellenelement | Domänenobjekte           |
 |-----------------------|--------------------------|
@@ -42,4 +43,4 @@ Abfrage der Fahrzeugdaten aus der eigenen Datenbank anhand der Vin
 | Rückgabe              | Vehicle Master Data      |
 
 ### Ablauf des Anwendungsfalls
-Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank anhand der Vin
+- Abfrage der Fahrzeugstammdaten anhand der Vin
