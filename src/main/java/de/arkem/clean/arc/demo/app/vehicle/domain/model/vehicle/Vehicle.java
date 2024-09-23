@@ -95,6 +95,10 @@ public class Vehicle {
         return mileageRecords;
     }
 
+    public VehicleMasterData getVehicleMasterData() {
+        return vehicleMasterData;
+    }
+
     private boolean isNewMileageHigherThanThePreviousMileage(Mileage mileage) {
         Optional<Mileage> latestMileageRecord = findLatestMileage();
         if (latestMileageRecord.isEmpty()) {
