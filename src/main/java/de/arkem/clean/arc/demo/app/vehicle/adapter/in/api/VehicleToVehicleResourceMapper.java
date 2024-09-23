@@ -15,7 +15,7 @@ import org.mapstruct.Named;
 import java.util.Date;
 
 @Mapper
-public interface VehicleToResourceApiMapper {
+public interface VehicleToVehicleResourceMapper {
     @Named("mapDateToString")
     public static String mapDateToString(Date date) {
         return date.toString();

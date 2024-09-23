@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/vehicle")
 public class VehicleController {
-    private final VehicleToResourceApiMapper resourceMapper;
+    private final VehicleToVehicleResourceMapper resourceMapper;
     private final CreateVehicle createVehicle;
     private final GetVehicleByVin getVehicle;
 
-    public VehicleController(VehicleToResourceApiMapper resourceMapper, CreateVehicle createVehicle, GetVehicleByVin getVehicle) {
+    public VehicleController(VehicleToVehicleResourceMapper resourceMapper, CreateVehicle createVehicle, GetVehicleByVin getVehicle) {
         this.resourceMapper = resourceMapper;
         this.createVehicle = createVehicle;
         this.getVehicle = getVehicle;
     }
 
     @GetMapping("/{vin}")
-    public VehicleResource readVehicle(String vin) {
+    public ResponseEntity<VehicleResource> readVehicle(String vin) {
         Vehicle vehicle = getVehicle.get(new Vin(vin));
-        return resourceMapper.mapVehicleToResource(vehicle);
+        return ResponseEntity.ok(resourceMapper.mapVehicleToResource(vehicle));
     }
 
     @PostMapping
