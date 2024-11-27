@@ -13,7 +13,7 @@
 
 ## Aufgabe 3.1 Implementierung der Interface Adapters
 
-> Die Interface Adapters solle die Integration der technischen Komponenten nur andeuten!
+> Die Interface Adapters sollen die Integration der technischen Komponenten nur andeuten!
 > Fokus liegt auf der Implementierung der Use Cases, der eingesetzten Designkonzepte und der Adaption mittels Mapping.
 
 | Anwendungsfall               | Eingehende Interface Adapter | Technische Komponente |
@@ -33,12 +33,15 @@
 - Implementiert die Interface Adapters und deren Datentransferobjekte für die Anwendungsfälle Fahrzeug anlegen und Kilometerstand aktualisieren sowie die für die sich daraus ergebenden ausgehenden Anwendungsfälle
 - Verwende die Two-Way Mapping Strategie
 - Implementiere keine Tests für die Interface Adapters
-- Optional: 
+- Implementiere einen Test für einen Mapper deiner Wahl
+
+Optional:
+
   - Wende die One-Way Mapping Strategie im Interface Adapter des Anwendungsfall "Kilometerstand aktualisieren" an
     - Was hälst du davon? Wie empfindest du die Mischung der Strategien und Auswirkung auf die Domänenobjekte
   - Wende die No Mapping Strategie im Interface Adapter des Anwendungsfall "Fahrzeug speichern" und "Fahrzeug lesen" an
     - Was hälst du davon? Wie empfindest du die Mischung der Strategien und Auswirkung auf die Domänenobjekte
-  - Verwende eine Mapping-Library deiner Wahl für das Mapping im ausgehenden Interface Adapter für die Abfrage der Fahrzeugstammdaten (siehe auch Aufgabe 3.2)
+  - Verwende [MapStruct](https://mapstruct.org/) für die Implementierung eines Mappers deiner Wahl
 
 ## Hilfestellung für die Implementierung
 
@@ -253,11 +256,8 @@ public class MileageRecordDbEntity {
 
 ```
 
-## (Optional) 3.2 Analysiere den Einsatz von Mapping-Frameworks
+## 3.2 Analysiere den Einsatz von Mapping-Frameworks
 
 - Welche Mapping-Frameworks gibt es?
 - Welche Vor- und Nachteile haben die Frameworks?
-- 
-[Object-to-object mapping framework microbenchmark](https://github.com/arey/java-object-mapper-benchmark)
-[MapStruct](https://mapstruct.org/)
-[Orika](https://orika-mapper.github.io/orika-docs/)
+- [Object-to-object mapping framework microbenchmark](https://github.com/arey/java-object-mapper-benchmark)
