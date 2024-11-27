@@ -65,9 +65,9 @@
 ### Beschreibung
 
 - Bei der Fahrzeuganlage ist eine Diebstahlprüfung durchzuführen
-- Die Diebstahlprüfung besteht aus: 
-  - Risikobewertung: Welches Risiko besteht, dass das Fahrzeug geklaut sein könnte
-  - Abfrage des Diebstahlstatus: Abfrage des Diebstahlstatus anhand der Vin bei Interpol
+- Die Diebstahlprüfung besteht aus Risikobewertung und Abfrage des Diebstahlstatus 
+- Risikobewertung: Welches Risiko besteht, dass das Fahrzeug geklaut sein könnte
+- Abfrage des Diebstahlstatus: Abfrage des Diebstahlstatus anhand der Vin bei Interpol
 - Ist die Diebstahlprüfung negativ, wird das Fahrzeug, wie unter 2.1 beschrieben, angelegt
   
 ### Diebstahlprüfung und Risikobewertung
@@ -80,9 +80,9 @@
 | Ist das Fahrzeug in einem Risikoland angemeldet?          | - Liste von Risikoländer wird von einem externen Service bereitgestellt<br> - Land der Registrierung wird anhand des Kennzeichen ermitteln | +20                                                |
 | Beide Risikofaktoren treffen zur gleichen Zeit zu?        | -                                                                                                                                          | +30                                                |
 
-#### Anwendungsfall-spezifische Regel Risk Score >=50
+#### Anwendungsfall-spezifische Regel "Risk Score >=50"
 
-**_WENN_** RisikScore **>= 50**, **_DANN_** führe eine Diebstahlstatusabfrage bei Interpol durch
+**_WENN_** der RisikScore **>= 50** ist, **_DANN_** führe eine Diebstahlstatusabfrage bei Interpol durch.
 
 ### Aufgabe
 
@@ -129,7 +129,7 @@ public TheftStatusRequestResponse {
 
 ### Hilfestellung für die Implementierung
 
-#### Methode zur Ermittlung des Risikoscores auf dem Kennzeichen
+#### Methode zur Ermittlung des Registrierungsland anhand des Kennzeichens
 
 ```java
 private CountryCode detectRegistrationCountry(LicensePlate licensePlate) {
