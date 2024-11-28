@@ -430,15 +430,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ablauf-des-anwendungsfalls" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ablauf des Anwendungsfalls
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -463,24 +454,15 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ablauf-des-anwendungsfalls_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ablauf des Anwendungsfalls
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aufgabe-53-weitere-muster" class="md-nav__link">
+  <a href="#aufgabe-53-weitere-muster-fur-abhangigkeiten-zwischen-root-entities-domain-modulen" class="md-nav__link">
     <span class="md-ellipsis">
-      Aufgabe 5.3 Weitere Muster
+      Aufgabe 5.3 Weitere Muster für Abhängigkeiten zwischen Root Entities / Domain Modulen
     </span>
   </a>
   
@@ -590,15 +572,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ablauf-des-anwendungsfalls" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ablauf des Anwendungsfalls
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -623,24 +596,15 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ablauf-des-anwendungsfalls_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ablauf des Anwendungsfalls
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#aufgabe-53-weitere-muster" class="md-nav__link">
+  <a href="#aufgabe-53-weitere-muster-fur-abhangigkeiten-zwischen-root-entities-domain-modulen" class="md-nav__link">
     <span class="md-ellipsis">
-      Aufgabe 5.3 Weitere Muster
+      Aufgabe 5.3 Weitere Muster für Abhängigkeiten zwischen Root Entities / Domain Modulen
     </span>
   </a>
   
@@ -725,9 +689,11 @@
 </ul>
 <h2 id="aufgabe-51-anwendungsfall-werkstattauftrag-anlegen">Aufgabe 5.1 Anwendungsfall Werkstattauftrag anlegen<a class="headerlink" href="#aufgabe-51-anwendungsfall-werkstattauftrag-anlegen" title="Permanent link">⚓︎</a></h2>
 <ul>
-<li>Für die Anlage eines Werkstattauftrags im Modul GarageOrder werden die Vin, das Kennzeichen (LicensePlate) und der aktuelle Kilometerstand (Mileage) des Fahrzeugs benötigt</li>
-<li>Die Abfrage muss anhand des Kennzeichens oder der Fahrgestellnummer möglich sein</li>
-<li>Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entities / Modulen zu implementieren</li>
+<li>Für die Anlage eines Werkstattauftrags im Modul <em>GarageOrder</em> werden die <em>Vin</em>, 
+das <em>Kennzeichen (LicensePlate)</em> und der aktuelle <em>Kilometerstand (Mileage)</em> des Fahrzeugs benötigt</li>
+<li>Die Abfrage muss anhand des <em>Kennzeichens</em> oder der <em>Fahrgestellnummer</em> möglich sein</li>
+<li>Implementiere ein Muster deiner Wahl, um die Abhängigkeit zwischen der Root Entity / dem Domain Modul 
+<em>GarageOrder</em> und der Root Entity / dem Domain Modul  <em>Vehicle</em> zu implementieren</li>
 </ul>
 <h3 id="schnittstellenbeschreibung-fahrzeugdaten-abfragen">Schnittstellenbeschreibung Fahrzeugdaten abfragen<a class="headerlink" href="#schnittstellenbeschreibung-fahrzeugdaten-abfragen" title="Permanent link">⚓︎</a></h3>
 <table>
@@ -773,15 +739,12 @@
 <span class="w">    </span><span class="n">mileage</span><span class="p">:</span><span class="w"> </span><span class="kt">double</span><span class="w">        </span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="ablauf-des-anwendungsfalls">Ablauf des Anwendungsfalls<a class="headerlink" href="#ablauf-des-anwendungsfalls" title="Permanent link">⚓︎</a></h3>
-<ul>
-<li>Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank</li>
-</ul>
 <h2 id="aufgabe-52-anwendungsfall-fahrzeugstammdaten-abfragen">Aufgabe 5.2 Anwendungsfall Fahrzeugstammdaten abfragen<a class="headerlink" href="#aufgabe-52-anwendungsfall-fahrzeugstammdaten-abfragen" title="Permanent link">⚓︎</a></h2>
 <ul>
-<li>Die Ersatzteileverwaltung (Modul SpareParts) benötigt Fahrzeugstammdaten</li>
-<li>Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entities / Modulen zu implementieren</li>
-<li></li>
+<li>Die Ersatzteileverwaltung (Modul <em>SpareParts</em>) benötigt Fahrzeugstammdaten</li>
+<li>Die Abfrage muss anhand der <em>Fahrgestellnummer</em> möglich sein</li>
+<li>Implementiere ein Muster deiner Wahl, um die Abhängigkeit zwischen der Root Entity / dem Domain Modul
+  <em>SpareParts</em> und der Root Entity / dem Domain Modul <em>Vehicle</em> zu implementieren</li>
 </ul>
 <h3 id="schnittstellenbeschreibung">Schnittstellenbeschreibung<a class="headerlink" href="#schnittstellenbeschreibung" title="Permanent link">⚓︎</a></h3>
 <table>
@@ -802,14 +765,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="ablauf-des-anwendungsfalls_1">Ablauf des Anwendungsfalls<a class="headerlink" href="#ablauf-des-anwendungsfalls_1" title="Permanent link">⚓︎</a></h3>
+<h2 id="aufgabe-53-weitere-muster-fur-abhangigkeiten-zwischen-root-entities-domain-modulen">Aufgabe 5.3 Weitere Muster für Abhängigkeiten zwischen Root Entities / Domain Modulen<a class="headerlink" href="#aufgabe-53-weitere-muster-fur-abhangigkeiten-zwischen-root-entities-domain-modulen" title="Permanent link">⚓︎</a></h2>
 <ul>
-<li>Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank</li>
+<li>Diskutiere in der Gruppe oder analysiere für dich, wann ein <em>Shared Output Adapter Pattern</em> oder <em>Supporting Service Pattern</em> eine gute alternative sein kann</li>
 </ul>
-<h2 id="aufgabe-53-weitere-muster">Aufgabe 5.3 Weitere Muster<a class="headerlink" href="#aufgabe-53-weitere-muster" title="Permanent link">⚓︎</a></h2>
-<ul>
-<li>Diskutiere in der Gruppe oder analysiere für dich, wann ein Shared Output Adapter Pattern oder Supporting Service Pattern eine gute alternative sein kann</li>
-</ul>
+<p>Optional:
+- Implementiere die Szenarien 5.1 und 5.2 mit einem  <em>Shared Output Adapter Pattern</em>
+- Implementiere die Szenarien 5.1 und 5.2 mit einem <em>Supporting Service Pattern</em></p>
 
 <!-- Source file information -->
 
