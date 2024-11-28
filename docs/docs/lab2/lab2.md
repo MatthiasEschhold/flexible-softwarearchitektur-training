@@ -7,6 +7,17 @@
 - Stereotyp Interactor verstehen und anwenden können
 - Aufgaben des Use Cases Ring / Application Hexagon verstehen
 
+## Auflösen von Abhängigkeiten
+
+Abhängigkeiten zwischen Klassen, wie beispielsweise Interactor und Use Case Output Port, werden durch Dependency Injection 
+(konkret mittels Constructor Injection) aufgelöst. In der Demo-Anwendung ist hierfür ein parametrisierter Konstruktor erforderlich. 
+Es wird weiterhin angenommen, dass ein Framework oder eine Bibliothek einen Injector bereitstellt 
+und die Konstruktor-basierte Injizierung der Abhängigkeiten übernimmt. Die Funktionsfähigkeit ist in der Demo-Anwendung nicht notwendig.
+
+Alternativ zur Dependency Injection kann auch das Factory Pattern verwendet werden.
+
+Diese Regelung gilt für alle Übungsaufgaben ab Aufgabe 2.
+
 ## Aufgabe 2.0 Basisstruktur des Use Cases Ring anlegen
 
 - Erstelle das Package _vehicle.usecase.in_
