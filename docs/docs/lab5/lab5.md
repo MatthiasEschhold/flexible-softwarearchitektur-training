@@ -1,4 +1,4 @@
-# Aufgabe 5 Fachliche Modularisierung anhand Root Entities 
+# Aufgabe 5 Fachliche Modularisierung anhand Root Entities
 
 ## Lernziele
 
@@ -12,9 +12,11 @@
 
 ## Aufgabe 5.1 Anwendungsfall Werkstattauftrag anlegen
 
-- Für die Anlage eines Werkstattauftrags im Modul GarageOrder werden die Vin, das Kennzeichen (LicensePlate) und der aktuelle Kilometerstand (Mileage) des Fahrzeugs benötigt
-- Die Abfrage muss anhand des Kennzeichens oder der Fahrgestellnummer möglich sein
-- Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entities / Modulen zu implementieren
+- Für die Anlage eines Werkstattauftrags im Modul _GarageOrder_ werden die _Vin_, 
+das _Kennzeichen (LicensePlate)_ und der aktuelle _Kilometerstand (Mileage)_ des Fahrzeugs benötigt
+- Die Abfrage muss anhand des _Kennzeichens_ oder der _Fahrgestellnummer_ möglich sein
+- Implementiere ein Muster deiner Wahl, um die Abhängigkeit zwischen der Root Entity / dem Domain Modul 
+_GarageOrder_ und der Root Entity / dem Domain Modul  _Vehicle_ zu implementieren
 
 ### Schnittstellenbeschreibung Fahrzeugdaten abfragen
 
@@ -39,15 +41,13 @@ VehicleData {
 }
 ```
 
-### Ablauf des Anwendungsfalls
-
-- Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank
-
 ## Aufgabe 5.2 Anwendungsfall Fahrzeugstammdaten abfragen
 
-- Die Ersatzteileverwaltung (Modul SpareParts) benötigt Fahrzeugstammdaten
-- Implementiere ein Muster deiner Wahl, um diese Abhängigkeit zwischen Root Entities / Modulen zu implementieren
-- 
+- Die Ersatzteileverwaltung (Modul _SpareParts_) benötigt Fahrzeugstammdaten
+- Die Abfrage muss anhand der _Fahrgestellnummer_ möglich sein
+- Implementiere ein Muster deiner Wahl, um die Abhängigkeit zwischen der Root Entity / dem Domain Modul
+  _SpareParts_ und der Root Entity / dem Domain Modul _Vehicle_ zu implementieren
+
 ### Schnittstellenbeschreibung
 
 | Schnittstellenelement | Domänenobjekte    |
@@ -55,10 +55,10 @@ VehicleData {
 | Parameter             | Vin               |
 | Rückgabe              | VehicleMasterData |
 
-### Ablauf des Anwendungsfalls
+## Aufgabe 5.3 Weitere Muster für Abhängigkeiten zwischen Root Entities / Domain Modulen
 
-- Abfrage der Fahrzeugstammdaten aus der eigenen Datenbank
+- Diskutiere in der Gruppe oder analysiere für dich, wann ein _Shared Output Adapter Pattern_ oder _Supporting Service Pattern_ eine gute alternative sein kann
 
-## Aufgabe 5.3 Weitere Muster
-
-- Diskutiere in der Gruppe oder analysiere für dich, wann ein Shared Output Adapter Pattern oder Supporting Service Pattern eine gute alternative sein kann
+Optional:
+- Implementiere die Szenarien 5.1 und 5.2 mit einem  _Shared Output Adapter Pattern_
+- Implementiere die Szenarien 5.1 und 5.2 mit einem _Supporting Service Pattern_
